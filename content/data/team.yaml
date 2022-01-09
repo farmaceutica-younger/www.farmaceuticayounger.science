@@ -1,0 +1,11 @@
+- name: Ludovico Russo
+  position: Fullstack Developer
+  linkedin: https://www.linkedin.com/in/ludusrusso
+  site: https://ludusrusso.space
+  image: ./img/team/ludusrusso.jpg
+
+- name: Fabio Rossini
+  position: Videomaker
+  linkedin: https://www.linkedin.com/in/fabio-rossini-0717061a9
+  site: http://www.fabiorossini.it
+  image: ./img/team/fabio.jpg

@@ -1,0 +1,10 @@
+{
+  "typeName": "Event",
+  "name": "Aperitivo Digitale con Medical Advisor & MSL",
+  "description": "Sarà un'occasione pensata per voi che ci permetterà di fare chiarezza su alcuni ruoli dell'Area Medica tipici di una realtà farmaceutica.",
+  "url": "https://www.youtube.com/watch?v=N4gbTZ2-uKg",
+  "date": "2020-06-11T18:30:00.000+02",
+  "featuredImage": "./main.jpeg",
+  "images": [],
+  "video": "https://www.youtube.com/watch?v=N4gbTZ2-uKg"
+}

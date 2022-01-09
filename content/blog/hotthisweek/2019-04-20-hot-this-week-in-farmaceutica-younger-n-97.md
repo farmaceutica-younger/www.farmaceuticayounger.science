@@ -1,0 +1,22 @@
+---
+author: silviaver
+title: "HOT THIS WEEK IN FARMACEUTICA YOUNGER N.97"
+date: "2019-04-21T06:15:00.000Z"
+description: "La Food and Drug Administration degli Stati Uniti ha autorizzato la commercializzazione del primo dispositivo medico per il trattamento del Disturbo da Deficit di Attenzione/Iperattività (ADHD, Attention Deficit Hyperactivity Disorder). Il dispositivo, chiamato sistema di stimolazione del nervo trigemino esterno (eTNS), è indicato per iL trattamento di pazienti di età compresa tra 7 e 12 anni che non stanno attualmente assumendo farmaci per la ADHD. L’eTNS rappresenta il primo trattamento non farmacologico per l'ADHD autorizzato dalla FDA."
+socialDesc: "La Food and Drug Administration degli Stati Uniti ha autorizzato la commercializzazione del primo dispositivo medico per il trattamento del Disturbo da Deficit di Attenzione/Iperattività (ADHD, Attention Deficit Hyperactivity Disorder). Il dispositivo, chiamato sistema di stimolazione del nervo trigemino esterno (eTNS), è indicato per iL trattamento di pazienti di età compresa tra 7 e 12 anni che non stanno attualmente assumendo farmaci per la ADHD. L’eTNS rappresenta il primo trattamento non farmacologico per l'ADHD autorizzato dalla FDA."
+path: "/hotthisweek/hot-this-week-in-farmaceutica-younger-n97/"
+featuredImage: "../../images/6b4f91f1-cdc5-45d6-95c6-7d5d6ddf5515.png"
+tags: []
+---
+
+![null](../../images/6b4f91f1-cdc5-45d6-95c6-7d5d6ddf5515.png)
+
+La Food and Drug Administration degli Stati Uniti ha autorizzato la commercializzazione del primo dispositivo medico per il trattamento del Disturbo da Deficit di Attenzione/Iperattività (ADHD, Attention Deficit Hyperactivity Disorder). Il dispositivo, chiamato sistema di stimolazione del nervo trigemino esterno ([eTNS](https://www.fda.gov/NewsEvents/Newsroom/PressAnnouncements/ucm636379.htm?utm_campaign=041919_PR_FDA%20permits%20marketing%20of%20first%20medical%20device%20for%20treatment%20of%20ADHD&utm_medium=email&utm_source=Eloqua)), è indicato per il trattamento di pazienti di età compresa tra 7 e 12 anni che non stanno assumendo farmaci per la ADHD. L’eTNS rappresenta il primo trattamento non farmacologico per l'ADHD autorizzato dalla FDA.
+
+L’ADHD (Disturbo da Deficit di Attenzione Iperattività) rientra nella categoria dei Disturbi del Neurosviluppo i cui sintomi includono difficoltà a rimanere concentrati e a mantenere l’adeguata attenzione, difficoltà nel controllo del comportamento e iperattività. La diagnosi di ADHD richiede una valutazione completa da parte di persinale sanitario qualificato. La presenza di ADHD è stimata in circa il 5% dei bambini ed il 2,5% degli adulti.
+
+Il sistema Monarch eTNS è destinato all'uso in casa sotto la supervisione di un operatore sanitario durante le ore di sonno. Il dispositivo genera un impulso elettrico basso e si collega tramite un filo a un piccolo cerotto che aderisce alla fronte del paziente, appena sopra le sopracciglia. Il sistema eroga una stimolazione elettrica a basso livello ai rami del nervo trigemino, che invia segnali terapeutici alle parti del cervello che si pensa siano coinvolte nell'ADHD. Mentre l'esatto meccanismo di eTNS non è ancora noto, gli studi di neuroimaging hanno dimostrato che l'eTNS aumenta l'attività nelle regioni del cervello che sono note per essere importanti nel regolare l'attenzione, l'emozione e il comportamento.
+
+L'efficacia del sistema Monarch eTNS nel trattamento dell'ADHD è stata dimostrata in uno studio clinico che ha confrontato eTNS come unico trattamento con un dispositivo placebo. Un totale di 62 bambini con ADHD da moderata a grave sono stati arruolati nello studio e hanno usato la terapia eTNS ogni notte o un dispositivo placebo a casa per quattro settimane. L'endpoint primario dello studio era il miglioramento su una scala di valutazione dell'ADHD somministrata dal medico, ADHD-RS. Le scale ADHD-RS sono utilizzate per monitorare la gravità e la frequenza dei sintomi dell'ADHD. Un punteggio più alto è indicativo di un peggioramento dei sintomi. Lo studio ha dimostrato che i soggetti che utilizzano il dispositivo eTNS hanno avuto un miglioramento statisticamente significativo dei loro sintomi rispetto al gruppo che ha utilizzato il placebo. Alla fine della quarta settimana, il punteggio medio di ADHD-RS nel gruppo che aveva usato eTNS è diminuito da 34,1 punti a 23,4 punti, contro una diminuzione da 33,7 a 27,5 punti nel gruppo placebo.
+
+La FDA ha concesso l'autorizzazione all'immissione in commercio del sistema Monarch eTNS a NeuroSigma.

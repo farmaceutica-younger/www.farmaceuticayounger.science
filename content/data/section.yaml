@@ -1,0 +1,15 @@
+- id: pharmaquotes
+  name: Farma Quotes
+  description: Le citazioni dei più grandi scienziati di fama mondiale
+- id: pharmacronimi
+  name: Farma Acronimi
+  description: Gli acronimi più bizzarri del mondo farmaceutico
+- id: hotthisweek
+  name: Hot This Week
+  description: Le novità più frizzanti del mondo farmaceutico
+- id: blog
+  name: Articoli
+  description: Leggi gli articoli scritti dalla crew di Farmaceutica Younger
+- id: gmp
+  name: GMP
+  description: Le Good Manufactoring Practices (GMP) sono delle linee guida che costituiscono le fondamenta dell'Industria Farmaceutica
