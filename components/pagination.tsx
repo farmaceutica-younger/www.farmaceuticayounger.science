@@ -11,7 +11,7 @@ function getPage(nextPage: number, basePath: string) {
   if (nextPage === 1) {
     return `/${basePath}`;
   } else {
-    return `/${basePath}/${nextPage}`;
+    return `/${basePath}/page/${nextPage}`;
   }
 }
 

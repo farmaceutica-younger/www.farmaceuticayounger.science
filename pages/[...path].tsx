@@ -3,7 +3,7 @@ import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import YouTube from "react-youtube";
 import { db } from "services/db";
 import { formatDate } from "utils/dates";
@@ -17,7 +17,10 @@ export default function TestPage({
   frontmatter,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const components = {
-    img: (props) => <img {...props} className="m-auto" />,
+    img: ({ alt, src }: { alt: string; src: string }) => (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img alt={alt} src={src} className="m-auto" />
+    ),
     AmazonAffiliationLink: ({ src }: { src: string }) => (
       <div className="m-auto">
         <iframe
@@ -33,12 +36,20 @@ export default function TestPage({
     ),
   };
 
+  if (!source || !frontmatter) {
+    return (
+      <>
+        <p>NOT FOUND</p>
+      </>
+    );
+  }
+
   return (
     <>
       <SEO
         title={frontmatter.title}
         description={frontmatter.description}
-        image={frontmatter.featuredImage}
+        image={frontmatter.featuredImage!}
         author={frontmatter.author.name}
         date={frontmatter.publishedTime}
         type="article"
@@ -123,7 +134,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext<{ path: string[] }>) {
   const path = "/" + params!.path.join("/") + "/";
-  const { body, ...frontmatter } = await db.post.findFirst({
+  const res = await db.post.findFirst({
     where: {
       path: path,
     },
@@ -131,8 +142,17 @@ export async function getStaticProps({
       author: true,
     },
   });
+  if (!res) {
+    return {
+      props: {},
+    };
+  }
+
+  const { body, ...frontmatter } = res;
 
   const mdxSource = await serialize(body, {});
+
+  console.log(frontmatter);
 
   return {
     props: {
