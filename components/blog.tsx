@@ -34,7 +34,10 @@ const BlogPostPreview: React.FC<{
     <Link href={path} passHref>
       <div className="mt-4 max-w-lg flex flex-col rounded-lg hover:shadow-2xl shadow-lg overflow-hidden cursor-pointer">
         <div className="flex-shrink-0">
-          <img className="w-full h-auto" src={featuredImage} alt={title} />
+          {
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="w-full h-auto" src={featuredImage!} alt={title} />
+          }
         </div>
         <div className="flex-1 bg-white p-6 flex flex-col justify-between">
           <div className="flex-1">
@@ -95,7 +98,7 @@ export const PostsList: React.FC<{
     </div>
     <div className="relative max-w-7xl mx-auto">
       <div className="text-center">
-        <h2 className="text-pink-600 text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
+        <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
           {title}
         </h2>
         <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
