@@ -15,12 +15,13 @@ const EditPostPage = ({
   return (
     <div>
       <h1>{post.title}</h1>
+
       <div className="prose prose-2xl m-auto">
         <MDEditor
           initialValue={post.body}
           previewStyle="vertical"
           height="100vh"
-          initialEditType="markdown"
+          initialEditType="wysiwyg"
           useCommandShortcut={true}
           hooks={{
             addImageBlobHook(blob, cb) {

@@ -7,6 +7,9 @@ const AdminPage = ({
   posts,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { data: session } = useSession();
+  if (!session?.user) {
+    return;
+  }
   if (session) {
     return (
       <>

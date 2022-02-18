@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { Footer } from "./footer";
 import { Header } from "./header";
 
-export const Layout = ({ children }) => {
+export const Layout: FC = ({ children }) => {
   return (
     <div>
       <Header />
