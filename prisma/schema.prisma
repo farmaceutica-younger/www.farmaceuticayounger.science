@@ -76,10 +76,11 @@ model Post {
   description   String
   body          String   @db.Text
   title         String
-  featuredImage String?
+  featuredImage String
 
-  publishedTime DateTime
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  published     Boolean  @default(false)
+  publishedTime    DateTime
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  published        Boolean  @default(false)
+  showFeatureImage Boolean  @default(false)
 }

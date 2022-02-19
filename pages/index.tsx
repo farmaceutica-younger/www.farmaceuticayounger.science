@@ -29,7 +29,7 @@ export default function Home({
   );
 }
 
-const Silvia = ({ image }) => {
+const Silvia = ({ image }: { image: string }) => {
   return (
     <section className="bg-white overflow-hidden">
       <div className="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">

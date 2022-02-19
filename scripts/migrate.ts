@@ -130,7 +130,6 @@ async function build() {
       })
     )
   );
-  console.log("done");
 }
 
 build();

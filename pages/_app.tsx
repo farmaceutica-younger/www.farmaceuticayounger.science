@@ -1,8 +1,8 @@
-import "../styles/globals.css";
-import { SessionProvider } from "next-auth/react";
 import { withTRPC } from "@trpc/next";
-import { AppType } from "next/dist/shared/lib/utils";
+import { SessionProvider } from "next-auth/react";
+import "../styles/globals.css";
 import { AppRouter } from "./api/trpc/[trpc]";
+import superjson from "superjson";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
@@ -17,6 +17,7 @@ export default withTRPC<AppRouter>({
     const url = "/api/trpc";
 
     return {
+      transformer: superjson,
       url,
     };
   },

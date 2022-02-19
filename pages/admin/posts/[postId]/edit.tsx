@@ -1,33 +1,40 @@
-import { trpc } from "utils/trpc";
-
+import { PostForm } from "components/form/post-form";
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
-import dynamic from "next/dynamic";
+import { useCallback } from "react";
 import { db } from "services/db";
-
-const MDEditor = dynamic(() => import("components/editor"));
+import { cloudinaryUploadImage } from "utils/cloudinary";
+import { trpc } from "utils/trpc";
 
 const EditPostPage = ({
   post,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { mutateAsync: getCloudinarySecret } = trpc.useMutation([
+    "cloudinary.getUploadsignature",
+  ]);
+  const { mutateAsync: savePost } = trpc.useMutation(["post.save"]);
+
+  const uploadImage = useCallback(
+    (file: Blob) => {
+      return cloudinaryUploadImage(file, () => getCloudinarySecret());
+    },
+    [getCloudinarySecret]
+  );
+
   if (!post) {
     return null;
   }
-  return (
-    <div>
-      <h1>{post.title}</h1>
 
-      <div className="prose prose-2xl m-auto">
-        <MDEditor
-          initialValue={post.body}
-          previewStyle="vertical"
-          height="100vh"
-          initialEditType="wysiwyg"
-          useCommandShortcut={true}
-          hooks={{
-            addImageBlobHook(blob, cb) {
-              console.log(blob);
-              cb("asd", "ciao");
-            },
+  return (
+    <div className="">
+      <div className="w-full m-auto">
+        <PostForm
+          uploadImage={uploadImage}
+          post={post}
+          onSave={async (value) => {
+            savePost({
+              data: value,
+              id: post.id,
+            });
           }}
         />
       </div>
@@ -44,6 +51,9 @@ export const getServerSideProps = async ({
   const post = await db.post.findUnique({
     where: {
       id,
+    },
+    include: {
+      author: true,
     },
   });
   return {
