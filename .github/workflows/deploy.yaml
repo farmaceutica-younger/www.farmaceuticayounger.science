@@ -27,7 +27,7 @@ jobs:
     services:
       db:
         image: bitnami/kubectl
-        run:
+        steps:
           - echo {{ secrets.KUBECONFIG }} | baase64 -d > ./kubeconfig
           - kubectl port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig
         ports:
