@@ -5,6 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
+COPY prisma/schema.prisma ./prisma/schema.prisma
 RUN npx prisma generate
 
 # If using npm with a `package-lock.json` comment out above and use below instead
