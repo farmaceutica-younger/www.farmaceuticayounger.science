@@ -1,10 +1,11 @@
 import { withTRPC } from "@trpc/next";
 import { SessionProvider } from "next-auth/react";
-import "../styles/globals.css";
-import { AppRouter } from "./api/trpc/[trpc]";
+import { AppProps } from "next/app";
+import { AppRouter } from "src/server/mod";
 import superjson from "superjson";
+import "../styles/globals.css";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <Component {...pageProps} />

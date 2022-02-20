@@ -731,7 +731,15 @@ const Help = () => {
   );
 };
 
-const Events = ({ title, description, events }) => {
+const Events = ({
+  title,
+  description,
+  events,
+}: {
+  title: string;
+  description: string;
+  events: any[];
+}) => {
   return (
     <div className="text-center">
       <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">

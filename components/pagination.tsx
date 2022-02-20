@@ -19,7 +19,7 @@ export const Pagination = (props: PaginationPros) => {
   const hasPreviousPage = props.currentPage > 0;
   const hasNextPage = props.currentPage < props.pageCount;
 
-  let pages = [];
+  let pages: (number | "...")[] = [];
   if (props.pageCount <= 6) {
     pages = Array.from(new Array(props.pageCount)).map((_, i) => i + 1);
   } else {
