@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { db } from "services/db";
@@ -16,7 +16,7 @@ const googleConfig = getConfigs({
   },
 });
 
-const options = {
+const options: NextAuthOptions = {
   adapter: PrismaAdapter(db),
   providers: [
     GoogleProvider({
@@ -24,6 +24,15 @@ const options = {
     }),
   ],
   debug: false,
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return { ...token };
+    },
+  },
 };
 
 const auth = (req: NextApiRequest, res: NextApiResponse<any>) =>
