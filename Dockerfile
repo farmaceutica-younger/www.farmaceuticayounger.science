@@ -23,6 +23,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+ENV DATABASE_URL=postgres://postgres:gDSUGW8luv@host.docker.internal:5433/farmaceuticayounger_science
 RUN npm run build
 
 # Production image, copy all the files and run next
