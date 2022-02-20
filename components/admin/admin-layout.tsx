@@ -1,41 +1,38 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { FC, Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   BellIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  FolderIcon,
   HomeIcon,
-  InboxIcon,
   MenuAlt2Icon,
-  UsersIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { SearchIcon } from "@heroicons/react/solid";
+import { useSession } from "next-auth/react";
+import { FC, Fragment, useState } from "react";
+import { signOut } from "next-auth/react";
+
+interface UserAction {
+  type: "action";
+  name: string;
+  action: () => void;
+}
+
+interface UserNav {
+  type: "nav";
+  name: string;
+  href: string;
+}
+
+const userNavigation: (UserAction | UserNav)[] = [
+  {
+    type: "action",
+    name: "Sign out",
+    action: () => {
+      signOut();
+    },
+  },
+];
 
 const navigation = [
   { name: "Posts", href: "/admin/posts", icon: HomeIcon, current: true },
-];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
 ];
 
 function classNames(...classes: string[]) {
@@ -44,6 +41,7 @@ function classNames(...classes: string[]) {
 
 export const AdminLayout: FC = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { data, status } = useSession();
 
   return (
     <>
@@ -190,7 +188,7 @@ export const AdminLayout: FC = ({ children }) => {
             </button>
             <div className="flex-1 px-4 flex justify-between">
               <div className="flex-1 flex">
-                <form className="w-full flex md:ml-0" action="#" method="GET">
+                {/* <form className="w-full flex md:ml-0" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
                     Search
                   </label>
@@ -206,7 +204,7 @@ export const AdminLayout: FC = ({ children }) => {
                       name="search"
                     />
                   </div>
-                </form>
+                </form> */}
               </div>
               <div className="ml-4 flex items-center md:ml-6">
                 <button
@@ -224,7 +222,7 @@ export const AdminLayout: FC = ({ children }) => {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={data?.user?.image}
                         alt=""
                       />
                     </Menu.Button>
@@ -241,17 +239,32 @@ export const AdminLayout: FC = ({ children }) => {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
+                          {({ active }) => {
+                            if (item.type === "action") {
+                              return (
+                                <button
+                                  onClick={() => item.action()}
+                                  className={classNames(
+                                    active ? "bg-gray-100" : "",
+                                    "block px-4 py-2 text-sm text-gray-700"
+                                  )}
+                                >
+                                  {item.name}
+                                </button>
+                              );
+                            }
+                            return (
+                              <a
+                                href={item.href}
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                {item.name}
+                              </a>
+                            );
+                          }}
                         </Menu.Item>
                       ))}
                     </Menu.Items>

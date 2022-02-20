@@ -1,10 +1,14 @@
+import dotenv from "dotenv";
+
 import { glob } from "glob";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
 import { cloudinary } from "../services/cloudinary";
-
+dotenv.config({
+  path: ".env.local",
+});
 export interface Author {
   id: string;
   name: string;
@@ -94,26 +98,31 @@ async function build() {
   const data = await Promise.all(
     (
       await getBlogData()
-    ).map(async ({ file, post }) => {
-      if (post.featuredImage) {
-        post.featuredImage = await uploadImage2Cloudinary(
-          file,
-          post.featuredImage
+    )
+      .filter((_, id) => id < 10)
+      .map(async ({ file, post }) => {
+        if (post.featuredImage) {
+          post.featuredImage = await uploadImage2Cloudinary(
+            file,
+            post.featuredImage
+          );
+        }
+        const images = post.body.matchAll(
+          /!\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g
         );
-      }
-      const images = post.body.matchAll(
-        /!\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g
-      );
-      const imagesPath = Array.from(images).map(
-        (i) => i.groups as { filename: string; optionalpart?: string }
-      );
-      for (let g of imagesPath) {
-        const url = await uploadImage2Cloudinary(file, g.filename);
-        post.body = post.body.replace(g.filename + (g.optionalpart || ""), url);
-      }
+        const imagesPath = Array.from(images).map(
+          (i) => i.groups as { filename: string; optionalpart?: string }
+        );
+        for (let g of imagesPath) {
+          const url = await uploadImage2Cloudinary(file, g.filename);
+          post.body = post.body.replace(
+            g.filename + (g.optionalpart || ""),
+            url
+          );
+        }
 
-      return post;
-    })
+        return post;
+      })
   );
 
   await Promise.all(
@@ -145,7 +154,9 @@ async function uploadImage2Cloudinary(file: string, image: string) {
       {}
     );
     return res.url;
-  } catch (err) {}
+  } catch (err) {
+    console.log("cannot find image: ", err, file);
+  }
   try {
     const res = await cloudinary.uploader.upload(imagePath, {
       folder: "fy/images",
@@ -162,28 +173,28 @@ const authors = [
     id: "silviaver",
     name: "Silvia Vernotico",
     bio: "Founder & President",
-    profile:
+    profileImage:
       "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1641520587/fy/authors/silvia_weqxvf.jpg",
   },
   {
     id: "irenecarnovale",
     name: "Irene Carnovale",
     bio: "All'Università degli Studi di Torino consegue la laurea in CTF (2014) e il dottorato di ricerca in Scienze Farmaceutiche e Biomolecolari  svolto in collaborazione con Bracco Imaging S.p.a. (2019). Poco prima della discussione di dottorato inizia la sua esperienza di Scientist R&D in Inghilterra presso Selcia Ltd. (Eurofins Group), dedicandosi alla sintesi di prodotti farmaceutici radiomarcati per studi preclinici. Attualmente ricopre il ruolo di Chemist R&D nella divisione Isotope Chemistry di Accelera S.r.l. (Nerviano Medical Science Group).",
-    profile:
+    profileImage:
       "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1641520587/fy/authors/irenecarnovale_cdet9r.jpg",
   },
   {
     id: "silviagarau",
     name: "Silvia Garau",
     bio: "Ciao, sono Silvia! Ho 25 anni e mi sono laureata in CTF a marzo 2020. Durante la pandemia ho iniziato a raccontare per FY le storie di donne che mi ispirano e incuriosiscono ogni giorno. Da sempre curiosa e chiacchierona, amo la birra e la montagna.",
-    profile:
+    profileImage:
       "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1641520587/fy/authors/silviagarau_a3wsvs.jpg",
   },
   {
     id: "giugi",
     name: "Giulia Giori",
     bio: "Si laurea in CTF presso l'Università degli studi di Ferrara nel 2016. Inizia il suo percorso nel mondo farmaceutico come analista del controllo qualità in Roche per poi proseguire il suo percorso in Guna S.p.a dove attualmente si occupa di studi di stabilità.",
-    profile:
+    profileImage:
       "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1641520587/fy/authors/giugi_dfxqoq.jpg",
   },
 ];

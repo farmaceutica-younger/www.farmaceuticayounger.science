@@ -420,6 +420,11 @@ const NewsFarmaItaly = () => (
 export const getStaticProps = async () => {
   const posts = await db.post.findMany({
     take: 18,
+    where: {
+      path: {
+        not: null,
+      },
+    },
     orderBy: {
       publishedTime: "desc",
     },

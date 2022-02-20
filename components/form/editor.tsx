@@ -20,7 +20,7 @@ const EditorField = ({ name, uploadImage }: EditorFieldProps) => {
             ref={editorRef as any}
             initialValue={props.input.value}
             previewStyle="vertical"
-            height="calc(100vh - 100px)"
+            height="calc(100%)"
             initialEditType="wysiwyg"
             useCommandShortcut={true}
             hideModeSwitch={true}

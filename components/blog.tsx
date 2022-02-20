@@ -1,5 +1,4 @@
 import type { Author, Post } from "@prisma/client";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Masonry from "react-masonry-css";
@@ -31,7 +30,7 @@ const BlogPostPreview: React.FC<{
   } = post;
   const timeToRead = readTime(body);
   return (
-    <Link href={path} passHref>
+    <Link href={path!} passHref>
       <div className="mt-4 max-w-lg flex flex-col rounded-lg hover:shadow-2xl shadow-lg overflow-hidden cursor-pointer">
         <div className="flex-shrink-0">
           {
@@ -52,8 +51,8 @@ const BlogPostPreview: React.FC<{
           <div className="mt-6 flex items-center">
             <div className="flex-shrink-0">
               <div className="h-10 w-10 rounded-full overflow-hidden">
-                <Image
-                  src={author.profile.replace(/^.+\/upload/, "")}
+                <img
+                  src={author.profileImage}
                   width={50}
                   height={50}
                   alt={author.name}

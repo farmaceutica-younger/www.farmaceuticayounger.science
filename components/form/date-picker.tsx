@@ -176,7 +176,7 @@ const SelectPicker = <T,>({
 };
 
 function daysInMonth(month: number, year: number) {
-  return new Date(year, month, 0).getDate();
+  return new Date(year, month, 0).getDate() || 31;
 }
 
 function getDays(month: number, year: number): PickerOption<number>[] {

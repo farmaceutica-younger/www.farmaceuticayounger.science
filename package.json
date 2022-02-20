@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -26,6 +28,7 @@
     "babel-plugin-superjson-next": "^0.4.2",
     "cloudinary": "^1.28.1",
     "dayjs": "^1.10.7",
+    "dotenv": "^16.0.0",
     "env-ts-conf": "^1.0.1",
     "final-form": "^4.20.6",
     "gatsby-plugin-mailchimp": "^5.2.2",
@@ -44,10 +47,12 @@
     "react-modal": "^3.14.4",
     "react-query": "^3.34.7",
     "react-youtube": "^7.14.0",
+    "slugify": "^1.6.5",
     "superjson": "^1.8.0",
     "zod": "^3.11.6"
   },
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/glob": "^7.2.0",
     "@types/react": "^17.0.38",
     "@types/react-modal": "^3.13.1",

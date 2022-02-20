@@ -15,7 +15,7 @@ export type Frontmatter = {
 
 export interface Author {
   name: string;
-  profile: string;
+  profileImage: string;
 }
 
 interface PostProps {
@@ -57,11 +57,11 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
             <div className="flex-shrink-0">
               <a href={"#"}>
                 <span className="sr-only">{author.name}</span>
-                <Image
+                <img
                   width={60}
                   height={60}
                   className="rounded-full"
-                  src={author.profile.replace(/^.+\/upload/, "")}
+                  src={author.profileImage}
                   alt={author.name}
                 />
               </a>

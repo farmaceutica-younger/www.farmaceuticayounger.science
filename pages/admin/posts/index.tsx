@@ -1,33 +1,32 @@
 import { AdminLayout } from "components/admin/admin-layout";
 import { PostsList } from "components/admin/posts-list";
-import { InferGetServerSidePropsType } from "next";
-import Link from "next/link";
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import { getSession } from "next-auth/react";
 import { db } from "services/db";
+import { trpc } from "utils/trpc";
 
-type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
+const AdminPostsPage = () => {
+  const { data: posts, refetch: refetchPosts } = trpc.useQuery([
+    "author.getPosts",
+  ]);
+  const { mutateAsync: publishPostMut } = trpc.useMutation([
+    "author.publishPost",
+  ]);
 
-const AdminPostsPage = ({ posts }: Props) => {
+  const publishPost = async (postID: string) => {
+    await publishPostMut({ id: postID });
+    await refetchPosts();
+  };
+
+  if (!posts) {
+    return <p>loading...</p>;
+  }
+
   return (
     <AdminLayout>
-      <PostsList posts={posts} />
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link href={`/admin/posts/${post.id}/edit`}>
-              <a className=""> {post.title} </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <PostsList posts={posts} publish={publishPost} />
     </AdminLayout>
   );
 };
 
 export default AdminPostsPage;
-
-export const getServerSideProps = async () => {
-  const posts = await db.post.findMany({});
-  return {
-    props: { posts },
-  };
-};

@@ -14,6 +14,7 @@ export const FeatureImageField = ({
     e: ChangeEvent<HTMLInputElement>,
     onChange: (i: string) => void
   ) => {
+    e.preventDefault();
     const file = e.target.files?.item(0);
     if (!file) {
       return;
@@ -58,7 +59,11 @@ export const FeatureImageField = ({
                     htmlFor={props.input.name}
                     className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                   >
-                    <span>Upload a file</span>
+                    {props.input.value ? (
+                      <span>Cambia immagine</span>
+                    ) : (
+                      <span>Upload a file</span>
+                    )}
                     <input
                       id={props.input.name}
                       name={props.input.name}

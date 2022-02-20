@@ -4,20 +4,13 @@ import { useCallback } from "react";
 import { cloudinaryUploadImage } from "utils/cloudinary";
 import { trpc } from "utils/trpc";
 
-const EditPostPage = () => {
+const NewPostPage = () => {
   const router = useRouter();
-  const postId = router.query.postId as string;
 
   const { mutateAsync: getCloudinarySecret } = trpc.useMutation([
     "author.cloudinaryUploadSignature",
   ]);
-  const { mutateAsync: savePost } = trpc.useMutation(["author.savePost"]);
-
-  const {
-    data: post,
-    isLoading: isLoadingPost,
-    refetch: refetchPost,
-  } = trpc.useQuery(["author.getPost", { id: postId }]);
+  const { mutateAsync: createPost } = trpc.useMutation(["author.createPost"]);
 
   const { data: author, isLoading: isLoadingAuthor } = trpc.useQuery([
     "author.getAuthor",
@@ -30,27 +23,31 @@ const EditPostPage = () => {
     [getCloudinarySecret]
   );
 
-  if (isLoadingPost || isLoadingAuthor) {
+  if (isLoadingAuthor) {
     return <p>Loading .... </p>;
-  }
-
-  if (!post) {
-    return "error";
   }
 
   return (
     <div className="">
       <div className="w-full m-auto">
         <PostForm
+          back={() => router.push(".")}
           uploadImage={uploadImage}
-          initialValue={post}
           author={author!}
-          back={() => router.push("..")}
+          initialValue={{
+            body: "",
+            description: "",
+            featuredImage: undefined,
+            publishedTime: new Date(),
+            showFeatureImage: true,
+            tags: [],
+            title: "",
+          }}
           onSave={async (value) => {
-            savePost({
+            const res = await createPost({
               data: value,
-              id: post.id,
             });
+            router.push(`/admin/posts/${res.id}/edit`);
           }}
         />
       </div>
@@ -58,4 +55,4 @@ const EditPostPage = () => {
   );
 };
 
-export default EditPostPage;
+export default NewPostPage;

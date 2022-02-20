@@ -47,6 +47,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  author        Author?   @relation(fields: [authorId], references: [id])
+  authorId      String?   @unique
 }
 
 model VerificationToken {
@@ -58,29 +60,28 @@ model VerificationToken {
 }
 
 model Author {
-  id        String   @id @default(cuid())
-  name      String
-  bio       String
-  profile   String
-  Post      Post[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String   @id @default(cuid())
+  name         String
+  bio          String
+  profileImage String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User?
+  posts        Post[]
 }
 
 model Post {
-  id            String   @id @default(cuid())
-  path          String
-  author        Author   @relation(fields: [authorId], references: [id])
-  authorId      String
-  tags          String[]
-  description   String
-  body          String   @db.Text
-  title         String
-  featuredImage String
-
+  id               String   @id @default(cuid())
+  path             String?
+  author           Author   @relation(fields: [authorId], references: [id])
+  authorId         String
+  tags             String[]
+  description      String
+  body             String   @db.Text
+  title            String
+  featuredImage    String
   publishedTime    DateTime
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
-  published        Boolean  @default(false)
   showFeatureImage Boolean  @default(false)
 }

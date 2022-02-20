@@ -5,8 +5,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { db } from "services/db";
 import { readTime } from "utils/readTime";
-import { Footer } from "../components/footer";
-import { SEO } from "../components/seo";
+import { Footer } from "components/footer";
+import { SEO } from "components/seo";
 
 export default function TestPage({
   source,
@@ -30,7 +30,6 @@ export default function TestPage({
         date={frontmatter.publishedTime}
         type="article"
       />
-
       <Head>
         <title>{frontmatter.title} | @ludusrusso </title>
         <meta name="description" content={frontmatter.description} />
@@ -53,20 +52,38 @@ export default function TestPage({
 }
 
 export async function getStaticPaths() {
-  const posts = await db.post.findMany({
-    where: {
-      path: {
-        not: null,
-      },
-    },
-  });
-  const paths = posts.map((post) => {
-    return {
-      params: {
-        path: post.path?.split("/").filter((p) => !!p),
-      },
+  const categories = [
+    "hotthisweek",
+    "pharmaquotes",
+    "pharmacronimi",
+    "farmahistory",
+  ];
+  let paths: {
+    params: {
+      category: string;
+      slug: string;
     };
-  });
+  }[] = [];
+
+  for (const category of categories) {
+    const posts = await db.post.findMany({
+      where: {
+        path: {
+          startsWith: `/${category}`,
+        },
+      },
+    });
+    const catPaths = posts.map((post) => {
+      const [_, slug] = post.path!.split("/").filter((s) => !!s);
+      return {
+        params: {
+          category,
+          slug,
+        },
+      };
+    });
+    paths = [...paths, ...catPaths];
+  }
 
   return {
     paths: paths,
@@ -76,8 +93,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<{ path: string[] }>) {
-  const path = "/" + params!.path.join("/") + "/";
+}: GetStaticPropsContext<{ category: string; slug: string }>) {
+  const { category, slug } = params!;
+  const path = `/${category}/${slug}/`;
   const res = await db.post.findFirst({
     where: {
       path: path,

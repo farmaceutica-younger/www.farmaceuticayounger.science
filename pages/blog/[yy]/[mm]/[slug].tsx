@@ -5,8 +5,8 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { db } from "services/db";
 import { readTime } from "utils/readTime";
-import { Footer } from "../components/footer";
-import { SEO } from "../components/seo";
+import { Footer } from "components/footer";
+import { SEO } from "components/seo";
 
 export default function TestPage({
   source,
@@ -30,7 +30,6 @@ export default function TestPage({
         date={frontmatter.publishedTime}
         type="article"
       />
-
       <Head>
         <title>{frontmatter.title} | @ludusrusso </title>
         <meta name="description" content={frontmatter.description} />
@@ -56,14 +55,17 @@ export async function getStaticPaths() {
   const posts = await db.post.findMany({
     where: {
       path: {
-        not: null,
+        startsWith: "/blog",
       },
     },
   });
   const paths = posts.map((post) => {
+    const [yy, mm, slug] = post.path!.split("/").filter((s) => !!s);
     return {
       params: {
-        path: post.path?.split("/").filter((p) => !!p),
+        yy,
+        mm,
+        slug,
       },
     };
   });
@@ -76,8 +78,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<{ path: string[] }>) {
-  const path = "/" + params!.path.join("/") + "/";
+}: GetStaticPropsContext<{ yy: string; mm: string; slug: string }>) {
+  const { yy, mm, slug } = params!;
+  const path = `/blog/${yy}/${mm}/${slug}/`;
   const res = await db.post.findFirst({
     where: {
       path: path,
