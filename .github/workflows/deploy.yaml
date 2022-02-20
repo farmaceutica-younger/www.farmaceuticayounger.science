@@ -29,7 +29,7 @@ jobs:
     services:
       db:
         image: bitnami/kubectl
-        options: port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
+        #      options: port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
         ports:
           - 5433:5433
         volumes:
