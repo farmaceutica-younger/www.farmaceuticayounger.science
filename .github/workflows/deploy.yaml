@@ -13,9 +13,7 @@ jobs:
     steps:
       - name: Create kubeconfig volume
         shell: bash
-        run: echo {{ secrets.KUBECONFIG}} > ./kubeconfig/conf.yaml
-        volumes:
-          - ./kubeconfig:/kubeconfig
+        run: echo {{ secrets.KUBECONFIG}} > /kubeconfig/conf.yaml
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -31,9 +29,7 @@ jobs:
     services:
       db:
         image: bitnami/kubectl
-        steps:
-          - echo {{ secrets.KUBECONFIG }} | baase64 -d > ./kubeconfig
-          - kubectl port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
+        args: kubectl port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
         ports:
           - 5433:5433
         volumes:
