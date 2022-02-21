@@ -35,6 +35,6 @@ jobs:
           KUBECONFIG: "${{ secrets.KUBECONFIG }}"
           NAMESPACE: "${{ secrets.NAMESPACE }}"
           POD: "${{ secrets.POD }}"
-          PORTS: 5433:5432
+          PORTS: 5432:5432
         ports:
-          - 5433:5433
+          - 5432:5432
