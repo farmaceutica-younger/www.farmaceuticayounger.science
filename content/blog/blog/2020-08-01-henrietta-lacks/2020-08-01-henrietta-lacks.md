@@ -75,7 +75,7 @@ I Master in ricerca clinica sono finalizzati ad acquisire le conoscenze e le com
 * _“Ricerca clinica: metodologia, farmacovigilanza, aspetti legali e regolamentari” - **Sapienza Università di Roma**_
   [https://www.uniroma1.it/it/offerta-formativa/master/2019/ricerca-clinica-metodologia-farmacovigilanza-aspetti-legali-e](https://www.uniroma1.it/it/offerta-formativa/master/2019/ricerca-clinica-metodologia-farmacovigilanza-aspetti-legali-e)
 
-## Master in Discipline Regolatorie</span>
+## Master in Discipline Regolatorie
 
 I Master in discipline regolatorie permettono di approfondire la conoscenza delle normative nazionali, europee ed internazionali, le procedure di registrazione e le regole connesse con le diverse tappe regolatorie nello sviluppo del farmaco.
 
@@ -102,7 +102,7 @@ I Master in discipline regolatorie permettono di approfondire la conoscenza dell
 - “_Gestione regolatoria del ciclo di vita di un farmaco_” - _**Università di Camerino**_
   [https://didattica.unicam.it/Guide/PaginaCorso.do?corso_id=10254](https://didattica.unicam.it/Guide/PaginaCorso.do?corso_id=10254)
 
-## Master in Sviluppo Farmaceutico</span>
+## Master in Sviluppo Farmaceutico
 
 I Master in formulazione e sviluppo farmaceutico permetteranno di affinare le conoscenze riguardo ai principali metodi di caratterizzazione chimico-fisica di una sostanza, valutare i fattori formulativi e di processo che influenzano la liberazione di un farmaco dalla forma farmaceutica e le conoscenze teoriche e pratiche sulla procedura GxP adottata nell’industria farmaceutica per la validazione di metodi analitici e per il controllo chimico e tecnologico dei formulati.
 
@@ -117,7 +117,7 @@ I Master in formulazione e sviluppo farmaceutico permetteranno di affinare le co
 - "_Sviluppo di Processo per la Produzione di Principi Attivi Farmaceutici_" _**Università degli studi di Perugia**_
   [https://www.dsf.unipg.it/alta-formazione/pro-api](https://www.dsf.unipg.it/alta-formazione/pro-api)
 
-### Master in Management Sanitario</span>
+### Master in Management Sanitario
 
 I Master in Management Sanitario permettono di acquisire conoscenze manageriali specifiche per gestire le risorse umane in ambito di SSN, sviluppando competenze organizzative che favoriscano il processo di integrazione tra diverse funzioni e ruoli.
 
