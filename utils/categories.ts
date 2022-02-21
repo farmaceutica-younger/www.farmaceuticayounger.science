@@ -44,6 +44,9 @@ export async function getPageProps(
       tags: {
         has: category,
       },
+      path: {
+        startsWith: "/",
+      },
     },
   });
 
@@ -54,12 +57,23 @@ export async function getPageProps(
       tags: {
         has: category,
       },
+      path: {
+        startsWith: "/",
+      },
     },
     orderBy: {
       publishedTime: "desc",
     },
-    include: {
+    select: {
+      body: false,
       author: true,
+      description: true,
+      featuredImage: true,
+      id: true,
+      path: true,
+      publishedTime: true,
+      tags: true,
+      title: true,
     },
   });
 

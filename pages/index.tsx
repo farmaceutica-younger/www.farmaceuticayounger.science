@@ -422,14 +422,22 @@ export const getStaticProps = async () => {
     take: 18,
     where: {
       path: {
-        not: null,
+        startsWith: "/",
       },
     },
     orderBy: {
       publishedTime: "desc",
     },
-    include: {
+    select: {
+      body: false,
       author: true,
+      description: true,
+      featuredImage: true,
+      id: true,
+      path: true,
+      publishedTime: true,
+      tags: true,
+      title: true,
     },
   });
   return {

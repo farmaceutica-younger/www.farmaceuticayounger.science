@@ -41,6 +41,9 @@ export const getStaticPaths = async () => {
           tags: {
             has: c.category,
           },
+          path: {
+            startsWith: "/",
+          },
         },
       });
       return { category: c.category, total };

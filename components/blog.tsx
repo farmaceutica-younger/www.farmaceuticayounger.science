@@ -7,7 +7,7 @@ import { readTime } from "utils/readTime";
 
 type PostPreview = Pick<
   Post,
-  "path" | "featuredImage" | "description" | "title" | "publishedTime" | "body"
+  "path" | "featuredImage" | "description" | "title" | "publishedTime"
 > & { author: Author };
 
 const breakpointColumnsObj = {
@@ -19,16 +19,8 @@ const breakpointColumnsObj = {
 const BlogPostPreview: React.FC<{
   post: PostPreview;
 }> = ({ post }) => {
-  const {
-    description,
-    title,
-    path,
-    author,
-    publishedTime,
-    body,
-    featuredImage,
-  } = post;
-  const timeToRead = readTime(body);
+  const { description, title, path, author, publishedTime, featuredImage } =
+    post;
   return (
     <Link href={path!} passHref>
       <div className="mt-4 max-w-lg flex flex-col rounded-lg hover:shadow-2xl shadow-lg overflow-hidden cursor-pointer">
@@ -68,7 +60,7 @@ const BlogPostPreview: React.FC<{
                   {formatDate(publishedTime)}
                 </time>
                 <span className="mx-1">&middot;</span>
-                <span>Lettura in {timeToRead} min</span>
+                {/* <span>Lettura in {timeToRead} min</span> */}
               </div>
             </div>
           </div>

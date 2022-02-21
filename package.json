@@ -25,7 +25,6 @@
     "@trpc/next": "^9.16.0",
     "@trpc/react": "^9.16.0",
     "@trpc/server": "^9.16.0",
-    "babel-plugin-superjson-next": "^0.4.2",
     "cloudinary": "^1.28.1",
     "dayjs": "^1.10.7",
     "dotenv": "^16.0.0",

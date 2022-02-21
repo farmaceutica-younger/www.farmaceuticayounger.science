@@ -1,14 +1,10 @@
-import dotenv from "dotenv";
-
 import { glob } from "glob";
 import { promises as fs } from "fs";
 import matter from "gray-matter";
 import path from "path";
 import { PrismaClient } from "@prisma/client";
 import { cloudinary } from "../services/cloudinary";
-dotenv.config({
-  path: ".env.local",
-});
+
 export interface Author {
   id: string;
   name: string;
@@ -91,38 +87,34 @@ const prisma = new PrismaClient();
 
 async function build() {
   await prisma.post.deleteMany({});
-  // await prisma.author.createMany({
-  //   data: authors,
-  // });
+  await prisma.author.deleteMany({});
+  await prisma.author.createMany({
+    data: authors,
+  });
 
   const data = await Promise.all(
     (
       await getBlogData()
-    )
-      .filter((_, id) => id < 10)
-      .map(async ({ file, post }) => {
-        if (post.featuredImage) {
-          post.featuredImage = await uploadImage2Cloudinary(
-            file,
-            post.featuredImage
-          );
-        }
-        const images = post.body.matchAll(
-          /!\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g
+    ).map(async ({ file, post }) => {
+      if (post.featuredImage) {
+        post.featuredImage = await uploadImage2Cloudinary(
+          file,
+          post.featuredImage
         );
-        const imagesPath = Array.from(images).map(
-          (i) => i.groups as { filename: string; optionalpart?: string }
-        );
-        for (let g of imagesPath) {
-          const url = await uploadImage2Cloudinary(file, g.filename);
-          post.body = post.body.replace(
-            g.filename + (g.optionalpart || ""),
-            url
-          );
-        }
+      }
+      const images = post.body.matchAll(
+        /!\[[^\]]*\]\((?<filename>.*?)(?=\"|\))(?<optionalpart>\".*\")?\)/g
+      );
+      const imagesPath = Array.from(images).map(
+        (i) => i.groups as { filename: string; optionalpart?: string }
+      );
+      for (let g of imagesPath) {
+        const url = await uploadImage2Cloudinary(file, g.filename);
+        post.body = post.body.replace(g.filename + (g.optionalpart || ""), url);
+      }
 
-        return post;
-      })
+      return post;
+    })
   );
 
   await Promise.all(
@@ -148,6 +140,9 @@ async function uploadImage2Cloudinary(file: string, image: string) {
   const plublicId = imagePath
     .replace(process.cwd(), "")
     .replace(/\.[^/.]+$/, "");
+  return (
+    "https://res.cloudinary.com/dbdvy5b2z/image/upload/fy/images/" + plublicId
+  );
   try {
     const res = await cloudinary.api.resource(
       path.join("fy/images", plublicId),

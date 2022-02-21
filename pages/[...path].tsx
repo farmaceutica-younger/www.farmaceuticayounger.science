@@ -56,8 +56,11 @@ export async function getStaticPaths() {
   const posts = await db.post.findMany({
     where: {
       path: {
-        not: null,
+        startsWith: "/",
       },
+    },
+    select: {
+      path: true,
     },
   });
   const paths = posts.map((post) => {
