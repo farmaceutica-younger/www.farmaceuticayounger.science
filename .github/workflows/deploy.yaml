@@ -25,6 +25,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
+          network: host
           tags: ghcr.io/${{ github.repository }}:${{ github.ref_name	}}, ghcr.io/${{ github.repository }}:${{ github.sha }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
