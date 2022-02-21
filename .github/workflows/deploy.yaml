@@ -26,8 +26,8 @@ jobs:
         with:
           push: true
           tags: ghcr.io/${{ github.repository }}:${{ github.ref_name	}}, ghcr.io/${{ github.repository }}:${{ github.sha }}
-          build-args:
-            - DATABASE_URL: "{{ secrets.DATABASE_URL }}"
+          build-args: |
+            DATABASE_URL="{{ secrets.DATABASE_URL }}"
     services:
       db:
         image: ghcr.io/ludusrusso/kubectl-with-env-config:a9715de7bace8ca5e8fefc57f3a80ce18337be56
