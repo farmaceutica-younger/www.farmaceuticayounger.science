@@ -31,6 +31,6 @@ jobs:
         image: ghcr.io/ludusrusso/kubectl-with-env-config:07caab849ed8f24e29f6523a8ae1ac8c31b4ac2a
         options: port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
         env:
-          - KUBECONFIG={{ secrets.KUBECONFIG }}
+          KUBECONFIG: "{{ secrets.KUBECONFIG }}"
         ports:
           - 5433:5433
