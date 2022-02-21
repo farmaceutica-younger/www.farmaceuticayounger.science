@@ -28,9 +28,11 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ github.ref_name	}}, ghcr.io/${{ github.repository }}:${{ github.sha }}
     services:
       db:
-        image: ghcr.io/ludusrusso/kubectl-with-env-config:07caab849ed8f24e29f6523a8ae1ac8c31b4ac2a
-        args: port-forward -n fy db-postgresql-0 5433:5432 --kubeconfig ./kubeconfig/conf.yaml
+        image: ghcr.io/ludusrusso/kubectl-with-env-config:a9715de7bace8ca5e8fefc57f3a80ce18337be56
         env:
           KUBECONFIG: "{{ secrets.KUBECONFIG }}"
+          NAMESPACE: fy
+          POD: db-postgresql-0
+          PORTS: 5433:5432
         ports:
           - 5433:5433
