@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: www-farmaceuticayounger-science
+  name: www-farmaceuticayounger-science
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: www-farmaceuticayounger-science
+  template:
+    metadata:
+      labels:
+        app: www-farmaceuticayounger-science
+    spec:
+      containers:
+        - image: ghcr.io/farmaceutica-younger/www.farmaceuticayounger.science:03fed2fa677c023d9492a07a22bad590baa772d8
+          name: app
+          env:
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-postgresql
+                  key: postgresql-password
+            - name: DATABASE_URL
+              value: postgresql://postgres:$(PG_PASSWORD)@db-postgresql:5432/farmaceuticayounger_science
+            - name: NEXTAUTH_URL
+              value: https://www.k8s.farmaceuticayounger.science/
+          envFrom:
+            - secretRef:
+                name: google
+            - secretRef:
+                name: cloundinary
+            - secretRef:
+                name: nextauth-secret
+          ports:
+            - containerPort: 3000
+              name: http
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 400m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: www-farmaceuticayounger-science
+  name: www-farmaceuticayounger-science
+spec:
+  ports:
+    - port: 3000
+      protocol: TCP
+      targetPort: 3000
+  selector:
+    app: www-farmaceuticayounger-science
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/redirect-entry-point: https
+  name: www-farmaceuticayounger-science
+spec:
+  rules:
+    - host: www.k8s.farmaceuticayounger.science
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: www-farmaceuticayounger-science
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+        - www.k8s.farmaceuticayounger.science
+      secretName: www.k8s.farmaceuticayounger.science-tls
