@@ -31,7 +31,7 @@ jobs:
             DATABASE_URL=${{ secrets.DATABASE_URL }}
     services:
       db:
-        image: ghcr.io/ludusrusso/kubectl-with-env-config:a9715de7bace8ca5e8fefc57f3a80ce18337be56
+        image: ghcr.io/ludusrusso/kubectl-with-env-config:958062ab64ccfa815aa2f931c03f72a2a670232a
         env:
           KUBECONFIG: "${{ secrets.KUBECONFIG }}"
           NAMESPACE: "${{ secrets.NAMESPACE }}"
