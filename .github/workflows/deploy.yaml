@@ -44,6 +44,8 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:${{ github.ref_name	}}, ghcr.io/${{ github.repository }}:${{ github.sha }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}
     services:
       db:
         image: ghcr.io/ludusrusso/kubectl-with-env-config:958062ab64ccfa815aa2f931c03f72a2a670232a
