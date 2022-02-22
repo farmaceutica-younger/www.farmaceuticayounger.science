@@ -41,7 +41,7 @@ jobs:
         with:
           push: true
           network: host
-          tags: ghcr.io/${{ github.repository }}:${{ github.ref_name	}}, ghcr.io/${{ github.repository }}:${{ github.sha }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
       - name: Image digest
