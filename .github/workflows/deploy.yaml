@@ -11,9 +11,24 @@ jobs:
       contents: read
       packages: write
     steps:
-      # - name: Create kubeconfig volume
-      #   shell: bash
-      #   run: echo {{ secrets.KUBECONFIG}} > /kubeconfig/conf.yaml
+      - name: Get Vars
+        id: get_vars
+        run: |
+          echo "::set-output name=ts::$(date +%s)"
+          echo "::set-output name=sha::$(git rev-parse --short HEAD)"
+          echo "::set-output name=branch::$(git rev-parse --abbrev-ref HEAD)"
+      - name: Docker meta
+        id: docker_meta
+        uses: crazy-max/ghaction-docker-meta@v1
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}/app
+          tag-sha: true
+          tag-semver: |
+            {{version}}
+            {{major}}.{{minor}}
+          tag-custom: |
+            ${{steps.get_vars.outputs.branch}}-${{steps.get_vars.outputs.sha}}-${{ steps.get_vars.outputs.ts }}
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
