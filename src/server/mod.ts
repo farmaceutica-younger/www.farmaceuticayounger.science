@@ -1,4 +1,5 @@
 import * as trpc from "@trpc/server";
+import { TRPCError } from "@trpc/server";
 import { Context } from "src/server/context";
 import superjson from "superjson";
 import { authorRouter } from "./author.routers";

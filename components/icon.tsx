@@ -1,6 +1,12 @@
-export const BlogIcon = ({ size = 50 }: { size?: number }) => (
+export const BlogIcon = ({
+  size = 50,
+  className = "text-pink-500",
+}: {
+  size?: number;
+  className?: string;
+}) => (
   <svg
-    className=" text-pink-500"
+    className={className}
     width={size}
     height={size}
     stroke="currentColor"

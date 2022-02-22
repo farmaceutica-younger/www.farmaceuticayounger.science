@@ -5,7 +5,13 @@ import { useRouter } from "next/router";
 const AdminPage = () => {
   const session = useSession();
   const router = useRouter();
-  return <pre>{JSON.stringify(router, null, 2)}</pre>;
+
+  return (
+    <>
+      <pre>{JSON.stringify(router, null, 2)}</pre>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
+    </>
+  );
 };
 
 export default AdminPage;

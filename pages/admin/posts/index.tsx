@@ -1,13 +1,11 @@
 import { AdminLayout } from "components/admin/admin-layout";
 import { PostsList } from "components/admin/posts-list";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
-import { getSession } from "next-auth/react";
-import { db } from "services/db";
 import { trpc } from "utils/trpc";
 
 const AdminPostsPage = () => {
-  const { data: posts, refetch: refetchPosts } = trpc.useQuery([
+  const { data, refetch: refetchPosts } = trpc.useQuery([
     "author.getPosts",
+    { skip: 0, take: 20 },
   ]);
   const { mutateAsync: publishPostMut } = trpc.useMutation([
     "author.publishPost",
@@ -18,15 +16,14 @@ const AdminPostsPage = () => {
     await refetchPosts();
   };
 
-  if (!posts) {
+  if (!data) {
     return <p>loading...</p>;
   }
+  const { posts } = data;
 
-  return (
-    <AdminLayout>
-      <PostsList posts={posts} publish={publishPost} />
-    </AdminLayout>
-  );
+  return <PostsList posts={posts} publish={publishPost} />;
 };
 
 export default AdminPostsPage;
+
+AdminPostsPage.Layout = AdminLayout;

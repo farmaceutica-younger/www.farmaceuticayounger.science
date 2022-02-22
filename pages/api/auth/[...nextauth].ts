@@ -23,14 +23,23 @@ const options: NextAuthOptions = {
       ...googleConfig,
     }),
   ],
-  debug: false,
+  debug: true,
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
   },
   callbacks: {
+    session: ({ session, token, user }) => {
+      if (session.user) {
+        session.user.authorId = token.authorId as string;
+      }
+      return session;
+    },
     async jwt({ token, user, account, profile, isNewUser }) {
-      return { ...token };
+      if (user) {
+        token.authorId = user.authorId;
+      }
+      return token;
     },
   },
 };

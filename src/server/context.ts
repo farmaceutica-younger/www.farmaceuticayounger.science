@@ -15,20 +15,11 @@ export const createContext = async ({
   res,
 }: trpcNext.CreateNextContextOptions) => {
   const session = await getSession({ req });
-  const user = await db.user.findUnique({
-    where: {
-      email: session?.user?.email || undefined,
-    },
-    include: {
-      author: true,
-    },
-  });
   return {
     req,
     res,
     db,
     session,
-    user,
   };
 };
 

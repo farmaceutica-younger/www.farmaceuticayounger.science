@@ -8,6 +8,8 @@ import {
 import { useSession } from "next-auth/react";
 import { FC, Fragment, useState } from "react";
 import { signOut } from "next-auth/react";
+import { BlogIcon } from "components/icon";
+import { useRouter } from "next/router";
 
 interface UserAction {
   type: "action";
@@ -31,10 +33,6 @@ const userNavigation: (UserAction | UserNav)[] = [
   },
 ];
 
-const navigation = [
-  { name: "Posts", href: "/admin/posts", icon: HomeIcon, current: true },
-];
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
@@ -42,17 +40,26 @@ function classNames(...classes: string[]) {
 export const AdminLayout: FC = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { data, status } = useSession();
+  const router = useRouter();
+
+  const navigation = [
+    { name: "Profile", href: "/admin/profile", icon: HomeIcon },
+  ];
+
+  const isCurrentPath = (path: string) => {
+    return path === router.asPath;
+  };
+
+  if (data?.user.authorId) {
+    navigation.push({
+      name: "Posts",
+      href: "/admin/posts",
+      icon: HomeIcon,
+    });
+  }
 
   return (
     <>
-      {/*
-        This example requires updating your template:
-
-        ```
-        <html class="h-full bg-gray-100">
-        <body class="h-full">
-        ```
-      */}
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
@@ -105,11 +112,7 @@ export const AdminLayout: FC = ({ children }) => {
                   </div>
                 </Transition.Child>
                 <div className="flex-shrink-0 flex items-center px-4">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-pink-300-mark-white-text.svg"
-                    alt="Workflow"
-                  />
+                  <BlogIcon className="text-white h-10 w-10" />
                 </div>
                 <div className="mt-5 flex-1 h-0 overflow-y-auto">
                   <nav className="px-2 space-y-1">
@@ -118,7 +121,7 @@ export const AdminLayout: FC = ({ children }) => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          isCurrentPath(item.href)
                             ? "bg-pink-800 text-white"
                             : "text-pink-100 hover:bg-pink-600",
                           "group flex items-center px-2 py-2 text-base font-medium rounded-md"
@@ -146,11 +149,7 @@ export const AdminLayout: FC = ({ children }) => {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col flex-grow pt-5 bg-pink-700 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/workflow-logo-pink-300-mark-white-text.svg"
-                alt="Workflow"
-              />
+              <BlogIcon className="text-white h-10 w-10" />
             </div>
             <div className="mt-5 flex-1 flex flex-col">
               <nav className="flex-1 px-2 pb-4 space-y-1">
@@ -159,7 +158,7 @@ export const AdminLayout: FC = ({ children }) => {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current
+                      isCurrentPath(item.href)
                         ? "bg-pink-800 text-white"
                         : "text-pink-100 hover:bg-pink-600",
                       "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
@@ -187,25 +186,7 @@ export const AdminLayout: FC = ({ children }) => {
               <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
             </button>
             <div className="flex-1 px-4 flex justify-between">
-              <div className="flex-1 flex">
-                {/* <form className="w-full flex md:ml-0" action="#" method="GET">
-                  <label htmlFor="search-field" className="sr-only">
-                    Search
-                  </label>
-                  <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                    <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                      <SearchIcon className="h-5 w-5" aria-hidden="true" />
-                    </div>
-                    <input
-                      id="search-field"
-                      className="block w-full h-full pl-8 pr-3 py-2 border-transparent text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent sm:text-sm"
-                      placeholder="Search"
-                      type="search"
-                      name="search"
-                    />
-                  </div>
-                </form> */}
-              </div>
+              <div className="flex-1 flex"></div>
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   type="button"

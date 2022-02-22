@@ -8,10 +8,18 @@ import slugify from "slugify";
 
 export const authorRouter = createRouter()
   .middleware(async ({ ctx, next }) => {
-    if (!ctx.user?.author) {
+    const user = ctx.session?.user;
+    const authorId = user?.authorId;
+    if (!authorId) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
-    return next();
+    return next({
+      ctx: {
+        ...ctx,
+        user: user,
+        authorId: authorId,
+      },
+    });
   })
   .mutation("cloudinaryUploadSignature", {
     resolve({}) {
@@ -53,7 +61,7 @@ export const authorRouter = createRouter()
       return await ctx.db.post.create({
         data: {
           ...input.data,
-          authorId: ctx.user?.authorId!,
+          authorId: ctx.authorId,
         },
       });
     },
@@ -66,7 +74,7 @@ export const authorRouter = createRouter()
       const post = await ctx.db.post.findFirst({
         where: {
           id: input.id,
-          authorId: ctx.user?.authorId!,
+          authorId: ctx.authorId,
         },
       });
       if (!post) {
@@ -102,26 +110,40 @@ export const authorRouter = createRouter()
       return await ctx.db.post.findFirst({
         where: {
           id: input.id,
-          authorId: ctx.user?.authorId!,
+          authorId: ctx.authorId,
         },
       });
     },
   })
   .query("getAuthor", {
     async resolve({ ctx }) {
-      return ctx.user?.author!;
+      return ctx.db.author.findUnique({
+        where: {
+          id: ctx.authorId,
+        },
+      });
     },
   })
   .query("getPosts", {
-    async resolve({ ctx }) {
-      return await ctx.db.post.findMany({
+    input: z.object({
+      skip: z.number().int().default(0),
+      take: z.number().int().default(20),
+    }),
+    async resolve({ input, ctx: { db, authorId } }) {
+      const query = {
         where: {
-          authorId: ctx.user?.authorId!,
+          authorId: authorId,
         },
+      };
+      const total = await db.post.count(query);
+      const posts = await db.post.findMany({
+        ...query,
         orderBy: {
           publishedTime: "desc",
         },
+        ...input,
       });
+      return { posts, total };
     },
   })
   .mutation("mdSerialize", {

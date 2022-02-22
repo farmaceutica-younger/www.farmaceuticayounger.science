@@ -31,7 +31,7 @@ spec:
             - secretRef:
                 name: google
             - secretRef:
-                name: cloundinary
+                name: cloudinary-www
             - secretRef:
                 name: nextauth-secret
           ports:

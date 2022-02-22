@@ -74,6 +74,7 @@ export async function getStaticPaths() {
   return {
     paths: paths,
     fallback: false,
+    revalidate: 10 * 60,
   };
 }
 
@@ -107,5 +108,6 @@ export async function getStaticProps({
         readTime: readTime(body),
       },
     },
+    revalidate: 10 * 60,
   };
 }
