@@ -18,5 +18,5 @@ export const getStaticPaths = async () => {
     return { params: { category: c.category } };
   });
 
-  return { paths, fallback: false, revalidate: 10 * 60 };
+  return { paths, fallback: false };
 };
