@@ -15,7 +15,7 @@ spec:
         app: www-farmaceuticayounger-science
     spec:
       containers:
-        - image: ghcr.io/farmaceutica-younger/www.farmaceuticayounger.science:03fed2fa677c023d9492a07a22bad590baa772d8
+        - image: ghcr.io/farmaceutica-younger/www.farmaceuticayounger.science:main-b3fd823-1645558744
           name: app
           env:
             - name: PG_PASSWORD

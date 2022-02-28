@@ -97,7 +97,11 @@ export async function getStaticProps({
 
   const { body, ...frontmatter } = res;
 
-  const mdxSource = await serialize(body, {});
+  const mdxSource = await serialize(body, {
+    mdxOptions: {
+      rehypePlugins: [],
+    },
+  });
 
   return {
     props: {

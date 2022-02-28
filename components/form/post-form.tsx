@@ -5,7 +5,6 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import { Field, Form, FormSpy } from "react-final-form";
-import Modal from "react-modal";
 import { readTime } from "utils/readTime";
 import { trpc } from "utils/trpc";
 import { zodValidate } from "utils/zod-validate";
@@ -13,6 +12,8 @@ import { z } from "zod";
 import { FeatureImageField } from "./image-field";
 import { SwitchField } from "./switch-field";
 import styled from "@emotion/styled";
+import { Dialog } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
 
 const EditorField = dynamic(() => import("components/form/editor"), {
   ssr: false,
@@ -77,26 +78,35 @@ export const PostForm = ({
                 back={back}
               />
             </div>
-            {!showPreview && (
-              <div className="editor">
-                <EditorField uploadImage={uploadImage} name="body" />
-              </div>
-            )}
+            <div className="editor z-10">
+              <EditorField uploadImage={uploadImage} name="body" />
+            </div>
             <div className="fields">
               <PostFormFiels uploadImage={uploadImage} />
             </div>
-            <Modal
-              isOpen={showPreview}
-              onRequestClose={() => setShowPreview(false)}
+            <Dialog
+              open={showPreview}
+              onClose={() => setShowPreview(false)}
+              className="fixed z-50 inset-0 overflow-y-auto "
             >
-              <FormSpy<PostType>
-                render={({ values }) => (
-                  <div className="overflow-y-scroll   z-50 rounded-2xl">
-                    <PostPreview post={values} author={author} />
-                  </div>
-                )}
-              ></FormSpy>
-            </Modal>
+              <Dialog.Overlay className="inset-0 fixed bg-black opacity-30" />
+
+              <div className="bg-white fixed inset-10 overflow-auto rounded shadow-xl ring-1">
+                <FormSpy<PostType>
+                  render={({ values }) => (
+                    <div className="overflow-y-scroll rounded-2xl">
+                      <PostPreview post={values} author={author} />
+                    </div>
+                  )}
+                ></FormSpy>
+                <button
+                  onClick={() => setShowPreview(false)}
+                  className="hover:bg-slate-200 rounded-full h-10 w-10 absolute top-4 right-4 grid place-content-center"
+                >
+                  <XIcon className="h-6 w-6" />
+                </button>
+              </div>
+            </Dialog>
           </PostFormStyled>
         );
       }}

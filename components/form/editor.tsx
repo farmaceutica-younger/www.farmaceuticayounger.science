@@ -25,7 +25,11 @@ const EditorField = ({ name, uploadImage }: EditorFieldProps) => {
             useCommandShortcut={true}
             hideModeSwitch={true}
             onChange={() => {
-              const body = editorRef.current?.getInstance().getMarkdown();
+              const body = editorRef.current
+                ?.getInstance()
+                .getMarkdown()
+                .replaceAll("<br>", "");
+
               props.input.onChange(body);
             }}
             hooks={{
