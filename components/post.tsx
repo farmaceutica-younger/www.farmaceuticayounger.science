@@ -24,7 +24,7 @@ interface PostProps {
   author?: Author;
 }
 
-const components = {
+const components: any = {
   img: ({ alt, src }: { alt: string; src: string }) => (
     // eslint-disable-next-line @next/next/no-img-element
     <img alt={alt} src={src} className="m-auto" />
