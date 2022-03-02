@@ -12,9 +12,12 @@ const Map = dynamic(() => import("components/phamaitaly/map"), {
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 
-const FarmaInItaly = ({ companies, provinces }: PageProps) => {
-  const title = `📍 Farma in Italy - ${companies[0].region}`;
-
+const FarmaInItaly = ({
+  companies = [],
+  provinces = [],
+  region,
+}: PageProps) => {
+  const title = `📍 Farma in Italy - ${region}`;
   return (
     <Layout>
       <Head>
@@ -97,6 +100,7 @@ const Banner = () => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSedH0QbJyrTCrtSXT5Jh1pUmlHnrLghUnwEjaAbjZ3ZLSysyA/viewform?usp=sf_link"
               target="_blank"
               className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700"
+              rel="noreferrer"
             >
               Compila il form
             </a>
@@ -147,10 +151,13 @@ export const getStaticProps = async ({
       public: true,
     },
   });
+
   return {
     props: {
       companies,
       provinces,
+      region,
     },
+    revalidate: 60 * 60,
   };
 };

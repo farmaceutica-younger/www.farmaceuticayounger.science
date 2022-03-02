@@ -80,6 +80,7 @@ export const getStaticProps = async () => {
     props: {
       regions: res,
     },
+    revalidate: 60 * 10,
   };
 };
 
