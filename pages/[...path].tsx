@@ -1,6 +1,7 @@
 import { Header } from "components/header";
 import { PostPage } from "components/post";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import { db } from "services/db";
@@ -42,11 +43,13 @@ export default function TestPage({
         />
       </Head>
       <Header />
-      <PostPage
-        frontmatter={frontmatter}
-        source={source}
-        author={frontmatter.author}
-      />
+      {source && (
+        <PostPage
+          frontmatter={frontmatter}
+          source={source}
+          author={frontmatter.author}
+        />
+      )}
       <Footer />
     </>
   );
@@ -97,11 +100,14 @@ export async function getStaticProps({
 
   const { body, ...frontmatter } = res;
 
-  const mdxSource = await serialize(body, {
-    mdxOptions: {
-      rehypePlugins: [],
-    },
-  });
+  let mdxSource: MDXRemoteSerializeResult<Record<string, unknown>> | undefined;
+  try {
+    mdxSource = await serialize(body, {
+      mdxOptions: {
+        rehypePlugins: [],
+      },
+    });
+  } catch {}
 
   return {
     props: {
