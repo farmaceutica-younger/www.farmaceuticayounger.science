@@ -150,8 +150,8 @@ const Mug = () => {
       </main>
 
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
-        {mugs.map((mug) => (
-          <div>
+        {mugs.map((mug, idx) => (
+          <div key={idx}>
             <a
               className="text-pink-600 text-lg hover:text-pink-800 underline"
               href={mug.buy}
@@ -228,8 +228,8 @@ const Mascherine = () => {
       </main>
 
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6">
-        {masks.map((mask) => (
-          <div>
+        {masks.map((mask, idx) => (
+          <div key={idx}>
             <a
               className="text-pink-600 text-lg hover:text-pink-800 underline"
               href={mask.buy}
