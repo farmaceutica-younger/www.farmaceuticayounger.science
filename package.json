@@ -21,7 +21,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "@toast-ui/editor": "^3.1.2",
     "@toast-ui/react-editor": "^3.1.2",
-    "@trpc/client": "^9.16.0",
+    "@trpc/client": "^9.20.1",
     "@trpc/next": "^9.16.0",
     "@trpc/react": "^9.16.0",
     "@trpc/server": "^9.16.0",
