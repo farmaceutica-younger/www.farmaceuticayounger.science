@@ -3,6 +3,7 @@ import { Popover } from "@headlessui/react";
 import { Footer } from "components/footer";
 import { BlogIcon } from "components/icon";
 import { SEO } from "components/seo";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Example() {
@@ -11,10 +12,10 @@ export default function Example() {
       <SEO title="Network e Carriere nel Farmaceutico" />
       <div className="relative bg-gray-50 overflow-hidden">
         <div
-          className="hidden sm:block sm:absolute sm:inset-y-0 sm:h-full sm:w-full"
+          className="hidden sm:block sm:absolute sm:inset-y-0  sm:w-full"
           aria-hidden="true"
         >
-          <div className="relative h-full max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <svg
               className="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2"
               width={404}
@@ -114,6 +115,10 @@ export default function Example() {
                   Farmaceutico
                 </span>
               </h1>
+              <p className="text-lg mt-4 text-gray-700 font-semibold">
+                {" "}
+                17 Marzo 2022 - Ore 19:00
+              </p>
               <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                 Evento Online gratuito per conoscere i profili più diffusi del
                 farmaceutico e accrescere il tuo network!
@@ -140,8 +145,94 @@ export default function Example() {
             </div>
           </main>
         </div>
-        <Footer />
       </div>
+
+      <Relators />
+      <Footer />
     </>
   );
 }
+
+const people = [
+  {
+    name: "Maurizio Cuocolo",
+    role: "Head of Quality Management Unit",
+    imageUrl: "/v1641589898/fy/authors/maurizio_avi6ll.jpg",
+  },
+  {
+    name: "Irene Carnovale",
+    role: "Business Support Scientist",
+    imageUrl: "/v1641520587/fy/authors/irenecarnovale_cdet9r.jpg",
+  },
+  {
+    name: "Simone Cossari",
+    role: "PhD student",
+    imageUrl: "/v1646595447/fy/authors/simone-cossari_zijf0d.jpg",
+  },
+  {
+    name: "Viviana Riccardi",
+    role: "Quality Assurance Representative",
+    imageUrl: "/v1646595447/fy/authors/valentina-ricciardi_fy2cuk.jpg",
+  },
+  {
+    name: "Giorgia Bottello",
+    role: "Quality Control Specialist",
+    imageUrl: "/fy/authors/giorgia_ixtzta.jpg",
+  },
+  {
+    name: "Roberta Cocomazzi",
+    role: "Medical Writer & Regulatory Affairs",
+    imageUrl: "/v1646595447/fy/authors/roberta-cocomazzi_fokmkd.jpg",
+  },
+  {
+    name: "Filippo Maria Di Dona",
+    role: "Clinical Research Associate & Pharmacovigilance Consultant",
+    imageUrl: "/v1646595447/fy/authors/filippo-di-dona_rqkouy.jpg",
+  },
+];
+
+const Relators = () => {
+  return (
+    <div className="bg-white">
+      <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
+          <div className="space-y-5 sm:space-y-4">
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Incontra i relatori
+            </h2>
+            <p className="text-xl text-gray-500">
+              Durente la diretta sarà possibile confrontarsi con diverse figure
+              provenienti dal mondo dell'industria farmaceutica.
+            </p>
+          </div>
+          <div className="lg:col-span-2">
+            <ul
+              role="list"
+              className="space-y-12 sm:grid sm:grid-cols-2 sm:gap-12 sm:space-y-0 lg:gap-x-8"
+            >
+              {people.map((person) => (
+                <li key={person.name}>
+                  <div className="flex items-center space-x-4 lg:space-x-6">
+                    <div className="w-16 h-16 aspect-square ">
+                      <Image
+                        width="64px"
+                        height="64px"
+                        className="w-16 h-16 rounded-full lg:w-20 lg:h-20 flex-1"
+                        src={person.imageUrl}
+                        alt={person.name}
+                      />
+                    </div>
+                    <div className="font-medium text-lg leading-6 space-y-1">
+                      <h3>{person.name}</h3>
+                      <p className="text-cyan-600 text-base">{person.role}</p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
