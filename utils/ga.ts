@@ -1,7 +1,11 @@
 export const pageview = (url: string) => {
-  (window as any).gtag("config", process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-    page_path: url,
-  });
+  (window as any).gtag(
+    "config",
+    process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "UA-123568059-1",
+    {
+      page_path: url,
+    }
+  );
 };
 
 // log specific events happening.
