@@ -1,4 +1,5 @@
 import { Layout } from "components/layout";
+import { SEO } from "components/seo";
 import React from "react";
 
 interface Book {
@@ -259,9 +260,9 @@ const Mascherine = () => {
 const EcommercePage = () => {
   return (
     <Layout>
-      {/* <SEO title="Farmaceutica Younger" /> */}
+      <SEO title={"GMP Pocker Book"} />
       <div className="text-center sm:mt-20 p-2">
-        <h2 className="text-pink-600 text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-6xl sm:leading-10">
+        <h2 className="text-pink-600 text-3xl leading-9 tracking-tight font-extrabold  sm:text-6xl sm:leading-10">
           GMP Pocket Book
         </h2>
         <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-8">

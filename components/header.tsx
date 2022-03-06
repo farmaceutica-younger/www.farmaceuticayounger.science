@@ -6,13 +6,13 @@ import {
   faTablets,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import React, { Fragment, useState } from "react";
-import { BlogIcon } from "./icon";
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon, MenuIcon } from "@heroicons/react/solid";
 import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, MenuIcon } from "@heroicons/react/solid";
+import Link from "next/link";
+import React, { Fragment } from "react";
 import { Banner } from "./banner";
+import { BlogIcon } from "./icon";
 
 const blogMenuSections = [
   {
@@ -82,7 +82,7 @@ const BlogMenu = () => (
           leaveFrom="opacity-100 translate-y-0"
           leaveTo="opacity-0 translate-y-1"
         >
-          <Popover.Panel className="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
+          <Popover.Panel className="absolute z-30 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-screen max-w-xs sm:px-0">
             <div className="z-30 absolute -ml-4 mt-3 transform w-screen max-w-md md:max-w-3xl lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
               <div className="rounded-lg shadow-lg">
                 <div className="rounded-lg shadow-xs overflow-hidden">
@@ -161,7 +161,7 @@ const MobileMenu = () => (
           leaveTo="opacity-0 translate-y-1"
         >
           <Popover.Panel className="absolute z-10 right-0 transform  mt-3 px-2 w-screen max-w-xs sm:px-0">
-            <div className="z-10 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+            <div className="z-10 absolute top-0 inset-x-0 p-2 transition transform origin-top-right lg:hidden">
               <div className="rounded-lg shadow-lg">
                 <div className="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
                   <div className="pt-5 pb-6 px-5 space-y-6">
@@ -207,18 +207,18 @@ export const Header = () => {
   return (
     <div>
       <div className="relative bg-pink-500">
-        <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center px-4 py-2 sm:py-4 sm:px-6 lg:justify-start lg:space-x-10">
           <div className="lg:w-0 lg:flex-1">
             <Link href="/">
               <a className="flex">
-                <BlogIcon className="text-white" />
+                <BlogIcon className="text-white h-10 w-10 sm:h-14 sm:w-14" />
               </a>
             </Link>
           </div>
-          <div className="-mr-2 -my-2 md:hidden">
+          <div className="-mr-2 -my-2 lg:hidden">
             <MobileMenu />
           </div>
-          <nav className="hidden md:flex space-x-10">
+          <nav className="hidden lg:flex space-x-10">
             <Link href="/">
               <a className="text-base leading-6 font-medium text-white rounded-md px-4 py-2 hover:bg-white hover:text-pink-800 focus:bg-white focus:text-pink-300 transition ease-in-out duration-150">
                 Home
@@ -233,7 +233,7 @@ export const Header = () => {
               </Link>
             ))}
           </nav>
-          <div className="hidden md:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
+          <div className="hidden lg:flex items-center justify-end space-x-8 md:flex-1 lg:w-0">
             <span className="inline-flex rounded-md shadow-sm">
               <a
                 href="https://www.youtube.com/channel/UCBzcNd6Z480lWkchyanC4_A"
@@ -253,6 +253,7 @@ export const Header = () => {
         short="Il prossimo evento live di Farmaceutica Younger!"
         btn="Partecipa!"
         Icon={SpeakerphoneIcon}
+        href="/events/network-e-carriere-farmaceutico"
       />
     </div>
   );

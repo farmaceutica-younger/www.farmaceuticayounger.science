@@ -8,9 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => (
-  <div className="relative bg-white overflow-hidden">
+  <div className="relative bg-white overflow-hidden z-1">
     <div className="max-w-screen-xl mx-auto">
-      <div className="relative md:z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+      <div className="relative z-0 md:z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
         <svg
           className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
           fill="currentColor"
@@ -20,7 +20,7 @@ const Hero = () => (
           <polygon points="50,0 100,0 50,100 0,100" />
         </svg>
 
-        <div className="relative pt-6 px-4 sm:px-6 lg:px-8"></div>
+        <div className="pt-6 px-4 sm:px-6 lg:px-8"></div>
 
         <main className="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
@@ -809,7 +809,10 @@ const Images = () => {
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Farmaceutica Younger" />
+      <SEO
+        title="Associazione"
+        description="L'associazione nata con l'obiettivo di tendere una mano ai giovani che hanno voglia di conoscere sempre di più sul mondo del farmaceutico!"
+      />
       <Hero />
       <Principles />
       <Team />

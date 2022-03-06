@@ -1,16 +1,12 @@
 export const config = {
-  title: '@ludusrusso',
-  image: '/ludusrusso.jpg',
-  hostname: 'www.ludusrusso.dev',
+  title: "Farmaceutica Younger",
+  image: "/ludusrusso.jpg",
+  hostname: "www.farmaceuticayounger.science",
   author: {
-    name: 'Ludovico Russo',
-    summary: 'Fullestack Dev | Cloud Architect',
+    name: "Silvia Vernotico",
+    summary: "Presidente di Farmaceutica Younger",
   },
-  description: 'Impara insieme a Ludovico',
-  social: {
-    twitter: 'ludusrusso',
-  },
-  disqus: {
-    shortname: 'ludusrusso-cc',
-  },
+  description:
+    "La piattaforma Young tutta italiana rivolta a giovani laureati del mondo farmaceutico!",
+  social: {},
 };
