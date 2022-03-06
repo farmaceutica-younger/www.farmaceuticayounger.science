@@ -52,15 +52,9 @@ export const Footer = () => {
           </div>
           <div className="mt-8 flex items-center justify-center space-x-6">
             {icons.map((icon, idx) => (
-              <a
-                key={idx}
-                href={icon.link}
-                className="w-8"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a key={idx} href={icon.link} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  size="lg"
+                  className="w-8 h-8"
                   icon={icon.icon}
                   style={{ color: icon.color }}
                 />

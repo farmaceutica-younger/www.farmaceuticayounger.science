@@ -3,7 +3,6 @@ import { Footer } from "components/footer";
 import { Header } from "components/header";
 import { SEO } from "components/seo";
 import { InferGetStaticPropsType } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import YouTube from "react-youtube";
 import { db } from "../services/db";
@@ -14,7 +13,6 @@ export default function Home({
   return (
     <div>
       <SEO title="Farmcautica Younger" />
-
       <Header />
       <main>
         <Silvia image="/silvia.jpg" />

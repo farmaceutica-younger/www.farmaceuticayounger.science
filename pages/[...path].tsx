@@ -3,7 +3,6 @@ import { PostPage } from "components/post";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Head from "next/head";
 import { db } from "services/db";
 import { readTime } from "utils/readTime";
 import { Footer } from "../components/footer";

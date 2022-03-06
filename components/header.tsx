@@ -20,32 +20,32 @@ const blogMenuSections = [
     description:
       "Leggi gli articoli scritti dalla crew di Farmaceutica Younger",
     to: "/blog",
-    icon: <FontAwesomeIcon icon={faNewspaper} />,
+    icon: <FontAwesomeIcon className="w-6 h-6" icon={faNewspaper} />,
   },
   {
     name: "Hot This Week",
     description: "Le novità più frizzanti del mondo farmaceutico",
     to: "/hotthisweek",
-    icon: <FontAwesomeIcon icon={faHotjar} />,
+    icon: <FontAwesomeIcon className="w-6 h-6" icon={faHotjar} />,
   },
   {
     name: "Farma Acronimi",
     description: "Gli acronimi più bizzarri del mondo farmaceutico",
     to: "/pharmacronimi",
-    icon: <FontAwesomeIcon icon={faTablets} />,
+    icon: <FontAwesomeIcon className="w-6 h-6" icon={faTablets} />,
   },
   {
     name: "Farma Quotes",
     description: "Le citazioni dei più grandi scienziati di fama mondiale",
     to: "/pharmaquotes",
-    icon: <FontAwesomeIcon icon={faQuoteRight} />,
+    icon: <FontAwesomeIcon className="w-6 h-6" icon={faQuoteRight} />,
   },
   {
     name: "Farma In Italy",
     description:
       "Scopri dove sono distribuite le aziende del settore Life Science",
     to: "/farmainitaly",
-    icon: <FontAwesomeIcon icon={faMap} />,
+    icon: <FontAwesomeIcon className="w-6 h-6" icon={faMap} />,
   },
 ];
 
@@ -59,16 +59,13 @@ const BlogMenu = () => (
       <>
         <Popover.Button
           className={classNames(
-            open ? "text-pink-800" : "text-white",
+            open ? "text-pink-800" : "text-white ",
             "group inline-flex items-center text-base font-medium text-white rounded-md px-4 py-2 hover:bg-white hover:text-pink-800 focus:bg-white focus:text-pink-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
           )}
         >
           <span>Blog</span>
           <ChevronDownIcon
-            className={classNames(
-              open ? "text-pink-800" : "text-white",
-              "ml-2 h-5 w-5"
-            )}
+            className={classNames("ml-2 h-5 w-5")}
             aria-hidden="true"
           />
         </Popover.Button>
@@ -241,7 +238,7 @@ export const Header = () => {
                 className="whitespace-no-wrap inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink active:bg-pink-700 transition ease-in-out duration-150"
                 rel="noreferrer"
               >
-                <FontAwesomeIcon size="lg" icon={faYoutube} />{" "}
+                <FontAwesomeIcon className="w-6 h-6" icon={faYoutube} />
                 <span className="ml-2">YouTube</span>
               </a>
             </span>
