@@ -10,7 +10,7 @@ interface BannterProps {
 
 export const Banner = ({ long, btn, short, Icon, href }: BannterProps) => {
   return (
-    <div className="mb-4">
+    <div className="">
       <div className="">
         <div className="p-2 bg-cyan-600 shadow-lg sm:p-3">
           <div className="flex items-center justify-between flex-wrap">

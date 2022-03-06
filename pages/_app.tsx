@@ -3,10 +3,12 @@ import { NextPage } from "next";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import { FC, Fragment } from "react";
+import { useRouter } from "next/router";
+import { FC, Fragment, useEffect } from "react";
 import { AppRouter } from "src/server/mod";
 import superjson from "superjson";
 import "../styles/globals.css";
+import * as ga from "../utils/ga";
 
 type NextPageWithLayout = NextPage & {
   Layout: FC;
@@ -20,6 +22,22 @@ function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }: AppPropsWithLayout) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange =
+      process.env.NODE_ENV === "production"
+        ? (url: string) => {
+            ga.pageview(url);
+          }
+        : (url: string) => {};
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   const Layout = Component.Layout || Fragment;
 
   return (
