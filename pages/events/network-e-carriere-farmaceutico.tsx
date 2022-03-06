@@ -202,7 +202,7 @@ const Relators = () => {
             </h2>
             <p className="text-xl text-gray-500">
               Durente la diretta sarà possibile confrontarsi con diverse figure
-              provenienti dal mondo dell'industria farmaceutica.
+              provenienti dal mondo dell&apos;industria farmaceutica.
             </p>
           </div>
           <div className="lg:col-span-2">
