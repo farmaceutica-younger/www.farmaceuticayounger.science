@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { ComponentProps, FC } from "react";
 
 interface BannterProps {
@@ -24,12 +25,11 @@ export const Banner = ({ long, btn, short, Icon, href }: BannterProps) => {
               </p>
             </div>
             <div className="flex-shrink-0  mt-0 w-auto">
-              <a
-                href={href}
-                className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-cyan-600 bg-white hover:bg-cyan-50"
-              >
-                {btn}
-              </a>
+              <Link href={href}>
+                <a className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-cyan-600 bg-white hover:bg-cyan-50">
+                  {btn}
+                </a>
+              </Link>
             </div>
           </div>
         </div>

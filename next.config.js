@@ -11,4 +11,7 @@ module.exports = withSuperjson()({
   experimental: {
     outputStandalone: true,
   },
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS,
+  },
 });
