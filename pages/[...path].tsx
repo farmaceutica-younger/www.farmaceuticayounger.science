@@ -53,6 +53,10 @@ export async function getStaticPaths() {
     select: {
       path: true,
     },
+    orderBy: {
+      publishedTime: "desc",
+    },
+    take: 10,
   });
   const paths = posts.map((post) => {
     return {

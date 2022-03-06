@@ -403,7 +403,7 @@ const NewsFarmaItaly = () => (
           </div>
           <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-              <Link href="/farmainitaly/veneto">
+              <Link href="/ecommerce">
                 <a className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline">
                   <img
                     src="https://res.cloudinary.com/dbdvy5b2z/image/upload/c_scale,w_600/v1646564506/fy/ecommerce/book_bjsonl.jpg"
