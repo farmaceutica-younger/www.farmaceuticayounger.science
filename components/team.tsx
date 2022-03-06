@@ -13,6 +13,9 @@ export const Team: React.FC<{}> = () => {
               Chatta, entra in contatto o prenota il tuo personalissimo incontro
               con il team di Farmaceutica Younger fatto di esperti del mondo
               farmaceutico.
+              <span className="ml-2 text-pink-400">
+                Ti basta cliccare sulle due icone in basso!
+              </span>
             </p>
           </div>
           <ul className="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
@@ -42,13 +45,13 @@ export const Team: React.FC<{}> = () => {
                           >
                             <span className="sr-only">Calendly</span>
                             <svg
-                              className="w-5 h-5"
-                              fill="currentColor"
+                              className="w-8 h-8 text-pink-500 hover:text-pink-800"
+                              fill="none"
+                              stroke="currentColor"
                               viewBox="0 0 24 24"
                             >
                               <path
                                 d="M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z"
-                                stroke="#4A5568"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -67,7 +70,7 @@ export const Team: React.FC<{}> = () => {
                           >
                             <span className="sr-only">LinkedIn</span>
                             <svg
-                              className="w-5 h-5"
+                              className="w-8 h-8 text-blue-500 hover:text-blue-800"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -101,16 +104,6 @@ const crew = [
     linkedin: "https://www.linkedin.com/in/giorgia-bottello-44772660",
     one2one: "https://calendly.com/giorgia-bottello/15min",
     image: "/fy/authors/giorgia_ixtzta.jpg",
-  },
-  {
-    name: "Gemma Bellino",
-    position: "Regulatory Affairs",
-    description:
-      "Si laurea in CTF presso l'Università dagli Studi di Perugia nel 2014 e inizia a lavorare prima nel QA di Pfizer e Teva per poi approdare nel regolatorio. Attualmente ricopre il ruolo di Regulatory Affairs Specialist in Cambrex.",
-    linkedin: "https://www.linkedin.com/in/gemma-bellino-126145b3",
-    one2one:
-      "https://calendly.com/gemmabellino90/farmaceutica-younger?fbclid=IwAR32P4ET-qE6nk7HS2sezkqcDa7goa1_AyAjShquHdbVz4PayaVzyeaj5DU&month=2020-06",
-    image: "/fy/authors/gemma_iwvrqp.jpg",
   },
   {
     name: "Giulia Giori",

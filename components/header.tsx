@@ -10,59 +10,9 @@ import Link from "next/link";
 import React, { Fragment, useState } from "react";
 import { BlogIcon } from "./icon";
 import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon, MenuIcon, XIcon } from "@heroicons/react/solid";
-
-const Banner = () => {
-  const [open, setOpen] = useState(true);
-  if (!open) {
-    return null;
-  }
-  return (
-    <div className="relative bg-pink-600">
-      <div className="max-w-screen-xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-        <div className="pr-16 sm:text-center sm:px-16">
-          <p className="font-medium text-white">
-            <span className="md:hidden">È nata l&apos;Associazione!</span>
-            <span className="hidden md:inline">
-              Big news! Siamo lieti di annunciare la nascita
-              dell&apos;Associazione.
-            </span>
-            <span className="block sm:ml-2 sm:inline-block">
-              <Link href="/associazione">
-                <a className="text-white font-bold underline">
-                  Scopri di più &rarr;
-                </a>
-              </Link>
-            </span>
-          </p>
-        </div>
-        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
-          <button
-            type="button"
-            className="flex p-2 rounded-md hover:bg-pink-500 focus:outline-none focus:bg-pink-500 transition ease-in-out duration-150"
-            aria-label="Dismiss"
-            onClick={() => setOpen(false)}
-          >
-            <svg
-              className="h-6 w-6 text-white"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { ChevronDownIcon, MenuIcon } from "@heroicons/react/solid";
+import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
+import { Banner } from "./banner";
 
 const blogMenuSections = [
   {
@@ -109,15 +59,15 @@ const BlogMenu = () => (
       <>
         <Popover.Button
           className={classNames(
-            open ? "text-gray-900" : "text-gray-500",
-            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
+            open ? "text-pink-800" : "text-white",
+            "group inline-flex items-center text-base font-medium text-white rounded-md px-4 py-2 hover:bg-white hover:text-pink-800 focus:bg-white focus:text-pink-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
           )}
         >
           <span>Blog</span>
           <ChevronDownIcon
             className={classNames(
-              open ? "text-gray-600" : "text-gray-400",
-              "ml-2 h-5 w-5 group-hover:text-gray-500"
+              open ? "text-pink-800" : "text-white",
+              "ml-2 h-5 w-5"
             )}
             aria-hidden="true"
           />
@@ -175,7 +125,7 @@ const otherSections = [
     href: "/cgmp",
   },
   {
-    name: "eCommerce",
+    name: "GMP book",
     href: "/ecommerce",
   },
 ];
@@ -190,17 +140,14 @@ const MobileMenu = () => (
       <>
         <Popover.Button
           className={classNames(
-            open ? "text-gray-900" : "text-gray-500",
-            "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900   "
+            open ? "text-white" : "text-white",
+            "group p-2 rounded-md inline-flex items-center text-base font-medium hover:bg-white hover:text-pink-800"
           )}
         >
           {open ? (
-            <XIcon className="text-gray-600 ml-2 h-8 w-8 group-hover:text-gray-500" />
+            <XIcon className="h-8 w-8" />
           ) : (
-            <MenuIcon
-              className="text-gray-400 ml-2 h-8 w-8 group-hover:text-gray-500"
-              aria-hidden="true"
-            />
+            <MenuIcon className="h-8 w-8" aria-hidden="true" />
           )}
         </Popover.Button>
 
@@ -259,13 +206,12 @@ const MobileMenu = () => (
 export const Header = () => {
   return (
     <div>
-      <Banner />
-      <div className="relative bg-white">
+      <div className="relative bg-pink-500">
         <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
           <div className="lg:w-0 lg:flex-1">
             <Link href="/">
               <a className="flex">
-                <BlogIcon />
+                <BlogIcon className="text-white" />
               </a>
             </Link>
           </div>
@@ -274,14 +220,14 @@ export const Header = () => {
           </div>
           <nav className="hidden md:flex space-x-10">
             <Link href="/">
-              <a className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
+              <a className="text-base leading-6 font-medium text-white rounded-md px-4 py-2 hover:bg-white hover:text-pink-800 focus:bg-white focus:text-pink-300 transition ease-in-out duration-150">
                 Home
               </a>
             </Link>
             <BlogMenu />
             {otherSections.map(({ href, name }, idx) => (
               <Link key={idx} href={href}>
-                <a className="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150">
+                <a className="text-base leading-6 font-medium text-white rounded-md px-4 py-2 hover:bg-white hover:text-pink-800 focus:bg-white focus:text-pink-300 transition ease-in-out duration-150">
                   {name}
                 </a>
               </Link>
@@ -302,6 +248,12 @@ export const Header = () => {
           </div>
         </div>
       </div>
+      <Banner
+        long="Big News! Il prossimo evento live di Farmaceutica Younger sta per arrivare!"
+        short="Il prossimo evento live di Farmaceutica Younger!"
+        btn="Partecipa!"
+        Icon={SpeakerphoneIcon}
+      />
     </div>
   );
 };

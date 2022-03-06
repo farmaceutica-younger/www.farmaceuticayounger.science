@@ -812,8 +812,9 @@ const IndexPage = () => {
       <SEO title="Farmaceutica Younger" />
       <Hero />
       <Principles />
+      <Team />
       <Comments />
-      <div className="mt-20 py-20 bg-gray-50">
+      <div className="mt-20 py-20 bg-gray-50 z-0">
         <Events
           title="Eventi 2020"
           description="Le iniziative portate avanti dal vivo nel corso di questo anno da
@@ -832,7 +833,6 @@ const IndexPage = () => {
           events={contents}
         />
       </div>
-      <Team />
 
       <Help />
     </Layout>

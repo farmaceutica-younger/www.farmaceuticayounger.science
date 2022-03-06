@@ -48,7 +48,7 @@ export const Comments = () => {
               {comments.map((c, idx) => {
                 return (
                   <li key={idx} className="px-3 md:px-4 flex-none text-left">
-                    <figure className="shadow-lg rounded-xl transform hover:-rotate-3 flex-none max-w-xs md:max-w-md">
+                    <figure className="shadow-lg rounded-xl transform transition-all hover:-rotate-3 flex-none max-w-xs md:max-w-md">
                       <blockquote className="rounded-t-xl bg-white px-6 py-8 md:p-10 text-base font-semibold text-gray-700">
                         <svg
                           width="45"

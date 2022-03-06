@@ -8,7 +8,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-// import { Newsletter } from "../newsletter";
 
 interface Icon {
   color: string;
@@ -36,11 +35,6 @@ const icons: Icon[] = [
     icon: faYoutube,
     color: "#cd201f",
     link: "https://www.youtube.com/channel/UCBzcNd6Z480lWkchyanC4_A",
-  },
-  {
-    icon: faTwitter,
-    color: "55acee",
-    link: "https://twitter.com/FarmaceuticaY",
   },
 ];
 

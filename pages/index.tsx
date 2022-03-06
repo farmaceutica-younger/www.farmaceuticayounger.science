@@ -121,7 +121,7 @@ const Silvia = ({ image }: { image: string }) => {
               />
             </svg>
             <blockquote className="relative">
-              <div className="text-2xl leading-9 font-medium text-gray-900">
+              <div className="text-md leading-2 lg:text-xl font-medium text-gray-700 ">
                 <p>
                   Benvenuto! Sono Silvia Vernotico, ideatrice e curatrice del
                   blog e presidente dell&apos;associazione{" "}
@@ -129,7 +129,7 @@ const Silvia = ({ image }: { image: string }) => {
                   piattaforma Young tutta italiana rivolta a giovani laureati in
                   discipline scientifiche o appassionati dell&apos;universo
                   farmaceutico, dove conoscere le regole e i meccanismi del
-                  mondo Farmaceutico.
+                  mondo Farmaceutico e ampliare il tuo network!
                 </p>
               </div>
               <footer className="mt-8">
@@ -149,22 +149,17 @@ const Silvia = ({ image }: { image: string }) => {
                       <div className="text-base leading-6 font-medium text-pink-600">
                         Presidente e Founder
                       </div>
-                      <div className="mt-4">
+                      <div className="mt-4 space-x-2">
                         <a
-                          className="bg-pink-500 hover:bg-pink-800 px-2 py-1 text-white rounded"
+                          className="bg-pink-200 ring-pink-800 hover:ring-2  transition-all px-4 py-2 text-pink-600 rounded"
                           target="_blank"
                           href="https://www.linkedin.com/in/silvia-vernotico-09b35977/"
                           rel="noreferrer"
                         >
-                          Linkedin
+                          Aggiungimi su Linkedin
                         </a>
-                        <Link href="/pages/curriculum/">
-                          <a className="bg-pink-500 ml-2 hover:bg-pink-800 px-2 py-1 text-white rounded">
-                            Graphic CV
-                          </a>
-                        </Link>
                         <a
-                          className="bg-pink-500 ml-2 hover:bg-pink-800 px-2 py-1 text-white rounded"
+                          className="bg-pink-200 ring-pink-800 hover:ring-2  transition-all px-4 py-2 text-pink-600 rounded"
                           href="https://t.me/silvia_farmaceuticayounger"
                           target="_blank"
                           rel="noreferrer"
@@ -369,30 +364,37 @@ const NewsFarmaItaly = () => (
           <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
             <div className="text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base">
               {" "}
-              Novità
+              Sostieni l&apos;associazione
             </div>
             <h2 className="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
-              La nuova rubrica
+              Acquista il
               <br />
-              <span className="text-pink-600">#FarmaInItaly</span>
+              <span className="text-pink-600">#GMP PocketBook</span>
             </h2>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Scopri attraverso la nostra cartina interattiva dove si trovano
-              tutte le aziende del settore Life Science regione per regione
-              della nostra penisola.
+              Il{" "}
+              <span className="text-pink-600 font-semibold italic">
+                GMP PocketBook
+              </span>{" "}
+              è una traduzione delle Good Manufacturing Practice Volume 4, Parte
+              I che tratta dei Requisiti base che deve avere un prodotto
+              medicinale per essere fabbricato. Fondamentali per mettere in
+              piedi un sistema di qualità che garantisca che il farmaco sia di
+              qualità, sicuro ed efficace.
             </p>
 
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Ce n&apos;è sfuggita qualcuna? Segnalacelo nel form che trovi in
-              basso ad ogni articolo. Con il tuo contributo arricchiremo sempre
-              di più la mappa delle regioni.
-            </p>
-
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start sm:space-x-2 space-y-2 sm:space-y-0">
               <div className="rounded-md shadow">
-                <Link href="/farmainitaly">
+                <Link href="/ecommerce">
                   <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
-                    Scopri di più
+                    Acquista
+                  </a>
+                </Link>
+              </div>
+              <div className="rounded-md shadow">
+                <Link href="/associazione">
+                  <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-stone-600 hover:bg-stone-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                    Scopri l&apos;Associazione
                   </a>
                 </Link>
               </div>
@@ -402,11 +404,10 @@ const NewsFarmaItaly = () => (
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
               <Link href="/farmainitaly/veneto">
                 <a className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline">
-                  <img src="/veneto.png" alt="farmainitaly Veneto" />
-                  <div className="p-4">
-                    <h3 className="text-lg"> Veneto </h3>
-                    <p> Leggi l&apos;articolo </p>
-                  </div>
+                  <img
+                    src="https://res.cloudinary.com/dbdvy5b2z/image/upload/c_scale,w_600/v1646564506/fy/ecommerce/book_bjsonl.jpg"
+                    alt="GMP Pocket Book"
+                  />
                 </a>
               </Link>
             </div>
