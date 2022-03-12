@@ -23,18 +23,18 @@ const BlogPostPreview: React.FC<{
     post;
   return (
     <Link href={path!} passHref>
-      <div className="mt-4 max-w-lg flex flex-col rounded-lg hover:shadow-2xl shadow-lg overflow-hidden cursor-pointer">
+      <div className="mt-4 flex max-w-lg cursor-pointer flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl">
         <div className="flex-shrink-0">
           {
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="w-full h-auto" src={featuredImage!} alt={title} />
+            <img className="h-auto w-full" src={featuredImage!} alt={title} />
           }
         </div>
-        <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+        <div className="flex flex-1 flex-col justify-between bg-white p-6">
           <div className="flex-1">
             <div className="block">
               <h3 className="mt-2 text-xl leading-7 text-gray-900">{title}</h3>
-              <p className="mt-3 truncate-3-lines mb-4 text-base leading-6 text-gray-500">
+              <p className="truncate-3-lines mt-3 mb-4 text-base leading-6 text-gray-500">
                 {description}
               </p>
             </div>
@@ -42,7 +42,7 @@ const BlogPostPreview: React.FC<{
 
           <div className="mt-6 flex items-center">
             <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-full overflow-hidden">
+              <div className="h-10 w-10 overflow-hidden rounded-full">
                 <img
                   src={author.profileImage}
                   width={50}
@@ -52,7 +52,7 @@ const BlogPostPreview: React.FC<{
               </div>
             </div>
             <div className="ml-3">
-              <p className="text-sm leading-5 font-medium text-gray-900">
+              <p className="text-sm font-medium leading-5 text-gray-900">
                 {author?.name}
               </p>
               <div className="flex text-sm leading-5 text-gray-500">
@@ -83,16 +83,16 @@ export const PostsList: React.FC<{
   title: string;
   description: string;
 }) => (
-  <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+  <div className="relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
     <div className="absolute inset-0">
-      <div className="bg-white h-1/3 sm:h-2/3"></div>
+      <div className="h-1/3 bg-white sm:h-2/3"></div>
     </div>
-    <div className="relative max-w-7xl mx-auto">
+    <div className="relative mx-auto max-w-7xl">
       <div className="text-center">
-        <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
           {title}
         </h2>
-        <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
+        <p className="mx-auto mt-3 max-w-2xl text-xl leading-7 text-gray-500 sm:mt-4">
           {description}
         </p>
       </div>

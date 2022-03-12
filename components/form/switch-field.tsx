@@ -12,7 +12,7 @@ interface SwitchFieldProps {
 
 export const SwitchField = ({ name, label }: SwitchFieldProps) => {
   return (
-    <div className="flex align-middle gap-4">
+    <div className="flex gap-4 align-middle">
       <Field
         name={name}
         render={({ input }) => (
@@ -21,7 +21,7 @@ export const SwitchField = ({ name, label }: SwitchFieldProps) => {
             onChange={(value) => input.onChange(value)}
             className={classNames(
               input.value ? "bg-indigo-600" : "bg-gray-200",
-              "relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             )}
           >
             <span className="sr-only">{label}</span>
@@ -29,7 +29,7 @@ export const SwitchField = ({ name, label }: SwitchFieldProps) => {
               aria-hidden="true"
               className={classNames(
                 input.value ? "translate-x-5" : "translate-x-0",
-                "pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"
               )}
             />
           </Switch>

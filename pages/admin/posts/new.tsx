@@ -29,7 +29,7 @@ const NewPostPage = () => {
 
   return (
     <div className="">
-      <div className="w-full m-auto">
+      <div className="m-auto w-full">
         <PostForm
           back={() => router.push(".")}
           uploadImage={uploadImage}

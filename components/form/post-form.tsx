@@ -87,11 +87,11 @@ export const PostForm = ({
             <Dialog
               open={showPreview}
               onClose={() => setShowPreview(false)}
-              className="fixed z-50 inset-0 overflow-y-auto "
+              className="fixed inset-0 z-50 overflow-y-auto "
             >
-              <Dialog.Overlay className="inset-0 fixed bg-black opacity-30" />
+              <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
 
-              <div className="bg-white fixed inset-10 overflow-auto rounded shadow-xl ring-1">
+              <div className="fixed inset-10 overflow-auto rounded bg-white shadow-xl ring-1">
                 <FormSpy<PostType>
                   render={({ values }) => (
                     <div className="overflow-y-scroll rounded-2xl">
@@ -101,7 +101,7 @@ export const PostForm = ({
                 ></FormSpy>
                 <button
                   onClick={() => setShowPreview(false)}
-                  className="hover:bg-slate-200 rounded-full h-10 w-10 absolute top-4 right-4 grid place-content-center"
+                  className="absolute top-4 right-4 grid h-10 w-10 place-content-center rounded-full hover:bg-slate-200"
                 >
                   <XIcon className="h-6 w-6" />
                 </button>
@@ -189,26 +189,26 @@ interface FormNavProps {
 }
 const FormNav = ({ invalid, openPreview, saving, back }: FormNavProps) => {
   return (
-    <div className="h-16 bg-pink-600 flex items-center px-4 justify-between">
+    <div className="flex h-16 items-center justify-between bg-pink-600 px-4">
       <div className="flex">
         <button onClick={back} className="text-white">
           Indietro
         </button>
-        <h2 className="text-2xl font-bold text-white px-2 align-middle">
+        <h2 className="px-2 align-middle text-2xl font-bold text-white">
           Post Editor
         </h2>
       </div>
       <div>
         <button
           type="submit"
-          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           disabled={saving || invalid}
         >
           {saving ? <span>...</span> : <span>Salva il Post</span>}
         </button>
         <button
           type="submit"
-          className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           onClick={openPreview}
         >
           Mosta Preview
@@ -242,12 +242,12 @@ const PostFormFiels = ({ uploadImage }: PostFormFielsProps) => {
                 </label>
                 <div className="mt-1 flex rounded-md shadow-sm">
                   <input
-                    className="flex-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full min-w-0 rounded-none rounded-r-md sm:text-sm border-gray-300"
+                    className="block w-full min-w-0 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     {...input}
                   />
                 </div>
-                <div className="h-5 flex justify-between text-xs mt-1">
-                  <span className="text-red-400 text-sm">{meta.error}</span>
+                <div className="mt-1 flex h-5 justify-between text-xs">
+                  <span className="text-sm text-red-400">{meta.error}</span>
                   <span className={"text-stone-400"}>
                     {input.value.length} / 100
                   </span>
@@ -288,11 +288,11 @@ const PostFormFiels = ({ uploadImage }: PostFormFielsProps) => {
                   <textarea
                     {...input}
                     rows={10}
-                    className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"
+                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                   />
                 </div>
-                <div className="h-5 flex justify-between text-xs mt-1">
-                  <span className="text-red-400 text-sm">{meta.error}</span>
+                <div className="mt-1 flex h-5 justify-between text-xs">
+                  <span className="text-sm text-red-400">{meta.error}</span>
                   <span className={"text-stone-400"}>
                     {input.value.length} / 500
                   </span>

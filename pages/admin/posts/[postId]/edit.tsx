@@ -40,7 +40,7 @@ const EditPostPage = () => {
 
   return (
     <div className="">
-      <div className="w-full m-auto">
+      <div className="m-auto w-full">
         <PostForm
           uploadImage={uploadImage}
           initialValue={post}

@@ -14,11 +14,11 @@ const SectionPage = ({
   return (
     <Layout>
       <SEO title={category.title} description={category.description} />
-      <div className="text-center sm:mt-20 p-2">
-        <h2 className="text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-6xl sm:leading-10">
+      <div className="p-2 text-center sm:mt-20">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-6xl sm:leading-10">
           {category.title}
         </h2>
-        <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-8">
+        <p className="mx-auto mt-3 max-w-2xl text-xl leading-7 text-gray-500 sm:mt-8">
           {category.description}
         </p>
       </div>

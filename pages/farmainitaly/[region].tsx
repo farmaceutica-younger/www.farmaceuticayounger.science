@@ -28,9 +28,9 @@ const FarmaInItaly = ({
           crossOrigin=""
         />
       </Head>
-      <div className="mt-20 mx-1 md:mx-0">
-        <div className="text-lg max-w-prose mx-auto mb-6">
-          <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+      <div className="mx-1 mt-20 md:mx-0">
+        <div className="mx-auto mb-6 max-w-prose text-lg">
+          <h1 className="mt-2 mb-8 text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
             {title}
           </h1>
         </div>
@@ -40,9 +40,9 @@ const FarmaInItaly = ({
         <Map companies={companies} />
       </div>
 
-      <div className="mt-20 mx-1 md:mx-0">
-        <article className="relative py-16 bg-white overflow-hidden">
-          <div className="max-w-4xl text-gray-500 mx-auto">
+      <div className="mx-1 mt-20 md:mx-0">
+        <article className="relative overflow-hidden bg-white py-16">
+          <div className="mx-auto max-w-4xl text-gray-500">
             {provinces.map((prov) => {
               const cs = companies.filter((c) => c.province === prov.province);
               return (
@@ -87,7 +87,7 @@ const Azienda = ({ company }: { company: Company }) => {
 const Banner = () => {
   return (
     <div className="bg-pink-50">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-24 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:flex lg:items-center lg:justify-between lg:py-24 lg:px-8">
         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
           <span className="block">Ci siamo persi qualche azienda?</span>
           <span className="block text-pink-600">
@@ -99,7 +99,7 @@ const Banner = () => {
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSedH0QbJyrTCrtSXT5Jh1pUmlHnrLghUnwEjaAbjZ3ZLSysyA/viewform?usp=sf_link"
               target="_blank"
-              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700"
+              className="inline-flex items-center justify-center rounded-md border border-transparent bg-pink-600 px-5 py-3 text-base font-medium text-white hover:bg-pink-700"
               rel="noreferrer"
             >
               Compila il form

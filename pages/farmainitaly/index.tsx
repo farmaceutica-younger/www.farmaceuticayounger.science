@@ -10,22 +10,22 @@ type Region = PageProps["regions"][number];
 const SectionPage = ({ regions }: PageProps) => {
   return (
     <Layout>
-      <div className="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+      <div className="relative bg-gray-50 px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
         <div className="absolute inset-0">
-          <div className="bg-white h-1/3 sm:h-2/3"></div>
+          <div className="h-1/3 bg-white sm:h-2/3"></div>
         </div>
-        <div className="relative max-w-7xl mx-auto">
+        <div className="relative mx-auto max-w-7xl">
           <div className="text-center">
-            <h2 className="text-pink-600 text-3xl leading-9 tracking-tight font-extrabold  sm:text-4xl sm:leading-10">
+            <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600  sm:text-4xl sm:leading-10">
               #FarmaInItaly
             </h2>
-            <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4">
+            <p className="mx-auto mt-3 max-w-2xl text-xl leading-7 text-gray-500 sm:mt-4">
               La rubrica che ti porterà a scoprire regione dopo regione tutte le
               eccellenze presenti sul nostro territorio nazionale del settore
               Life Science
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid gap-4 md:grid-cols-3">
             {regions.map((region) => (
               <RegionPreview key={region.region} region={region} />
             ))}
@@ -49,13 +49,13 @@ const RegionPreview = ({ region }: RegionProps) => {
 
   return (
     <Link href={href}>
-      <div className="mt-4 max-w-lg flex flex-col rounded-lg hover:shadow-2xl shadow-lg overflow-hidden">
-        <div className="flex-1 bg-white flex flex-col justify-between">
+      <div className="mt-4 flex max-w-lg flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl">
+        <div className="flex flex-1 flex-col justify-between bg-white">
           <div className="flex-1">
             <div className="block">
-              <img src={image} className="w-full aspect-video" />
+              <img src={image} className="aspect-video w-full" />
               <div className="px-3 py-4">
-                <h3 className="text-xl truncate-2-lines leading-7 text-gray-800 font-bold">
+                <h3 className="truncate-2-lines text-xl font-bold leading-7 text-gray-800">
                   {region.region}
                 </h3>
                 <p className="text-gray-600">{region._count} aziende</p>

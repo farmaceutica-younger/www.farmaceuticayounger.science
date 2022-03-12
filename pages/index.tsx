@@ -26,10 +26,10 @@ export default function Home({
 
 const Silvia = ({ image }: { image: string }) => {
   return (
-    <section className="bg-white overflow-hidden">
-      <div className="relative max-w-screen-xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20">
+    <section className="overflow-hidden bg-white">
+      <div className="relative mx-auto max-w-screen-xl px-4 pt-20 pb-12 sm:px-6 lg:px-8 lg:py-20">
         <svg
-          className="absolute top-full left-0 transform translate-x-80 -translate-y-24 lg:hidden"
+          className="absolute top-full left-0 translate-x-80 -translate-y-24 transform lg:hidden"
           width="784"
           height="404"
           fill="none"
@@ -62,7 +62,7 @@ const Silvia = ({ image }: { image: string }) => {
         </svg>
 
         <svg
-          className="hidden lg:block absolute right-full top-1/2 transform translate-x-1/2 -translate-y-1/2"
+          className="absolute right-full top-1/2 hidden translate-x-1/2 -translate-y-1/2 transform lg:block"
           width="404"
           height="784"
           fill="none"
@@ -105,7 +105,7 @@ const Silvia = ({ image }: { image: string }) => {
 
           <div className="relative lg:ml-10">
             <svg
-              className="absolute top-0 left-0 transform -translate-x-8 -translate-y-24 h-36 w-36 text-pink-200 opacity-50"
+              className="absolute top-0 left-0 h-36 w-36 -translate-x-8 -translate-y-24 transform text-pink-200 opacity-50"
               stroke="currentColor"
               fill="none"
               viewBox="0 0 144 144"
@@ -116,7 +116,7 @@ const Silvia = ({ image }: { image: string }) => {
               />
             </svg>
             <blockquote className="relative">
-              <div className="text-md leading-2 lg:text-xl font-medium text-gray-700 ">
+              <div className="text-md leading-2 font-medium text-gray-700 lg:text-xl ">
                 <p>
                   Benvenuto! Sono Silvia Vernotico, ideatrice e curatrice del
                   blog e presidente dell&apos;associazione{" "}
@@ -138,15 +138,15 @@ const Silvia = ({ image }: { image: string }) => {
                   </div>
                   <div className="flex">
                     <div className="ml-4 lg:ml-0">
-                      <div className="text-base leading-6 font-medium text-gray-900">
+                      <div className="text-base font-medium leading-6 text-gray-900">
                         Silvia Vernotico {"     "}
                       </div>
-                      <div className="text-base leading-6 font-medium text-pink-600">
+                      <div className="text-base font-medium leading-6 text-pink-600">
                         Presidente e Founder
                       </div>
                       <div className="mt-4 space-x-2">
                         <a
-                          className="bg-pink-200 ring-pink-800 hover:ring-2  transition-all px-4 py-2 text-pink-600 rounded"
+                          className="rounded bg-pink-200 px-4  py-2 text-pink-600 ring-pink-800 transition-all hover:ring-2"
                           target="_blank"
                           href="https://www.linkedin.com/in/silvia-vernotico-09b35977/"
                           rel="noreferrer"
@@ -157,7 +157,7 @@ const Silvia = ({ image }: { image: string }) => {
                           <span className="md:hidden">Linkedin</span>
                         </a>
                         <a
-                          className="bg-pink-200 ring-pink-800 hover:ring-2  transition-all px-4 py-2 text-pink-600 rounded"
+                          className="rounded bg-pink-200 px-4  py-2 text-pink-600 ring-pink-800 transition-all hover:ring-2"
                           href="https://t.me/silvia_farmaceuticayounger"
                           target="_blank"
                           rel="noreferrer"
@@ -182,10 +182,10 @@ const Silvia = ({ image }: { image: string }) => {
 
 const Help = () => {
   return (
-    <div className="bg-gray-50 overflow-hidden">
-      <div className="relative max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="overflow-hidden bg-gray-50">
+      <div className="relative mx-auto max-w-screen-xl py-12 px-4 sm:px-6 lg:px-8">
         <svg
-          className="absolute top-0 left-full transform -translate-x-1/2 -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
+          className="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
           width="404"
           height="784"
           fill="none"
@@ -218,14 +218,14 @@ const Help = () => {
         </svg>
         <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
           <div className="lg:col-span-1">
-            <h3 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+            <h3 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
               <span className="text-pink-600">Sostieni</span> Farmaceutica
               Younger
             </h3>
           </div>
           <div className="mt-10 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:col-span-2 lg:mt-0">
             <div>
-              <span className="flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white">
+              <span className="flex h-12 w-12 items-center justify-center rounded-md bg-pink-500 text-white">
                 <svg
                   className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -236,11 +236,11 @@ const Help = () => {
                   <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg>
               </span>
-              <div className="mt-5 flex flex-col h-48">
-                <h4 className="text-lg leading-6 font-medium text-gray-900">
+              <div className="mt-5 flex h-48 flex-col">
+                <h4 className="text-lg font-medium leading-6 text-gray-900">
                   La Community
                 </h4>
-                <p className="mt-2 text-base leading-6 text-gray-500 flex-grow">
+                <p className="mt-2 flex-grow text-base leading-6 text-gray-500">
                   Siamo un gruppo di giovani appassionati come te del mondo
                   Farmaceutico! Con la voglia di scambiarsi idee, spunti e
                   opinioni per accrescere professionalmente.
@@ -249,7 +249,7 @@ const Help = () => {
                 <a
                   href="https://t.me/lacommunitydiFarmaceuticaYounger"
                   target="_blank"
-                  className="block text-center rounded text-pink-500 border-pink-500 hover:bg-pink-500 hover:text-white border-2 mt-2 px-4 py-2"
+                  className="mt-2 block rounded border-2 border-pink-500 px-4 py-2 text-center text-pink-500 hover:bg-pink-500 hover:text-white"
                   rel="noreferrer"
                 >
                   Entra in Telegram
@@ -257,7 +257,7 @@ const Help = () => {
               </div>
             </div>
             <div className="mt-10 sm:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-pink-500 text-white">
                 <svg
                   className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -271,18 +271,18 @@ const Help = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="mt-5 flex flex-col h-48">
-                <h4 className="text-lg leading-6 font-medium text-gray-900">
+              <div className="mt-5 flex h-48 flex-col">
+                <h4 className="text-lg font-medium leading-6 text-gray-900">
                   L&apos;Aperitivo
                 </h4>
-                <p className="mt-2 text-base leading-6 text-gray-500 flex-grow">
+                <p className="mt-2 flex-grow text-base leading-6 text-gray-500">
                   Se ti piace il progetto e vuoi aiutarci concretamente puoi
                   fare una piccola donazione simbolica offrendoci un aperitivo!
                 </p>
                 <a
                   href="https://www.paypal.com/paypalme/farmaceuticayounger"
                   target="_blank"
-                  className="block text-center rounded text-pink-500 border-pink-500 hover:bg-pink-500 hover:text-white border-2 mt-2 px-4 py-2 "
+                  className="mt-2 block rounded border-2 border-pink-500 px-4 py-2 text-center text-pink-500 hover:bg-pink-500 hover:text-white "
                   rel="noreferrer"
                 >
                   Dona con PayPal
@@ -299,11 +299,11 @@ const Help = () => {
 const Associazione = () => (
   <div className="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
     <div>
-      <main className="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
+      <main className="mx-auto mt-8 max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-          <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+          <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
             <div className="text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base"></div>
-            <h2 className="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
+            <h2 className="mt-1 text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-6xl sm:leading-none lg:text-5xl xl:text-6xl">
               L&apos;associazione
               <br />
               <span className="text-pink-600">Farmaceutica Younger</span>
@@ -323,7 +323,7 @@ const Associazione = () => (
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfUpTiuoEwR0b9uFjjKiQYprxNm7CalPCPvdPYNV3_W-YCaUw/viewform"
                   target="_blank"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg"
                   rel="noreferrer"
                 >
                   Diventa Socio
@@ -331,16 +331,16 @@ const Associazione = () => (
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <Link href="/associazione">
-                  <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-pink-700 bg-pink-100 hover:text-pink-600 hover:bg-pink-50 focus:outline-none focus:shadow-outline-pink focus:border-pink-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                  <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-100 px-8 py-3 text-base font-medium leading-6 text-pink-700 transition duration-150 ease-in-out hover:bg-pink-50 hover:text-pink-600 focus:border-pink-300 focus:outline-none md:py-4 md:px-10 md:text-lg">
                     Scopri di più
                   </a>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+          <div className="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-              <div className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline">
+              <div className="focus:shadow-outline relative block w-full overflow-hidden rounded-lg focus:outline-none">
                 <YouTube
                   className="w-full"
                   opts={{
@@ -360,21 +360,21 @@ const Associazione = () => (
 const NewsFarmaItaly = () => (
   <div className="relative pb-16 md:pb-20 lg:pb-24 xl:pb-32">
     <div>
-      <main className="mt-8 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
+      <main className="mx-auto mt-8 max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-20 xl:mt-24">
         <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-          <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+          <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
             <div className="text-sm font-semibold uppercase tracking-wide text-gray-500 sm:text-base lg:text-sm xl:text-base">
               {" "}
               Sostieni l&apos;associazione
             </div>
-            <h2 className="mt-1 text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
+            <h2 className="mt-1 text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-6xl sm:leading-none lg:text-5xl xl:text-6xl">
               Acquista il
               <br />
               <span className="text-pink-600">#GMP PocketBook</span>
             </h2>
             <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
               Il{" "}
-              <span className="text-pink-600 font-semibold italic">
+              <span className="font-semibold italic text-pink-600">
                 GMP PocketBook
               </span>{" "}
               è una traduzione delle Good Manufacturing Practice Volume 4, Parte
@@ -384,27 +384,27 @@ const NewsFarmaItaly = () => (
               qualità, sicuro ed efficace.
             </p>
 
-            <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start sm:space-x-2 space-y-2 sm:space-y-0">
+            <div className="mt-5 space-y-2 sm:mt-8 sm:flex sm:justify-center sm:space-x-2 sm:space-y-0 lg:justify-start">
               <div className="rounded-md shadow">
                 <Link href="/ecommerce">
-                  <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                  <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
                     Acquista
                   </a>
                 </Link>
               </div>
               <div className="rounded-md shadow">
                 <Link href="/associazione">
-                  <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-stone-600 hover:bg-stone-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                  <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-stone-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-stone-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
                     Scopri l&apos;Associazione
                   </a>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+          <div className="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
             <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
               <Link href="/ecommerce">
-                <a className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline">
+                <a className="focus:shadow-outline relative block w-full overflow-hidden rounded-lg focus:outline-none">
                   <img
                     src="https://res.cloudinary.com/dbdvy5b2z/image/upload/c_scale,w_600/v1646564506/fy/ecommerce/book_bjsonl.jpg"
                     alt="GMP Pocket Book"

@@ -35,7 +35,7 @@ export const Comments = () => {
         <div className="space-y-12">
           {" "}
           <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-            <h2 className="text-3xl text-pink-600 leading-9 font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600 sm:text-4xl">
               Cosa dicono i nostri soci?
             </h2>
             <p className="text-xl leading-7 text-gray-500">
@@ -43,13 +43,13 @@ export const Comments = () => {
               hanno deciso di entrare nella famiglia di Farmaceutica Younger!
             </p>
           </div>
-          <div className="flex overflow-x-scroll -my-8">
-            <ul className="flex items-center w-full py-8">
+          <div className="-my-8 flex overflow-x-scroll">
+            <ul className="flex w-full items-center py-8">
               {comments.map((c, idx) => {
                 return (
-                  <li key={idx} className="px-3 md:px-4 flex-none text-left">
-                    <figure className="shadow-lg rounded-xl transform transition-all hover:-rotate-3 flex-none max-w-xs md:max-w-md">
-                      <blockquote className="rounded-t-xl bg-white px-6 py-8 md:p-10 text-base font-semibold text-gray-700">
+                  <li key={idx} className="flex-none px-3 text-left md:px-4">
+                    <figure className="max-w-xs flex-none transform rounded-xl shadow-lg transition-all hover:-rotate-3 md:max-w-md">
+                      <blockquote className="rounded-t-xl bg-white px-6 py-8 text-base font-semibold text-gray-700 md:p-10">
                         <svg
                           width="45"
                           height="36"
@@ -59,7 +59,7 @@ export const Comments = () => {
                         </svg>
                         <p>{c.comment}</p>
                       </blockquote>
-                      <figcaption className="flex items-center space-x-4 p-6 md:px-10 md:py-6 bg-gradient-to-br rounded-b-xl leading-6 font-semibold text-white from-indigo-400 to-indigo-800">
+                      <figcaption className="flex items-center space-x-4 rounded-b-xl bg-gradient-to-br from-indigo-400 to-indigo-800 p-6 font-semibold leading-6 text-white md:px-10 md:py-6">
                         <div className="flex-auto">{c.name}</div>
                         <cite className="flex">
                           <span className="sr-only">Original tweet by</span>

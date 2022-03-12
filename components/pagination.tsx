@@ -34,11 +34,11 @@ export const Pagination = (props: PaginationPros) => {
     ];
   }
   return (
-    <nav className="border-t m-auto max-w-xl border-gray-200 px-4 flex items-center justify-between sm:px-0">
-      <div className="w-0 flex-1 flex">
+    <nav className="m-auto flex max-w-xl items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+      <div className="flex w-0 flex-1">
         {hasPreviousPage ? (
           <Link href={getPage(props.currentPage - 1, props.basePath)}>
-            <a className="-mt-px border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
+            <a className="-mt-px inline-flex items-center border-t-2 border-transparent pt-4 pr-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out hover:border-gray-300 hover:text-gray-700 focus:border-gray-400 focus:text-gray-700 focus:outline-none">
               <svg
                 className="mr-3 h-5 w-5 text-gray-400"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +62,7 @@ export const Pagination = (props: PaginationPros) => {
             return (
               <div
                 key="..."
-                className={`-mt-px border-t-2 border-transparent pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150`}
+                className={`-mt-px inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:border-gray-400 focus:text-gray-700 focus:outline-none`}
               >
                 ...
               </div>
@@ -75,7 +75,7 @@ export const Pagination = (props: PaginationPros) => {
                   p === props.currentPage
                     ? "border-indigo-500"
                     : "border-transparent"
-                } pt-4 px-4 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150`}
+                } inline-flex items-center px-4 pt-4 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out hover:border-gray-300 hover:text-gray-700 focus:border-gray-400 focus:text-gray-700 focus:outline-none`}
               >
                 {p}
               </a>
@@ -84,9 +84,9 @@ export const Pagination = (props: PaginationPros) => {
         })}
       </div>
       {hasNextPage ? (
-        <div className="w-0 flex-1 flex justify-end">
+        <div className="flex w-0 flex-1 justify-end">
           <Link href={getPage(props.currentPage + 1, props.basePath)}>
-            <a className="-mt-px border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm leading-5 font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400 transition ease-in-out duration-150">
+            <a className="-mt-px inline-flex items-center border-t-2 border-transparent pt-4 pl-1 text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out hover:border-gray-300 hover:text-gray-700 focus:border-gray-400 focus:text-gray-700 focus:outline-none">
               Next
               <svg
                 className="ml-3 h-5 w-5 text-gray-400"
@@ -104,7 +104,7 @@ export const Pagination = (props: PaginationPros) => {
           </Link>
         </div>
       ) : (
-        <div className="w-0 flex-1 flex justify-end"></div>
+        <div className="flex w-0 flex-1 justify-end"></div>
       )}
     </nav>
   );
