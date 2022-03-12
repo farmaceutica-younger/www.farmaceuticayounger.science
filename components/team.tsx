@@ -3,10 +3,10 @@ import Image from "next/image";
 export const Team: React.FC<{}> = () => {
   return (
     <div className="bg-white">
-      <div className="max-w-screen-xl mx-auto py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-screen-xl py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
         <div className="space-y-12">
           <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-            <h2 className="text-3xl text-pink-600 leading-9 font-extrabold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600 sm:text-4xl">
               La Crew
             </h2>
             <p className="text-xl leading-7 text-gray-500">
@@ -18,19 +18,19 @@ export const Team: React.FC<{}> = () => {
               </span>
             </p>
           </div>
-          <ul className="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:grid-cols-3 lg:max-w-5xl">
+          <ul className="mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3">
             {crew.map((member) => (
               <li key={member.name}>
                 <div className="space-y-6">
                   <Image
-                    className="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"
+                    className="mx-auto h-40 w-40 rounded-full xl:h-56 xl:w-56"
                     alt={member.name}
                     width={300}
                     src={member.image}
                     height={300}
                   />
                   <div className="space-y-2">
-                    <div className="text-lg leading-6 font-medium space-y-1">
+                    <div className="space-y-1 text-lg font-medium leading-6">
                       <h4>{member.name}</h4>
                       <p className="text-pink-600">{member.position}</p>
                     </div>
@@ -40,12 +40,12 @@ export const Team: React.FC<{}> = () => {
                           <a
                             href={member.one2one}
                             target="_blank"
-                            className="text-gray-400 hover:text-gray-500 transition ease-in-out duration-150"
+                            className="text-gray-400 transition duration-150 ease-in-out hover:text-gray-500"
                             rel="noreferrer"
                           >
                             <span className="sr-only">Calendly</span>
                             <svg
-                              className="w-8 h-8 text-pink-500 hover:text-pink-800"
+                              className="h-8 w-8 text-pink-500 hover:text-pink-800"
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"
@@ -65,12 +65,12 @@ export const Team: React.FC<{}> = () => {
                           <a
                             href={member.linkedin}
                             target="_blank"
-                            className="text-gray-400 hover:text-gray-500 transition ease-in-out duration-150"
+                            className="text-gray-400 transition duration-150 ease-in-out hover:text-gray-500"
                             rel="noreferrer"
                           >
                             <span className="sr-only">LinkedIn</span>
                             <svg
-                              className="w-8 h-8 text-blue-500 hover:text-blue-800"
+                              className="h-8 w-8 text-blue-500 hover:text-blue-800"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >

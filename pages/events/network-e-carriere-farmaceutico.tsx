@@ -10,14 +10,14 @@ export default function Example() {
   return (
     <>
       <SEO title="Network e Carriere nel Farmaceutico" />
-      <div className="relative bg-gray-50 overflow-hidden">
+      <div className="relative overflow-hidden bg-gray-50">
         <div
-          className="hidden sm:block sm:absolute sm:inset-y-0  sm:w-full"
+          className="hidden sm:absolute sm:inset-y-0 sm:block  sm:w-full"
           aria-hidden="true"
         >
-          <div className="max-w-7xl mx-auto">
+          <div className="mx-auto max-w-7xl">
             <svg
-              className="absolute right-full transform translate-y-1/4 translate-x-1/4 lg:translate-x-1/2"
+              className="absolute right-full translate-y-1/4 translate-x-1/4 transform lg:translate-x-1/2"
               width={404}
               height={784}
               fill="none"
@@ -49,7 +49,7 @@ export default function Example() {
               />
             </svg>
             <svg
-              className="absolute left-full transform -translate-y-3/4 -translate-x-1/4 md:-translate-y-1/2 lg:-translate-x-1/2"
+              className="absolute left-full -translate-y-3/4 -translate-x-1/4 transform md:-translate-y-1/2 lg:-translate-x-1/2"
               width={404}
               height={784}
               fill="none"
@@ -85,18 +85,18 @@ export default function Example() {
 
         <div className="relative pt-6 pb-16 sm:pb-24">
           <Popover>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
               <nav
                 className="relative flex items-center justify-between sm:h-10 md:justify-center"
                 aria-label="Global"
               >
-                <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
-                  <div className="flex items-center justify-between w-full md:w-auto">
+                <div className="flex flex-1 items-center md:absolute md:inset-y-0 md:left-0">
+                  <div className="flex w-full items-center justify-between md:w-auto">
                     <Link href="/">
                       <a className="flex items-center">
                         <span className="sr-only">Farmaceutica Younger</span>
-                        <BlogIcon className="text-sky-600 h-10 w-auto sm:h-14" />
-                        <span className="text-sky-600 md:text-lg ml-2 ">
+                        <BlogIcon className="h-10 w-auto text-sky-600 sm:h-14" />
+                        <span className="ml-2 text-sky-600 md:text-lg ">
                           Scopri il blog di Farmaceutica Younger
                         </span>
                       </a>
@@ -107,27 +107,27 @@ export default function Example() {
             </div>
           </Popover>
 
-          <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
+          <main className="mx-auto mt-16 max-w-7xl px-4 sm:mt-24">
             <div className="text-center">
-              <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block xl:inline">Network e Carriere nel</span>{" "}
                 <span className="block text-sky-400 xl:inline">
                   Farmaceutico
                 </span>
               </h1>
-              <p className="text-lg mt-4 text-gray-700 font-semibold">
+              <p className="mt-4 text-lg font-semibold text-gray-700">
                 {" "}
                 17 Marzo 2022 - Ore 19:00
               </p>
-              <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              <p className="mx-auto mt-3 max-w-md text-base text-gray-500 sm:text-lg md:mt-5 md:max-w-3xl md:text-xl">
                 Evento Online gratuito per conoscere i profili più diffusi del
                 farmaceutico e accrescere il tuo network!
               </p>
-              <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+              <div className="mx-auto mt-5 max-w-md sm:flex sm:justify-center md:mt-8">
                 <div className="rounded-md shadow">
                   <a
                     href="https://docs.google.com/forms/d/e/1FAIpQLSc14I3eUurmHoClh4PCCEeLNuyW5hKBf2fAA-QzV4ubd712-Q/viewform?usp=send_form"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-400 hover:bg-orange-700 md:py-4 md:text-lg md:px-10"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange-400 px-8 py-3 text-base font-medium text-white hover:bg-orange-700 md:py-4 md:px-10 md:text-lg"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -135,7 +135,7 @@ export default function Example() {
                   </a>
                 </div>
               </div>
-              <div className="w-full m-auto mt-10">
+              <div className="m-auto mt-10 w-full">
                 <img
                   className="m-auto rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/dbdvy5b2z/image/upload/c_scale,w_580/v1646570021/fy/events/17-03-2022_kmjqld.jpg"
@@ -194,7 +194,7 @@ const people = [
 const Relators = () => {
   return (
     <div className="bg-white">
-      <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
           <div className="space-y-5 sm:space-y-4">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -213,18 +213,18 @@ const Relators = () => {
               {people.map((person) => (
                 <li key={person.name}>
                   <div className="flex items-center space-x-4 lg:space-x-6">
-                    <div className="w-16 h-16 aspect-square ">
+                    <div className="aspect-square h-16 w-16 ">
                       <Image
                         width="64px"
                         height="64px"
-                        className="w-16 h-16 rounded-full lg:w-20 lg:h-20 flex-1"
+                        className="h-16 w-16 flex-1 rounded-full lg:h-20 lg:w-20"
                         src={person.imageUrl}
                         alt={person.name}
                       />
                     </div>
-                    <div className="font-medium text-lg leading-6 space-y-1">
+                    <div className="space-y-1 text-lg font-medium leading-6">
                       <h3>{person.name}</h3>
-                      <p className="text-cyan-600 text-base">{person.role}</p>
+                      <p className="text-base text-cyan-600">{person.role}</p>
                     </div>
                   </div>
                 </li>

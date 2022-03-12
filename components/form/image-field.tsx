@@ -34,10 +34,10 @@ export const FeatureImageField = ({
         name={name}
         render={(props) => (
           <div className="">
-            <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+            <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
               <div className="space-y-1 text-center">
                 {props.input.value ? (
-                  <img className="w-24 mx-auto" src={props.input.value} />
+                  <img className="mx-auto w-24" src={props.input.value} />
                 ) : (
                   <svg
                     className="mx-auto h-12 w-12 text-gray-400"
@@ -54,10 +54,10 @@ export const FeatureImageField = ({
                     />
                   </svg>
                 )}
-                <div className="text-sm text-gray-600 text-center">
+                <div className="text-center text-sm text-gray-600">
                   <label
                     htmlFor={props.input.name}
-                    className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                    className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
                   >
                     {props.input.value ? (
                       <span>Cambia immagine</span>

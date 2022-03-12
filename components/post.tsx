@@ -48,12 +48,12 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
   return (
     <>
       <main className="wrapper py-10">
-        <h1 className="text-4xl md:text-6xl text-center py-2 sm:py-0 max-w-[900px] m-auto font-bold mt-10">
+        <h1 className="m-auto mt-10 max-w-[900px] py-2 text-center text-4xl font-bold sm:py-4 md:text-6xl">
           {frontmatter.title}
         </h1>
 
         {author && (
-          <div className="flex flex-col items-center mt-10">
+          <div className="mt-10 flex flex-col items-center">
             <div className="flex-shrink-0">
               <a href={"#"}>
                 <span className="sr-only">{author.name}</span>
@@ -81,7 +81,7 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
           </div>
         )}
 
-        <div className="m-auto w-full mt-3 flex gap-2 justify-center">
+        <div className="m-auto mt-3 flex w-full justify-center gap-2">
           {frontmatter.tags.map((tag) => (
             <Tag key={tag} tag={tag} />
           ))}

@@ -10,7 +10,7 @@ export const PostsList = ({ posts, publish }: PostListProps) => {
   return (
     <div>
       <Link href="/admin/posts/new">
-        <a className="bg-blue-600 text-blue-100 px-4 py-2 hover:bg-blue-800">
+        <a className="bg-blue-600 px-4 py-2 text-blue-100 hover:bg-blue-800">
           Crea un nuovo post
         </a>
       </Link>
@@ -18,17 +18,17 @@ export const PostsList = ({ posts, publish }: PostListProps) => {
         {posts.map((p) => (
           <li key={p.id} className="mt-4">
             <Link href={`/admin/posts/${p.id}/edit`}>
-              <a className="flex gap-2 align-middle cursor-pointer hover:bg-slate-200">
+              <a className="flex cursor-pointer gap-2 align-middle hover:bg-slate-200">
                 <img className="w-32" src={p.featuredImage} alt={p.title} />
                 <div>
                   <div className="mb-2">
                     {!!p.path ? (
-                      <span className="bg-green-200 text-green-600 px-2 py-1 text-xs rounded-full">
+                      <span className="rounded-full bg-green-200 px-2 py-1 text-xs text-green-600">
                         pubblicato
                       </span>
                     ) : (
                       <button
-                        className="text-blue-200 bg-blue-600 hover:bg-blue-800 cursor-pointer px-2 py-1 text-xs rounded-full"
+                        className="cursor-pointer rounded-full bg-blue-600 px-2 py-1 text-xs text-blue-200 hover:bg-blue-800"
                         onClick={(e) => {
                           e.preventDefault();
                           publish(p.id);

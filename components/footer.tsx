@@ -43,8 +43,8 @@ export const Footer = () => {
     <div>
       {/* <Newsletter /> */}
       <footer className="bg-gray-50">
-        <div className="max-w-screen-xl mx-auto py-12 px-4 overflow-hidden space-y-8 sm:px-6 lg:px-8">
-          <div className="text-center text-gray-600 text-xl">
+        <div className="mx-auto max-w-screen-xl space-y-8 overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-xl text-gray-600">
             <p>
               <span className="font-bold">Farmaceutica Younger</span> by Silvia
               Vernotico
@@ -54,7 +54,7 @@ export const Footer = () => {
             {icons.map((icon, idx) => (
               <a key={idx} href={icon.link} target="_blank" rel="noreferrer">
                 <FontAwesomeIcon
-                  className="w-8 h-8"
+                  className="h-8 w-8"
                   icon={icon.icon}
                   style={{ color: icon.color }}
                 />
@@ -65,7 +65,7 @@ export const Footer = () => {
             Copyright &copy; 2017 - {new Date().getFullYear()}
           </p>
 
-          <div className="mt-8 text-center text-gray-400 text-sm">
+          <div className="mt-8 text-center text-sm text-gray-400">
             <a
               href="https://www.iubenda.com/privacy-policy/86855038"
               target="_blank"

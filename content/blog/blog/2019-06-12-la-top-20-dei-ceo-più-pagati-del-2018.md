@@ -32,7 +32,7 @@ Ecco la top 20 dei CEO delle aziende biofarmaceutiche più pagati del 2018:
 
 +761%
 
-Bancel, con un totale di $ 58,6 milioni ha superato di gran lunga il compenso di tutti gli altri amministratori delegati di importanti produttori di farmaci, di grandi e piccole dimensioni. In effetti, il pacchetto di pagamento del 2018 di Bancel era quasi il doppio del compenso registrato dal Ceo Kare Schultz di Teva.  Complessivamente, la paga del 2018 di Bancel ha visto il suo stipendio gonfiarsi più di otto volte il suo pacchetto di pagamento del 2017 di $ 6,8 milioni. Bancel è CEO di Moderna dal 2011. La società sta promuovendo farmaci e vaccini basati sull'RNA messaggero e ha stipulato partnership con AstraZeneca e Merck & Co. su alcuni farmaci candidati.
+Bancel, con un totale di $ 58,6 milioni ha superato di gran lunga il compenso di tutti gli altri amministratori delegati di importanti produttori di farmaci, di grandi e piccole dimensioni. In effetti, il pacchetto di pagamento del 2018 di Bancel era quasi il doppio del compenso registrato dal Ceo Kare Schultz di Teva. Complessivamente, la paga del 2018 di Bancel ha visto il suo stipendio gonfiarsi più di otto volte il suo pacchetto di pagamento del 2017 di $ 6,8 milioni. Bancel è CEO di Moderna dal 2011. La società sta promuovendo farmaci e vaccini basati sull'RNA messaggero e ha stipulato partnership con AstraZeneca e Merck & Co. su alcuni farmaci candidati.
 
 **2. Kare Schultz, Teva**
 

@@ -8,11 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Hero = () => (
-  <div className="relative bg-white overflow-hidden z-1">
-    <div className="max-w-screen-xl mx-auto">
-      <div className="relative z-0 md:z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+  <div className="z-1 relative overflow-hidden bg-white">
+    <div className="mx-auto max-w-screen-xl">
+      <div className="relative z-0 bg-white pb-8 sm:pb-16 md:z-10 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
         <svg
-          className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+          className="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 transform text-white lg:block"
           fill="currentColor"
           viewBox="0 0 100 100"
           preserveAspectRatio="none"
@@ -20,15 +20,15 @@ const Hero = () => (
           <polygon points="50,0 100,0 50,100 0,100" />
         </svg>
 
-        <div className="pt-6 px-4 sm:px-6 lg:px-8"></div>
+        <div className="px-4 pt-6 sm:px-6 lg:px-8"></div>
 
-        <main className="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+        <main className="mx-auto mt-10 max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
           <div className="sm:text-center lg:text-left">
-            <h2 className="text-4xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
+            <h2 className="text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:text-5xl sm:leading-none md:text-6xl">
               L&apos;Associazione <br />
               <span className="text-pink-600">Farmaceutica Younger</span>
             </h2>
-            <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
               <span className="font-bold text-pink-600">
                 Farmaceutica Younger
               </span>{" "}
@@ -46,7 +46,7 @@ const Hero = () => (
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfUpTiuoEwR0b9uFjjKiQYprxNm7CalPCPvdPYNV3_W-YCaUw/viewform"
                   target="_blank"
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-pink-600 hover:bg-pink-500 focus:outline-none focus:border-pink-700 focus:shadow-outline-pink transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
+                  className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg"
                   rel="noreferrer"
                 >
                   Diventa socio
@@ -54,7 +54,7 @@ const Hero = () => (
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <Link href="/associazione/statuto">
-                  <a className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-pink-700 bg-pink-100 hover:text-pink-600 hover:bg-pink-50 focus:outline-none focus:shadow-outline-pink focus:border-pink-300 transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10">
+                  <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-100 px-8 py-3 text-base font-medium leading-6 text-pink-700 transition duration-150 ease-in-out hover:bg-pink-50 hover:text-pink-600 focus:border-pink-300 focus:outline-none md:py-4 md:px-10 md:text-lg">
                     Leggi lo Statuto
                   </a>
                 </Link>
@@ -66,7 +66,7 @@ const Hero = () => (
     </div>
     <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
       <Image
-        className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+        className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
         src="/fy/associazione/associazione_lan3kt.jpg"
         alt="Associazione"
         width={1000}
@@ -586,20 +586,20 @@ const Principles = () => {
     },
   ];
   return (
-    <div className="py-12 mt-10 bg-white">
+    <div className="mt-10 bg-white py-12">
       <div className="text-center">
-        <h2 className="text-pink-600 text-3xl leading-9 tracking-tight font-extrabold text-gray-900 sm:text-4xl sm:leading-10">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600 text-gray-900 sm:text-4xl sm:leading-10">
           I principi che ci ispirano
         </h2>
-        <p className="mt-3 max-w-2xl mx-auto text-xl leading-7 text-gray-500 sm:mt-4"></p>
+        <p className="mx-auto mt-3 max-w-2xl text-xl leading-7 text-gray-500 sm:mt-4"></p>
       </div>
-      <div className="max-w-xl mx-auto px-4 mt-12 sm:px-6 lg:max-w-screen-xl lg:px-8">
+      <div className="mx-auto mt-12 max-w-xl px-4 sm:px-6 lg:max-w-screen-xl lg:px-8">
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">
           {principles.map((principle, idx) => (
             <div key={idx} className="mt-10 lg:mt-0">
-              <div className="w-1/2 m-auto"> {principle.img}</div>
+              <div className="m-auto w-1/2"> {principle.img}</div>
               <div className="mt-5">
-                <h5 className="text-2xl leading-6 font-medium text-gray-900">
+                <h5 className="text-2xl font-medium leading-6 text-gray-900">
                   {principle.name}
                 </h5>
                 <p className="mt-2 text-base leading-6 text-gray-500">
@@ -616,10 +616,10 @@ const Principles = () => {
 
 const Help = () => {
   return (
-    <div className="bg-gray-50 overflow-hidden">
-      <div className="relative max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="overflow-hidden bg-gray-50">
+      <div className="relative mx-auto max-w-screen-xl py-12 px-4 sm:px-6 lg:px-8">
         <svg
-          className="absolute top-0 left-full transform -translate-x-1/2 -translate-y-3/4 lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
+          className="absolute top-0 left-full -translate-x-1/2 -translate-y-3/4 transform lg:left-auto lg:right-full lg:translate-x-2/3 lg:translate-y-1/4"
           width="404"
           height="784"
           fill="none"
@@ -653,14 +653,14 @@ const Help = () => {
 
         <div className="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
           <div className="lg:col-span-1">
-            <h3 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+            <h3 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
               <span className="text-pink-600">Sostieni</span> Farmaceutica
               Younger
             </h3>
           </div>
           <div className="mt-10 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:col-span-2 lg:mt-0">
             <div>
-              <span className="flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white">
+              <span className="flex h-12 w-12 items-center justify-center rounded-md bg-pink-500 text-white">
                 <svg
                   className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -671,11 +671,11 @@ const Help = () => {
                   <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                 </svg>
               </span>
-              <div className="mt-5 flex flex-col h-48">
-                <h4 className="text-lg leading-6 font-medium text-gray-900">
+              <div className="mt-5 flex h-48 flex-col">
+                <h4 className="text-lg font-medium leading-6 text-gray-900">
                   La Community
                 </h4>
-                <p className="mt-2 text-base leading-6 text-gray-500 flex-grow">
+                <p className="mt-2 flex-grow text-base leading-6 text-gray-500">
                   Siamo un gruppo di giovani appassionati come te del mondo
                   Farmaceutico! Con la voglia di scambiarsi idee, spunti e
                   opinioni per accrescere professionalmente.
@@ -684,7 +684,7 @@ const Help = () => {
                 <a
                   href="https://t.me/lacommunitydiFarmaceuticaYounger"
                   target="_blank"
-                  className="block text-center rounded text-pink-500 border-pink-500 hover:bg-pink-500 hover:text-white border-2 mt-2 px-4 py-2"
+                  className="mt-2 block rounded border-2 border-pink-500 px-4 py-2 text-center text-pink-500 hover:bg-pink-500 hover:text-white"
                   rel="noreferrer"
                 >
                   Entra in Telegram
@@ -692,7 +692,7 @@ const Help = () => {
               </div>
             </div>
             <div className="mt-10 sm:mt-0">
-              <div className="flex items-center justify-center h-12 w-12 rounded-md bg-pink-500 text-white">
+              <div className="flex h-12 w-12 items-center justify-center rounded-md bg-pink-500 text-white">
                 <svg
                   className="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -706,18 +706,18 @@ const Help = () => {
                   ></path>
                 </svg>
               </div>
-              <div className="mt-5 flex flex-col h-48">
-                <h4 className="text-lg leading-6 font-medium text-gray-900">
+              <div className="mt-5 flex h-48 flex-col">
+                <h4 className="text-lg font-medium leading-6 text-gray-900">
                   L&apos;Aperitivo
                 </h4>
-                <p className="mt-2 text-base leading-6 text-gray-500 flex-grow">
+                <p className="mt-2 flex-grow text-base leading-6 text-gray-500">
                   Se ti piace il progetto e vuoi aiutarci concretamente puoi
                   fare una piccola donazione simbolica offrendoci un aperitivo!
                 </p>
                 <a
                   href="https://www.paypal.com/paypalme/farmaceuticayounger"
                   target="_blank"
-                  className="block text-center rounded text-pink-500 border-pink-500 hover:bg-pink-500 hover:text-white border-2 mt-2 px-4 py-2 "
+                  className="mt-2 block rounded border-2 border-pink-500 px-4 py-2 text-center text-pink-500 hover:bg-pink-500 hover:text-white "
                   rel="noreferrer"
                 >
                   Dona con PayPal
@@ -743,19 +743,19 @@ const Events = ({
   return (
     <div className="text-center">
       <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-        <h2 className="text-3xl text-pink-600 leading-9 font-extrabold tracking-tight sm:text-4xl">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600 sm:text-4xl">
           {title}
         </h2>
         <p className="text-xl leading-7 text-gray-500">{description}</p>
       </div>
 
       <div className="py-12">
-        <div className="max-w-xl mx-auto px-4 sm:px-6 lg:max-w-screen-xl lg:px-8">
+        <div className="mx-auto max-w-xl px-4 sm:px-6 lg:max-w-screen-xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8">
             {events.map((event2020, idx) => (
               <div key={idx} className="mt-10 lg:mt-0">
                 <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-                  <div className="relative block w-full rounded-lg overflow-hidden focus:outline-none focus:shadow-outline">
+                  <div className="focus:shadow-outline relative block w-full overflow-hidden rounded-lg focus:outline-none">
                     <YouTube
                       className="w-full"
                       opts={{
@@ -766,7 +766,7 @@ const Events = ({
                   </div>
                 </div>
                 <div className="mt-5 text-center">
-                  <h5 className="text-lg leading-6 font-medium text-gray-900">
+                  <h5 className="text-lg font-medium leading-6 text-gray-900">
                     {event2020.name}
                   </h5>
                   <p className="mt-2 text-base leading-6 text-gray-500">
@@ -784,17 +784,17 @@ const Events = ({
 
 const Images = () => {
   return (
-    <div className="text-center mt-20">
+    <div className="mt-20 text-center">
       <div className="space-y-5 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-5xl">
-        <h2 className="text-3xl text-pink-600 leading-9 font-extrabold tracking-tight sm:text-4xl">
+        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-pink-600 sm:text-4xl">
           Alcuni momenti insieme
         </h2>
       </div>
-      <div className="flex flex-row overflow-x-scroll mt-10">
+      <div className="mt-10 flex flex-row overflow-x-scroll">
         {images.map((img, idx) => (
           <Image
             key={idx}
-            className="max-w-sm h-80 flex-grow"
+            className="h-80 max-w-sm flex-grow"
             width={800}
             height={500}
             src={img}
@@ -817,7 +817,7 @@ const IndexPage = () => {
       <Principles />
       <Team />
       <Comments />
-      <div className="mt-20 py-20 bg-gray-50 z-0">
+      <div className="z-0 mt-20 bg-gray-50 py-20">
         <Events
           title="Eventi 2020"
           description="Le iniziative portate avanti dal vivo nel corso di questo anno da
@@ -829,7 +829,7 @@ const IndexPage = () => {
       <div>
         <Images />
       </div>
-      <div className="py-20 mt-20 bg-gray-50">
+      <div className="mt-20 bg-gray-50 py-20">
         <Events
           title="Contenuti digitali"
           description="Gli ultimi video caricarti sul canale YouTube di Farmaceutica Younger ti permetteranno di far chiarezza sulle molteplici professioni che il mondo farmaceutico può offrire."
