@@ -59,6 +59,7 @@ const generateRSSFeed = async () => {
       id: url,
       link: url,
       description: post.description,
+      image: post.featuredImage,
       author: [
         {
           name: author.name,
