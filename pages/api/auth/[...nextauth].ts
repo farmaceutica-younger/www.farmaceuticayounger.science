@@ -18,6 +18,9 @@ const googleConfig = getConfigs({
 
 const options: NextAuthOptions = {
   adapter: PrismaAdapter(db),
+  pages: {
+    signIn: "/auth/signin",
+  },
   providers: [
     GoogleProvider({
       ...googleConfig,
