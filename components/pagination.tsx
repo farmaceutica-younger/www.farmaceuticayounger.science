@@ -16,7 +16,7 @@ function getPage(nextPage: number, basePath: string) {
 }
 
 export const Pagination = (props: PaginationPros) => {
-  const hasPreviousPage = props.currentPage > 0;
+  const hasPreviousPage = props.currentPage > 1;
   const hasNextPage = props.currentPage < props.pageCount;
 
   let pages: (number | "...")[] = [];
