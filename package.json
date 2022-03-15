@@ -27,7 +27,7 @@
     "@trpc/react": "^9.16.0",
     "@trpc/server": "^9.16.0",
     "cloudinary": "^1.28.1",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.0",
     "dotenv": "^16.0.0",
     "env-ts-conf": "^1.0.1",
     "feed": "^4.2.2",
