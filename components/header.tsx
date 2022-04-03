@@ -245,13 +245,13 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      {/* <Banner
-        long="Big News! Il prossimo evento live di Farmaceutica Younger sta per arrivare!"
-        short="Il prossimo evento live di Farmaceutica Younger!"
+      <Banner
+        long="Partecipa al Brunch in GxP il 7 maggio 2022"
+        short="Brunch in GxP - 7 maggio 2022!"
         btn="Partecipa!"
         Icon={SpeakerphoneIcon}
-        href="/events/network-e-carriere-farmaceutico"
-      /> */}
+        href="/events/2022-05-brunch-gxp"
+      />
     </div>
   );
 };

@@ -16,6 +16,7 @@ export default function Home({
       <Header />
       <main>
         <Silvia image="/silvia.jpg" />
+        <CTA />
         <NewsFarmaItaly />
         <PostsList posts={posts} title="Gli ultimi articoli" description="" />
       </main>
@@ -448,4 +449,41 @@ export const getStaticProps = async () => {
     },
     revalidate: 10 * 60,
   };
+};
+
+const CTA = () => {
+  return (
+    <div className="bg-white">
+      <div className="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-lg bg-pink-700 shadow-xl lg:grid lg:grid-cols-2 lg:gap-4">
+          <div className="px-6 pt-10 pb-12 sm:px-16 sm:pt-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
+            <div className="lg:self-center">
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+                <span className="block">Brunch in GxP</span>
+                <span className="block">7 Maggio 2022</span>
+              </h2>
+              <p className="mt-4 text-lg leading-6 text-pink-200">
+                Ci saremo noi di FY e un sacco di giovani afferenti
+                dall’industria farmaceutica ciascuno pronto a condividere le
+                proprie esperienze professionali con chi vorrà essere dei
+                nostri!
+              </p>
+              <Link href="/events/2022-05-brunch-gxp">
+                <a className="mt-8 inline-flex items-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-pink-600 shadow hover:bg-pink-50">
+                  Partecipa!
+                </a>
+              </Link>
+            </div>
+          </div>
+          <div className="aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1 grid place-content-center">
+            <img
+              className="rounded-md object-cover object-left-bottom"
+              src="https://res.cloudinary.com/dbdvy5b2z/image/upload/v1649005232/fy/photo_2022-04-03_18.59.54_y42ihn.jpg"
+              alt="Brunch in GxP"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
