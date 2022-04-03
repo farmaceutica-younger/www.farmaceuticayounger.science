@@ -144,7 +144,7 @@ export default function Example() {
 
               <div className="m-auto mt-10 w-full">
                 <img
-                  className="m-auto max-w-lg rounded-xl shadow-lg"
+                  className="m-auto w-full max-w-lg rounded-xl shadow-lg"
                   src="https://res.cloudinary.com/dbdvy5b2z/image/upload/v1649005232/fy/photo_2022-04-03_18.59.54_y42ihn.jpg"
                   alt="Evento"
                 />
@@ -154,7 +154,7 @@ export default function Example() {
         </div>
       </div>
 
-      <div className="prose prose-xl prose-indigo mx-auto mt-6 mb-10 text-gray-500">
+      <div className="prose prose-indigo mx-auto mt-6 mb-10 px-2 text-gray-500 md:prose-lg lg:prose-xl">
         <p>
           Il primo evento dal vivo con i professionisti del farmaceutico sbarca
           a Milano con l’evento BRUNCH in GxP firmato da Farmaceutica Younger!
