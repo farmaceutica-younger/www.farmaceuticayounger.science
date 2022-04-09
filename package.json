@@ -11,7 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
-    "@fortawesome/free-brands-svg-icons": "^6.0.0",
+    "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.0.0",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@headlessui/react": "^1.5.0",
@@ -52,7 +52,7 @@
     "rehype-sanitize": "^5.0.1",
     "slugify": "^1.6.5",
     "superjson": "^1.8.0",
-    "zod": "^3.14.3"
+    "zod": "^3.14.4"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
