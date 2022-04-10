@@ -246,7 +246,7 @@ export const Header = () => {
         </div>
       </div>
       <Banner
-        long="Partecipa al Brunch in GxP il 7 maggio 2022"
+        long="Big News! Partecipa al Brunch in GxP il 7 maggio 2022"
         short="Brunch in GxP - 7 maggio 2022!"
         btn="Partecipa!"
         Icon={SpeakerphoneIcon}
