@@ -132,12 +132,12 @@ export default function Example() {
               <div className="mx-auto mt-5 max-w-md sm:flex sm:justify-center md:mt-8">
                 <div className="rounded-md shadow">
                   <a
-                    href="https://meetu.ps/e/KZ8pq/vC6GJ/i"
+                    href="https://forms.gle/hpii4dGUroREaFFf7"
                     className="flex w-full items-center justify-center rounded-md border border-transparent bg-purple-400 px-8 py-3 text-base font-medium text-white hover:bg-purple-700 md:py-4 md:px-10 md:text-lg"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Prenota il tuo posto su Meetup!
+                    Prenota il tuo posto!
                   </a>
                 </div>
               </div>

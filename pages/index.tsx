@@ -475,7 +475,7 @@ const CTA = () => {
               </Link>
             </div>
           </div>
-          <div className="aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1 grid place-content-center">
+          <div className="aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1 grid place-content-center lg:mx-2">
             <img
               className="rounded-md object-cover object-left-bottom"
               src="https://res.cloudinary.com/dbdvy5b2z/image/upload/v1649005232/fy/photo_2022-04-03_18.59.54_y42ihn.jpg"
