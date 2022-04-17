@@ -1,6 +1,6 @@
 import { PostForm } from "components/form/post-form";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { cloudinaryUploadImage } from "utils/cloudinary";
 import { trpc } from "utils/trpc";
 
@@ -34,15 +34,7 @@ const NewPostPage = () => {
           back={() => router.push(".")}
           uploadImage={uploadImage}
           author={author!}
-          initialValue={{
-            body: "",
-            description: "",
-            featuredImage: undefined,
-            publishedTime: new Date(),
-            showFeatureImage: true,
-            tags: [],
-            title: "",
-          }}
+          initialValue={{ tags: [] }}
           onSave={async (value) => {
             const res = await createPost({
               data: value,

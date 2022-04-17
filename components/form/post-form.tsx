@@ -1,4 +1,4 @@
-import { Author, Post } from "@prisma/client";
+import { Author } from "@prisma/client";
 import { DatePickerField } from "components/form/date-picker";
 import { PostPage } from "components/post";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -48,6 +48,11 @@ export const PostForm = ({
 }: PostFormProps) => {
   const [showPreview, setShowPreview] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [_initialValue] = useState({
+    publishedTime: new Date(),
+    tags: [],
+    ...initialValue,
+  });
 
   const openPreview = () => setShowPreview(true);
 
@@ -66,7 +71,7 @@ export const PostForm = ({
     <Form<PostType>
       onSubmit={onSubmit}
       validate={zodValidate(PostFormSchema)}
-      initialValues={initialValue}
+      initialValues={_initialValue}
       render={({ handleSubmit, invalid }) => {
         return (
           <PostFormStyled onSubmit={handleSubmit}>
