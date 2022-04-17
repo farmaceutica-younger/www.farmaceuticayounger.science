@@ -14,6 +14,7 @@ import { SwitchField } from "./switch-field";
 import styled from "@emotion/styled";
 import { Dialog } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
+import deepEqual from "deep-equal";
 
 const EditorField = dynamic(() => import("components/form/editor"), {
   ssr: false,
@@ -40,19 +41,14 @@ export interface PostFormProps {
 }
 
 export const PostForm = ({
-  initialValue,
   uploadImage,
   onSave,
   author,
   back,
+  initialValue,
 }: PostFormProps) => {
   const [showPreview, setShowPreview] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [_initialValue] = useState({
-    publishedTime: new Date(),
-    tags: [],
-    ...initialValue,
-  });
 
   const openPreview = () => setShowPreview(true);
 
@@ -71,7 +67,8 @@ export const PostForm = ({
     <Form<PostType>
       onSubmit={onSubmit}
       validate={zodValidate(PostFormSchema)}
-      initialValues={_initialValue}
+      initialValues={initialValue}
+      initialValuesEqual={deepEqual}
       render={({ handleSubmit, invalid }) => {
         return (
           <PostFormStyled onSubmit={handleSubmit}>

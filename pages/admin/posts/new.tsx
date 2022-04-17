@@ -34,7 +34,7 @@ const NewPostPage = () => {
           back={() => router.push(".")}
           uploadImage={uploadImage}
           author={author!}
-          initialValue={{ tags: [] }}
+          initialValue={{ tags: [], publishedTime: new Date() }}
           onSave={async (value) => {
             const res = await createPost({
               data: value,
