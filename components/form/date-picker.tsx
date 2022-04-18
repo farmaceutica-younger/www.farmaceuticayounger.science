@@ -13,7 +13,10 @@ export const DatePickerField = ({ name }: { name: string }) => {
     <Field
       name={name}
       render={({ input }) => (
-        <DatePicker value={new Date(input.value)} onChange={input.onChange} />
+        <DatePicker
+          value={new Date(input.value || new Date())}
+          onChange={input.onChange}
+        />
       )}
     />
   );

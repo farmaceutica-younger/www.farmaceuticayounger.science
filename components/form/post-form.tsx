@@ -14,7 +14,7 @@ import { SwitchField } from "./switch-field";
 import styled from "@emotion/styled";
 import { Dialog } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import deepEqual from "deep-equal";
+import deepEqual from "fast-deep-equal";
 
 const EditorField = dynamic(() => import("components/form/editor"), {
   ssr: false,
