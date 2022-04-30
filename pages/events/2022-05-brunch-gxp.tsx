@@ -6,7 +6,7 @@ import { SEO } from "components/seo";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Example() {
+export default function Event() {
   return (
     <>
       <SEO
@@ -173,7 +173,7 @@ export default function Example() {
         </p>
       </div>
 
-      {/* <Relators /> */}
+      <Relators />
       <Footer />
     </>
   );
@@ -182,33 +182,38 @@ export default function Example() {
 const people = [
   {
     name: "Maurizio Cuocolo",
-    role: "Head of Quality Management Unit",
+    role: "Quality Assurance Auditor",
     imageUrl: "/v1641589898/fy/authors/maurizio_avi6ll.jpg",
   },
   {
     name: "Irene Carnovale",
-    role: "Business Support Scientist",
+    role: "R&D - Business Support Scientist",
     imageUrl: "/v1641520587/fy/authors/irenecarnovale_cdet9r.jpg",
   },
   {
     name: "Simone Cossari",
-    role: "PhD student",
+    role: "Laboratory System & Data Integrity Specialist",
     imageUrl: "/v1646595447/fy/authors/simone-cossari_zijf0d.jpg",
   },
   {
-    name: "Viviana Riccardi",
-    role: "Quality Assurance Representative",
-    imageUrl: "/v1646595447/fy/authors/valentina-ricciardi_fy2cuk.jpg",
-  },
-  {
-    name: "Giorgia Bottello",
+    name: "Domenico Di Vincenzo",
     role: "Quality Control Specialist",
-    imageUrl: "/fy/authors/giorgia_ixtzta.jpg",
+    imageUrl: "/fy/authors/domenico_v0gzg7.jpg",
   },
   {
-    name: "Roberta Cocomazzi",
-    role: "Medical Writer & Regulatory Affairs",
-    imageUrl: "/v1646595447/fy/authors/roberta-cocomazzi_fokmkd.jpg",
+    name: "Silvia Garau",
+    role: "Brand Manager",
+    imageUrl: "/fy/authors/silvia-garau_klhyxe.jpg",
+  },
+  {
+    name: "Carola Rivaletto",
+    role: "Change Control & Regulatory Affairs",
+    imageUrl: "/fy/authors/carola_pfcadc.jpg",
+  },
+  {
+    name: "Antonino Barbera",
+    role: "Technology Transfer",
+    imageUrl: "/fy/authors/antonino_hwpf6a.jpg",
   },
   {
     name: "Filippo Maria Di Dona",
@@ -224,7 +229,7 @@ const Relators = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-8">
           <div className="space-y-5 sm:space-y-4">
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
-              Tutti gli ospiti
+              Tutti gli Speaker
             </h2>
             <p className="text-xl text-gray-500">
               Durente l&apos;evento sarà possibile confrontarsi con diverse
