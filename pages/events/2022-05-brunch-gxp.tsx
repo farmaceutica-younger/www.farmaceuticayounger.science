@@ -6,7 +6,7 @@ import { SEO } from "components/seo";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Example() {
+export default function Event() {
   return (
     <>
       <SEO
@@ -198,7 +198,7 @@ const people = [
   {
     name: "Domenico Di Vincenzo",
     role: "Quality Control Specialist",
-    imageUrl: "/fy/authors/giorgia_ixtzta.jpg",
+    imageUrl: "/fy/authors/domenico_v0gzg7.jpg",
   },
   {
     name: "Silvia Garau",

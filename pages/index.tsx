@@ -121,7 +121,7 @@ const Silvia = ({ image }: { image: string }) => {
                 <p>
                   Benvenuto! Sono Silvia Vernotico, ideatrice e curatrice del
                   blog e presidente dell&apos;associazione{" "}
-                  <span className="font-bold"> Farmaceutica Younger</span> : la
+                  <span className="font-bold"> Farmaceutica Younger</span>: la
                   piattaforma Young tutta italiana rivolta a giovani laureati in
                   discipline scientifiche o appassionati dell&apos;universo
                   farmaceutico, dove conoscere le regole e i meccanismi del
