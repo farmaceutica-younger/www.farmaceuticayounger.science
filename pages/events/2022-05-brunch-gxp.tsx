@@ -186,9 +186,9 @@ const people = [
     imageUrl: "/v1641589898/fy/authors/maurizio_avi6ll.jpg",
   },
   {
-    name: "Irene Carnovale",
-    role: "R&D - Business Support Scientist",
-    imageUrl: "/v1641520587/fy/authors/irenecarnovale_cdet9r.jpg",
+    name: "Domenico Di Vincenzo",
+    role: "Quality Control Specialist",
+    imageUrl: "/fy/authors/domenico_v0gzg7.jpg",
   },
   {
     name: "Simone Cossari",
@@ -196,19 +196,9 @@ const people = [
     imageUrl: "/v1646595447/fy/authors/simone-cossari_zijf0d.jpg",
   },
   {
-    name: "Domenico Di Vincenzo",
-    role: "Quality Control Specialist",
-    imageUrl: "/fy/authors/domenico_v0gzg7.jpg",
-  },
-  {
-    name: "Silvia Garau",
-    role: "Brand Manager",
-    imageUrl: "/fy/authors/silvia-garau_klhyxe.jpg",
-  },
-  {
-    name: "Carola Rivaletto",
-    role: "Change Control & Regulatory Affairs",
-    imageUrl: "/fy/authors/carola_pfcadc.jpg",
+    name: "Irene Carnovale",
+    role: "R&D - Business Support Scientist",
+    imageUrl: "/v1641520587/fy/authors/irenecarnovale_cdet9r.jpg",
   },
   {
     name: "Antonino Barbera",
@@ -219,6 +209,21 @@ const people = [
     name: "Filippo Maria Di Dona",
     role: "Clinical Research Associate & Pharmacovigilance Consultant",
     imageUrl: "/v1646595447/fy/authors/filippo-di-dona_rqkouy.jpg",
+  },
+  {
+    name: "Carola Rivaletto",
+    role: "Change Control & Regulatory Affairs",
+    imageUrl: "/fy/authors/carola_pfcadc.jpg",
+  },
+  {
+    name: "Giulia Speranza",
+    role: "Market Access",
+    imageUrl: "/fy/authors/giulia-speranza_n82sab.jpg",
+  },
+  {
+    name: "Silvia Garau",
+    role: "Brand Manager",
+    imageUrl: "/fy/authors/silvia-garau_klhyxe.jpg",
   },
 ];
 
