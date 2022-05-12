@@ -119,7 +119,12 @@ export const getStaticPaths = async () => {
     },
   });
   const paths = regions.map((r) => ({
-    params: { region: slugify(r.region, { lower: true }) },
+    params: {
+      region: slugify(r.region, {
+        lower: true,
+        remove: /[*+~.()'"!:@]/g,
+      }),
+    },
   }));
   return {
     paths,

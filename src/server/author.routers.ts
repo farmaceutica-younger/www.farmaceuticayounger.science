@@ -90,6 +90,7 @@ export const authorRouter = createRouter()
       const slug = slugify(post.title.substring(0, 50), {
         lower: true,
         trim: true,
+        remove: /[*+~.()'"!:@]/g,
       });
       const path = `/blog/${d.getFullYear()}/${d.getMonth()}/${slug}/`;
       return await ctx.db.post.update({

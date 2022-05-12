@@ -43,7 +43,10 @@ interface RegionProps {
 }
 
 const RegionPreview = ({ region }: RegionProps) => {
-  const regionSlug = slugify(region.region, { lower: true });
+  const regionSlug = slugify(region.region, {
+    lower: true,
+    remove: /[*+~.()'"!:@]/g,
+  });
   const href = `/farmainitaly/${regionSlug}`;
   const image = `https://res.cloudinary.com/dbdvy5b2z/image/upload/v1646168992/fy/pharmainitaly/${imageMap[regionSlug]}`;
 
