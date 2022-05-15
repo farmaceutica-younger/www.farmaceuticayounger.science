@@ -16,7 +16,7 @@ export default function Home({
       <Header />
       <main>
         <Silvia image="/silvia.jpg" />
-        <CTA />
+        {/* <CTA /> */}
         <NewsFarmaItaly />
         <PostsList posts={posts} title="Gli ultimi articoli" description="" />
       </main>

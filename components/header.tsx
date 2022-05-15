@@ -7,11 +7,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
-import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon, MenuIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import React, { Fragment } from "react";
-import { Banner } from "./banner";
 import { BlogIcon } from "./icon";
 
 const blogMenuSections = [
@@ -245,13 +244,13 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <Banner
+      {/* <Banner
         long="Big News! Partecipa al Brunch in GxP il 7 maggio 2022"
         short="Brunch in GxP - 7 maggio 2022!"
         btn="Partecipa!"
         Icon={SpeakerphoneIcon}
         href="/events/2022-05-brunch-gxp"
-      />
+      /> */}
     </div>
   );
 };
