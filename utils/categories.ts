@@ -50,13 +50,34 @@ export async function getPageProps(
     },
   });
 
+  let tagFilter: any = {
+    tags: {
+      has: category,
+    },
+  };
+
+  if (category === "blog") {
+    tagFilter = {
+      OR: [
+        {
+          tags: {
+            has: category,
+          },
+        },
+        {
+          tags: {
+            isEmpty: true,
+          },
+        },
+      ],
+    };
+  }
+
   const posts = await db.post.findMany({
     skip: take * (page - 1),
     take,
     where: {
-      tags: {
-        has: category,
-      },
+      ...tagFilter,
       path: {
         startsWith: "/",
       },

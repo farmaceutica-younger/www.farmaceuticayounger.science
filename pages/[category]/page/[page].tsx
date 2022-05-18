@@ -31,7 +31,7 @@ const SectionPage = ({
 
 export default SectionPage;
 
-const take = 10;
+const take = 20;
 
 export const getStaticPaths = async () => {
   const categoryTotals = await Promise.all(

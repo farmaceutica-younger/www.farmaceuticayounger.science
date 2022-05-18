@@ -10,7 +10,7 @@ export async function getStaticProps({
   category: string;
 }>) {
   const category = params!.category;
-  return getPageProps(1, category, 10);
+  return getPageProps(1, category, 20);
 }
 
 export const getStaticPaths = async () => {
