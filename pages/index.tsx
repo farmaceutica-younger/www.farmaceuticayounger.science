@@ -387,16 +387,20 @@ const NewsFarmaItaly = () => (
 
             <div className="mt-5 space-y-2 sm:mt-8 sm:flex sm:justify-center sm:space-x-2 sm:space-y-0 lg:justify-start">
               <div className="rounded-md shadow">
-                <Link href="/ecommerce">
-                  <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
-                    Acquista
-                  </a>
-                </Link>
+                <a
+                  href="https://amzn.to/3sGVHO7"
+                  rel="noreferrer"
+                  target="_blank"
+                  className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg"
+                >
+                  Acquista su Amazon
+                </a>
               </div>
+
               <div className="rounded-md shadow">
-                <Link href="/associazione">
+                <Link href="/ecommerce">
                   <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-stone-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-stone-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
-                    Scopri l&apos;Associazione
+                    Info
                   </a>
                 </Link>
               </div>

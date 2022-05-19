@@ -77,7 +77,7 @@ const BookSection = () => {
       </main>
 
       <div className="mx-auto mt-8 mb-10 flex max-w-screen-xl flex-col justify-center space-y-2 px-4 sm:flex-row sm:space-y-0 sm:space-x-2 sm:px-6 lg:justify-start">
-        {books.map((book, idx) => (
+        {/* {books.map((book, idx) => (
           <div key={idx}>
             <a
               className="flex
@@ -91,7 +91,17 @@ const BookSection = () => {
               <span>{book.textPrice}</span>
             </a>
           </div>
-        ))}
+        ))} */}
+        <a
+          className="flex
+              divide-white
+              rounded bg-pink-500 px-4 py-2
+              text-lg text-white hover:bg-pink-800"
+          href="https://amzn.to/3sGVHO7"
+          rel="noreferrer"
+        >
+          <span className="mr-2">Acquista su Amazon</span>
+        </a>
       </div>
     </div>
   );
