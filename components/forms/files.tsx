@@ -7,10 +7,10 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const FileImageField = ({ name, ...props }: Props) => {
+  const inputRef = useRef<any>(null);
   return (
     <Field<string> name={name}>
       {({ input: { value, onChange, ...input } }) => {
-        const inputRef = useRef<any>(null);
         return (
           <div className="flex gap-5">
             {value ? (
