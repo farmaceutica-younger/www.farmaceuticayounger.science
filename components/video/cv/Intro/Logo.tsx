@@ -5,7 +5,7 @@ import {
 	useVideoConfig,
 	VideoConfig,
 } from 'remotion';
-import {FYLogo} from '../logo';
+import {FYLogo, FYLogo2} from '../logo';
 import {Arc} from './Arc';
 
 interface Position {
@@ -114,31 +114,19 @@ export const Logo: React.FC<{
 					position: 'absolute',
 					width: videoConfig.width,
 					height: videoConfig.height,
-					transform: `scale(${scale}) translateX(${tx}px) translateY(${ty}px) rotate(${logoRotation}deg)`,
+					transform: `scale(${scale}) translateX(${tx}px) translateY(${ty}px) rotate(${
+						-logoRotation * 0.5
+					}deg)`,
 				}}
 			>
-				<Arc
-					rotateProgress={rotationDevelopment}
-					progress={development}
-					rotation={30}
-				/>
-				<Arc
-					rotateProgress={rotationDevelopment}
-					rotation={90}
-					progress={development}
-				/>
-				<Arc
-					rotateProgress={rotationDevelopment}
-					rotation={-30}
-					progress={development}
-				/>
+				<FYLogo2 scale={1} />
 			</div>
 			<div
 				style={{
 					position: 'absolute',
 					width: videoConfig.width,
 					height: videoConfig.height,
-					transform: `scale(${scale}) translateX(${tx}px) translateY(${ty}px) rotate(${-logoRotation}deg)`,
+					transform: `scale(${scale}) translateX(${tx}px) translateY(${ty}px) rotate(${logoRotation}deg)`,
 				}}
 			>
 				<FYLogo scale={1} />

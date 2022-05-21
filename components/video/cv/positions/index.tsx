@@ -27,19 +27,19 @@ export const Position = (props: PositionProps) => {
 			mass: 0.5,
 		},
 		fps: videoConfig.fps,
-		frame: frame - 50,
+		frame: frame - 80,
 	});
 
 	const development = developmentIn + 2 * developmentOut;
 
 	return (
-		<div className="grid grid-cols-3 w-full">
-			<div className="w-full grid place-content-center">
+		<div className="grid w-full grid-cols-3">
+			<div className="grid w-full place-content-center">
 				<img
 					style={{
 						transform: `translateY(${(1 - development) * 800}px)`,
 					}}
-					className="rounded-full h-[400px] aspect-square object-cover"
+					className="aspect-square h-[400px] rounded-full object-cover"
 					src={props.image}
 					alt={props.company}
 				/>
@@ -48,15 +48,17 @@ export const Position = (props: PositionProps) => {
 				style={{
 					transform: `translateX(${(1 - development) * 800}px)`,
 				}}
-				className="flex flex-col justify-center col-span-2 text-white"
+				className="col-span-2 flex flex-col justify-center text-white"
 			>
 				<h1 className="text-6xl">
 					{props.from} - {props.to}
 				</h1>
-				<h1 className="text-8xl font-bold mt-8">{props.company}</h1>
-				<p className="text-7xl font-thin text-pink-50 mt-8">
-					{props.description}
-				</p>
+				<p className="mt-8 text-8xl font-bold">{props.company}</p>
+				{props.description.split(',').map((line, i) => (
+					<p key={i} className="mt-8 text-7xl font-thin text-pink-50">
+						{line}
+					</p>
+				))}
 			</div>
 		</div>
 	);

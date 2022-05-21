@@ -5,9 +5,23 @@ import { Logo } from "./Intro/Logo";
 import { Position, PositionProps } from "./positions";
 import { CTA } from "./cta";
 
-export const MyCV = (props: CVVideoProps) => {
+export type MyCVProps = CVVideoProps & {
+  positions: PositionProps[];
+  color: {
+    from: string;
+    to: string;
+  };
+  qrcode: string;
+};
+
+const POS_DURATION = 90;
+export const totalLength = (l: number) => 240 + 120 + POS_DURATION * l;
+
+export const MyCV = (props: MyCVProps) => {
   return (
-    <div className="h-full w-full bg-pink-400">
+    <div
+      className={`h-full w-full bg-gradient-to-br ${props.color.from} ${props.color.to}`}
+    >
       {/* <Audio
         src={audio}
         startFrom={0} // if composition is 30fps, then it will start at 2s
@@ -18,16 +32,28 @@ export const MyCV = (props: CVVideoProps) => {
       <Sequence from={0} durationInFrames={120}>
         <Intro titleText={props.name} titleColor="" />
       </Sequence>
-      <Sequence from={120} durationInFrames={60}>
-        <CVVideo {...props} />
+      <Sequence from={120} durationInFrames={120}>
+        <CVVideo
+          image={props.image}
+          name={props.name}
+          motto={props.motto}
+          bio={props.bio}
+        />
       </Sequence>
-      {positions.map((p, idx) => (
-        <Sequence key={idx} from={180 + 60 * idx} durationInFrames={60}>
+      {props.positions.map((p, idx) => (
+        <Sequence
+          key={idx}
+          from={240 + POS_DURATION * idx}
+          durationInFrames={90}
+        >
           <Position {...p} />
         </Sequence>
       ))}
-      <Sequence from={180 + 60 * positions.length} durationInFrames={60}>
-        <CTA />
+      <Sequence
+        from={240 + POS_DURATION * props.positions.length}
+        durationInFrames={120}
+      >
+        <CTA qrcode={props.qrcode} />
       </Sequence>
     </div>
   );

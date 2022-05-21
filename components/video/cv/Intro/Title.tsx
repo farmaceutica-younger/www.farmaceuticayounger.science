@@ -19,7 +19,7 @@ export const Title: React.FC<{
 				width: '100%',
 				height: '200px',
 			}}
-			className="bg-pink-300 text-white"
+			className=" text-white"
 		>
 			{text.map((t, i) => {
 				return (
