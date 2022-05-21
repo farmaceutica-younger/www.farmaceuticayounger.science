@@ -54,7 +54,11 @@ const MyForm = ({ debug }: { debug?: boolean }) => {
         ...arrayMutators,
       }}
       initialValues={{
-        ...silvia,
+        name: "Il tuo nome",
+        color: colors[0],
+        positions: [],
+        motto: "il tuo motto",
+        bio: "sono molto bravo",
       }}
       render={({ handleSubmit }) => (
         <form onSubmit={handleSubmit} className="lg:grid lg:grid-cols-2">
@@ -289,8 +293,8 @@ const MyForm = ({ debug }: { debug?: boolean }) => {
                             type="button"
                             onClick={(e) => {
                               fields.push({
-                                description: "Produzion Manager",
-                                company: "Guna S.p.A.",
+                                description: "La mia posizione",
+                                company: "Azienda S.p.A.",
                                 from: "Gennaio 2020",
                                 to: "Marzo 2021",
                                 location: "Milano",
