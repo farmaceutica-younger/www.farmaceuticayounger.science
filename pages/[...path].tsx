@@ -1,3 +1,4 @@
+import { GmpCta } from "components/gmp-cta";
 import { Header } from "components/header";
 import { PostPage } from "components/post";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
@@ -38,6 +39,7 @@ export default function TestPage({
           author={frontmatter.author}
         />
       )}
+      <GmpCta />
       <Footer />
     </>
   );
