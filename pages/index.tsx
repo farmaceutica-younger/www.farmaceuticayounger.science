@@ -13,7 +13,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
-      <SEO title="Farmcautica Younger" />
+      <SEO title="Farmaceutica Younger" />
       <Header />
       <main>
         <Silvia image="/silvia.jpg" />
