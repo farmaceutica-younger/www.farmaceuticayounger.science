@@ -19,7 +19,25 @@ export default function Home({
         <Silvia image="/silvia.jpg" />
         {/* <CTA /> */}
         <GmpCta />
-        <PostsList posts={posts} title="Gli ultimi articoli" description="" />
+        <div className="relative sm:max-h-[2200px] sm:overflow-hidden">
+          <PostsList posts={posts} title="Gli ultimi articoli" description="" />
+          <div className="absolute left-0 right-0 bottom-0 z-10  hidden h-40 justify-center bg-gradient-to-t from-slate-100/[0.9] to-slate-100/[0] pt-10 md:flex">
+            <div>
+              <Link href="/blog">
+                <a className="focus:shadow-outline-pink flex w-full items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
+                  Vedi tutti gli articoli
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="sm:hidden">
+          <Link href="/blog">
+            <a className="focus:shadow-outline-pink m-auto flex w-full max-w-sm items-center justify-center rounded-md border border-transparent bg-pink-600 px-8 py-3 text-base font-medium leading-6 text-white transition duration-150 ease-in-out hover:bg-pink-500 focus:border-pink-700 focus:outline-none md:py-4 md:px-10 md:text-lg">
+              Vedi tutti gli articoli
+            </a>
+          </Link>
+        </div>
       </main>
       <Footer />
     </div>

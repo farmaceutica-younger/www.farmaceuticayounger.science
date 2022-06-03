@@ -12,8 +12,8 @@ type PostPreview = Pick<
 
 const breakpointColumnsObj = {
   default: 3,
-  1100: 2,
-  500: 1,
+  768: 2,
+  640: 1,
 };
 
 const BlogPostPreview: React.FC<{
@@ -23,7 +23,7 @@ const BlogPostPreview: React.FC<{
     post;
   return (
     <Link href={path!} passHref>
-      <div className="mt-4 flex max-w-lg cursor-pointer flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl">
+      <div className="m-auto mt-4 flex max-w-lg cursor-pointer flex-col overflow-hidden rounded-lg shadow-lg hover:shadow-2xl">
         <div className="flex-shrink-0">
           {
             // eslint-disable-next-line @next/next/no-img-element
