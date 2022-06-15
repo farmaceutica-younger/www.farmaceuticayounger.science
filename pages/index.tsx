@@ -381,6 +381,9 @@ export const getStaticProps = async () => {
   const posts = await db.post.findMany({
     take: 18,
     where: {
+      publishedTime: {
+        lte: new Date(),
+      },
       path: {
         startsWith: "/",
       },

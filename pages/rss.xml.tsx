@@ -39,6 +39,9 @@ const generateRSSFeed = async () => {
 
   const posts = await db.post.findMany({
     where: {
+      publishedTime: {
+        lte: new Date(),
+      },
       path: {
         startsWith: "/",
       },
@@ -59,7 +62,10 @@ const generateRSSFeed = async () => {
       id: url,
       link: url,
       description: post.description,
-      image: post.featuredImage,
+      image: {
+        title: post.title,
+        url: post.featuredImage,
+      },
       author: [
         {
           name: author.name,

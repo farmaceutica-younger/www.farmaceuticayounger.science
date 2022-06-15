@@ -81,6 +81,9 @@ export async function getPageProps(
       path: {
         startsWith: "/",
       },
+      publishedTime: {
+        lte: new Date(),
+      },
     },
     orderBy: {
       publishedTime: "desc",
