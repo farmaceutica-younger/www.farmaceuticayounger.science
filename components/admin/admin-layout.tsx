@@ -1,6 +1,7 @@
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   BellIcon,
+  CalendarIcon,
   HomeIcon,
   MenuAlt2Icon,
   XIcon,
@@ -56,6 +57,11 @@ export const AdminLayout: FC = ({ children }) => {
       href: "/admin/posts",
       icon: HomeIcon,
     });
+    navigation.push({
+      name: "Events",
+      href: '/admin/events',
+      icon: CalendarIcon
+    })
   }
 
   return (
