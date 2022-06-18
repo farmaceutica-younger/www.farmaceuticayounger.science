@@ -22,7 +22,7 @@
     "@prisma/client": "^3.15.2",
     "@remotion/player": "^3.0.7",
     "@tailwindcss/forms": "^0.5.0",
-    "@toast-ui/editor": "^3.1.2",
+    "@toast-ui/editor": "^3.1.7",
     "@toast-ui/react-editor": "^3.1.2",
     "@trpc/client": "^9.22.0",
     "@trpc/next": "^9.22.0",
