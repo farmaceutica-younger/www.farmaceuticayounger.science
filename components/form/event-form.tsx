@@ -1,6 +1,10 @@
+import styled from "@emotion/styled";
+import { Dialog } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
 import { Author } from "@prisma/client";
-import { DatePickerField } from "components/form/date-picker";
 import { EventPage } from "components/event";
+import { DatePickerField } from "components/form/date-picker";
+import deepEqual from "fast-deep-equal";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
@@ -10,11 +14,6 @@ import { trpc } from "utils/trpc";
 import { zodValidate } from "utils/zod-validate";
 import { z } from "zod";
 import { FeatureImageField } from "./image-field";
-import { SwitchField } from "./switch-field";
-import styled from "@emotion/styled";
-import { Dialog } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/outline";
-import deepEqual from "fast-deep-equal";
 
 const EditorField = dynamic(() => import("components/form/editor"), {
   ssr: false,
@@ -213,7 +212,7 @@ const FormNav = ({ invalid, openPreview, saving, back }: FormNavProps) => {
           className="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           disabled={saving || invalid}
         >
-          {saving ? <span>...</span> : <span>Salva l'Evento</span>}
+          {saving ? <span>...</span> : <span>Salva l&apos;Evento</span>}
         </button>
         <button
           type="submit"
@@ -272,7 +271,7 @@ const EventFormFiels = ({ uploadImage }: EventFormFielsProps) => {
               htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
-              Inizio dell'evento
+              Inizio dell&apos;evento
             </label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <DatePickerField name="startDate" />
@@ -285,7 +284,7 @@ const EventFormFiels = ({ uploadImage }: EventFormFielsProps) => {
               htmlFor="title"
               className="block text-sm font-medium text-gray-700"
             >
-              Fine dell'evento
+              Fine dell&apos;evento
             </label>
             <div className="mt-1 flex rounded-md shadow-sm">
               <DatePickerField name="endDate" />
@@ -304,7 +303,7 @@ const EventFormFiels = ({ uploadImage }: EventFormFielsProps) => {
                   htmlFor="location"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Luogo dell'evento
+                  Luogo dell&apos;evento
                 </label>
                 <div className="mt-1">
                   <input
