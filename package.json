@@ -58,7 +58,7 @@
     "remotion": "^3.0.7",
     "slugify": "^1.6.5",
     "superjson": "^1.8.0",
-    "zod": "^3.14.4"
+    "zod": "^3.17.3"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
