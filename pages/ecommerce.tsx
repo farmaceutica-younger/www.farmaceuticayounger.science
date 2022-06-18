@@ -1,111 +1,6 @@
 import { Layout } from "components/layout";
 import { SEO } from "components/seo";
 
-interface Book {
-  title: string;
-  price: number;
-  buy: string;
-  textPrice: string;
-  note?: string;
-}
-
-const BookSection = () => {
-  const books: Book[] = [
-    {
-      title: "Ebook",
-      textPrice: "9.99€",
-      price: 9.99,
-      buy: "mailto:silvia@farmaceuticayounger.science?subject=[Acquisto ebook cGMP]&body=Voglio acquistare il libro in formato digitale a 9.99€",
-    },
-    {
-      title: "Cartaceo",
-      textPrice: "19.99€ + spedizione",
-      price: 19.99,
-      note: "escluse spese di spedizione",
-      buy: `mailto:silvia@farmaceuticayounger.science?subject=[Acquisto libro cGMP]&body=Voglio acquistare il libro in formato cartaceo a 19.99€ + 7.00€ di spese di spedizione (o 8.99€ se spedizione su Sicilia o Sardegna)!`,
-    },
-  ];
-
-  return (
-    <div className="relative overflow-hidden bg-white">
-      <main className="mx-auto mt-4 max-w-screen-xl px-4 sm:mt-6 sm:px-6 md:mt-10 xl:mt-24">
-        <div className="lg:grid lg:grid-cols-12 lg:gap-8">
-          <div className="sm:text-center md:mx-auto md:max-w-2xl lg:col-span-6 lg:text-left">
-            <p className="mt-3 text-base leading-snug text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Il{" "}
-              <span className="font-semibold italic text-pink-600">
-                GMP Pocket book
-              </span>{" "}
-              è una traduzione delle Good Manufacturing Practice Volume 4, Parte
-              I che tratta dei Requisiti base che deve avere un prodotto
-              medicinale per essere fabbricato.
-            </p>
-            <p className="mt-3 text-base leading-snug text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Fondamentali per mettere in piedi un sistema di qualità che
-              garantisca che il farmaco sia di qualità, sicuro ed efficace. Il
-              GMP Pocket book ti permetterà di comprendere le fondamenta di
-              un’azienda farmaceutica attraverso le normative che la regolano.
-            </p>{" "}
-            <p className="mt-3 text-base leading-snug text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-              Lo trovi in due versioni, quella elettronica che ti permetterà di
-              riceverlo istantaneamente e la versione cartacea, dove potrai
-              ammirare anche la grafica curata dall’illustratrice nonché CTFina{" "}
-              <a
-                className="text-pink-600 underline hover:text-pink-900"
-                href="https://instagram.com/silfraen?igshid=6c23ibmkflvm"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Francesca Silvestri
-              </a>
-              .
-            </p>
-          </div>
-          <div className="relative mt-12 sm:mx-auto sm:max-w-lg lg:col-span-6 lg:mx-0 lg:mt-0 lg:flex lg:max-w-none lg:items-center">
-            <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
-              <div className="focus:shadow-outline relative block w-full overflow-hidden rounded-lg focus:outline-none">
-                <img
-                  className="w-full"
-                  src="https://res.cloudinary.com/dbdvy5b2z/image/upload/c_scale,w_600/v1646563513/fy/ecommerce/gmpbook_uxszzd.jpg"
-                  alt="GMP Pocket Book"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <div className="mx-auto mt-8 mb-10 flex max-w-screen-xl flex-col justify-center space-y-2 px-4 sm:flex-row sm:space-y-0 sm:space-x-2 sm:px-6 lg:justify-start">
-        {/* {books.map((book, idx) => (
-          <div key={idx}>
-            <a
-              className="flex
-              divide-white
-              rounded bg-pink-500 px-4 py-2
-              text-lg text-white hover:bg-pink-800"
-              href={book.buy}
-              rel="noreferrer"
-            >
-              <span className="mr-2">{book.title}</span>
-              <span>{book.textPrice}</span>
-            </a>
-          </div>
-        ))} */}
-        <a
-          className="flex
-              divide-white
-              rounded bg-pink-500 px-4 py-2
-              text-lg text-white hover:bg-pink-800"
-          href="https://amzn.to/3sGVHO7"
-          rel="noreferrer"
-        >
-          <span className="mr-2">Acquista su Amazon</span>
-        </a>
-      </div>
-    </div>
-  );
-};
-
 const CTABook = () => {
   return (
     <div className="lg:relative">
@@ -140,7 +35,7 @@ const CTABook = () => {
       <div className="relative h-64 w-full sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-1/2">
         <img
           className="absolute inset-0 h-full w-full object-cover"
-          src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
+          src="/gmp.jpeg"
           alt=""
         />
       </div>
@@ -328,10 +223,10 @@ const Testimonial = () => {
               className="absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden"
             />
             <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:h-full lg:p-0">
-              <div className="aspect-w-10 aspect-h-6 sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none overflow-hidden rounded-xl shadow-xl lg:h-full">
+              <div className="aspect-w-10 aspect-h-6 overflow-hidden rounded-xl shadow-xl sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full">
                 <img
                   className="object-cover lg:h-full lg:w-full"
-                  src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
+                  src="https://res.cloudinary.com/dbdvy5b2z/image/upload/f_auto,c_scale,w_600/v1646563513/fy/ecommerce/gmpbook_uxszzd.jpg"
                   alt=""
                 />
               </div>
@@ -350,26 +245,13 @@ const Testimonial = () => {
                     <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
                   </svg>
                   <p className="mt-6 text-2xl font-medium text-white">
-                    Ciao Silvia, ti scrivo per ringraziarti di cuore per i
-                    diversi eventi e la chiacchierata organizzati da te, mi sono
-                    serviti un sacco durante i colloqui e hanno fatto la
-                    differenza, tanto è vero che sono stato assunto anche se in
-                    stage (ma dovrò pur iniziare da qualche parte). Più di una
-                    volta mi hanno anche chiesto come mi fossi informato su
-                    determinati aspetti dei diversi lavori per cui mi sono
-                    candidato e ho fatto riferimento a Farmaceutica Younger
-                    ricevendo un ottimo riscontro e addirittura alcuni
-                    selezionatori si sono dimostrati entusiasti appuntandosi il
-                    riferimento per poter partecipare ai vostri eventi. Ti
-                    ringrazio ancora per tutto e speriamo di vederci presto ad
-                    un prossimo evento.
+                    Credo che il GMP Pocket book sia la bibbia di ogni buon
+                    CTFino! Veramente ben fatto e molto pratico
                   </p>
                 </div>
                 <footer className="mt-6">
-                  <p className="text-base font-medium text-white">Doenico</p>
-                  <p className="text-base font-medium text-pink-100">
-                    Socio di Farmaceutica Younger
-                  </p>
+                  <p className=" text-xl font-medium text-white">Sara</p>
+                  <p className="text-base font-medium text-pink-100"></p>
                 </footer>
               </blockquote>
             </div>
@@ -388,9 +270,6 @@ const EcommercePage = () => {
 
       <Content />
       <Testimonial />
-      <div className="mt-2">
-        <BookSection />
-      </div>
     </Layout>
   );
 };
