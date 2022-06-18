@@ -1,5 +1,6 @@
 import type { Post } from "@prisma/client";
 import Link from "next/link";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 
 interface PostListProps {
   posts: Post[];
@@ -19,7 +20,11 @@ export const PostsList = ({ posts, publish }: PostListProps) => {
           <li key={p.id} className="mt-4">
             <Link href={`/admin/posts/${p.id}/edit`}>
               <a className="flex cursor-pointer gap-2 align-middle hover:bg-slate-200">
-                <img className="w-32" src={p.featuredImage} alt={p.title} />
+                <img
+                  className="w-32"
+                  src={resizeCloudinaryImage(p.featuredImage, 100)}
+                  alt={p.title}
+                />
                 <div>
                   <div className="mb-2">
                     {!!p.path ? (

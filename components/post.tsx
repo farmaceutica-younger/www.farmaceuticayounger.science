@@ -1,6 +1,7 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import YouTube from "react-youtube";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatDate } from "utils/dates";
 import { Tag } from "../components/tag";
 
@@ -27,7 +28,7 @@ interface PostProps {
 const components: any = {
   img: ({ alt, src }: { alt: string; src: string }) => (
     // eslint-disable-next-line @next/next/no-img-element
-    <img alt={alt} src={src} className="m-auto" />
+    <img alt={alt} src={resizeCloudinaryImage(src)} className="m-auto" />
   ),
   AmazonAffiliationLink: ({ src }: { src: string }) => (
     <div className="m-auto">
@@ -116,7 +117,7 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
           {frontmatter.showFeatureImage && (
             <img
               className="m-auto"
-              src={frontmatter.featuredImage}
+              src={resizeCloudinaryImage(frontmatter.featuredImage, 800)}
               alt={frontmatter.title}
             />
           )}

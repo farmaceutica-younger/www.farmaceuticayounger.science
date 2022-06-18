@@ -1,6 +1,7 @@
 import { Event } from "@prisma/client";
 import { AdminLayout } from "components/admin/admin-layout";
 import Link from "next/link";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { trpc } from "utils/trpc";
 
 const AdminEventsPage = () => {
@@ -47,7 +48,11 @@ export const EventsList = ({ events, publish }: EventsListProps) => {
           <li key={p.id} className="mt-4">
             <Link href={`/admin/events/${p.id}/edit`}>
               <a className="flex cursor-pointer gap-2 align-middle hover:bg-slate-200">
-                <img className="w-32" src={p.featuredImage} alt={p.title} />
+                <img
+                  className="w-32"
+                  src={resizeCloudinaryImage(p.featuredImage, 100)}
+                  alt={p.title}
+                />
                 <div>
                   <div className="mb-2">
                     {!!p.path ? (

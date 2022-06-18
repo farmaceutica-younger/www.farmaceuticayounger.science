@@ -1,7 +1,9 @@
 import type { Author, Post } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Masonry from "react-masonry-css";
+import { cloudinaryUrl, resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatDate } from "utils/dates";
 import { readTime } from "utils/readTime";
 
@@ -27,7 +29,11 @@ const BlogPostPreview: React.FC<{
         <div className="flex-shrink-0">
           {
             // eslint-disable-next-line @next/next/no-img-element
-            <img className="h-auto w-full" src={featuredImage!} alt={title} />
+            <img
+              className="h-auto w-full"
+              src={resizeCloudinaryImage(featuredImage!)}
+              alt={title}
+            />
           }
         </div>
         <div className="flex flex-1 flex-col justify-between bg-white p-6">
@@ -43,8 +49,8 @@ const BlogPostPreview: React.FC<{
           <div className="mt-6 flex items-center">
             <div className="flex-shrink-0">
               <div className="h-10 w-10 overflow-hidden rounded-full">
-                <img
-                  src={author.profileImage}
+                <Image
+                  src={cloudinaryUrl(author.profileImage)}
                   width={50}
                   height={50}
                   alt={author.name}

@@ -3,6 +3,7 @@ import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import { db } from "services/db";
 import slugify from "slugify";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 
 type PageProps = InferGetStaticPropsType<typeof getStaticProps>;
 type Region = PageProps["regions"][number];
@@ -56,7 +57,10 @@ const RegionPreview = ({ region }: RegionProps) => {
         <div className="flex flex-1 flex-col justify-between bg-white">
           <div className="flex-1">
             <div className="block">
-              <img src={image} className="aspect-video w-full" />
+              <img
+                src={resizeCloudinaryImage(image)}
+                className="aspect-video w-full"
+              />
               <div className="px-3 py-4">
                 <h3 className="truncate-2-lines text-xl font-bold leading-7 text-gray-800">
                   {region.region}
