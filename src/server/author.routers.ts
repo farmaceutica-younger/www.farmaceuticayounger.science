@@ -33,7 +33,7 @@ export const authorRouter = createRouter()
         folder,
       };
       const signature = cloudinary.utils.api_sign_request(
-        toSign,
+        { ...toSign },
         cloudinaryConfig.secret
       );
       return { timestamp, signature, folder, apiKey, cloudName };
