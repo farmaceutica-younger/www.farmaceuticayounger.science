@@ -61,7 +61,7 @@ export const eventsRouter = createRouter()
       if (!event) {
         throw new TRPCError({ code: "NOT_FOUND" });
       }
-      if (event.path) {
+      if (event.slug) {
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: "Event already published",
@@ -71,15 +71,15 @@ export const eventsRouter = createRouter()
       const slug = slugify(event.title.substring(0, 50), {
         lower: true,
         trim: true,
-        remove: /[*+~.()'"!:@]/g,
+        remove: /[*+~.()'"!:@,]/g,
       });
-      const path = `/blog/${d.getFullYear()}/${d.getMonth()}/${slug}/`;
+      const slugAndDate = `${d.getFullYear()}-${d.getMonth()}-${slug}`;
       return await ctx.db.event.update({
         where: {
           id: event.id,
         },
         data: {
-          path: path,
+          slug: slugAndDate,
         },
       });
     },

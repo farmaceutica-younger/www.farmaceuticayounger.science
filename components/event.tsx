@@ -2,7 +2,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import Image from "next/image";
 import YouTube from "react-youtube";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
-import { formatDate } from "utils/dates";
+import { formatDate, getEventDate } from "utils/dates";
 import { Tag } from "./tag";
 
 export type Frontmatter = {
@@ -98,11 +98,11 @@ export const EventPage = ({ source, frontmatter, author }: EventProps) => {
                 <a href={"#"}>{author.name}</a>
               </p>
               <div className="flex space-x-1 text-sm text-gray-500">
-                {/* <time dateTime={frontmatter.publishedTime.toISOString()}>
-                  {formatDate(frontmatter.publishedTime)}
-                </time> */}
+                <span>
+                  {getEventDate(frontmatter.startDate, frontmatter.endDate)}
+                </span>
                 <span aria-hidden="true">&middot;</span>
-                <span>{frontmatter.readTime} min</span>
+                <span>{frontmatter.location}</span>
               </div>
             </div>
           </div>

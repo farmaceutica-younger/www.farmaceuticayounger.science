@@ -108,7 +108,7 @@ model PharmaItaly {
 
 model Event {
   id            String   @id @default(cuid())
-  path          String?
+  slug          String?
   author        Author   @relation(fields: [authorId], references: [id])
   authorId      String
   tags          String[]

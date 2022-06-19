@@ -55,7 +55,7 @@ export const EventsList = ({ events, publish }: EventsListProps) => {
                 />
                 <div>
                   <div className="mb-2">
-                    {!!p.path ? (
+                    {!!p.slug ? (
                       <span className="rounded-full bg-green-200 px-2 py-1 text-xs text-green-600">
                         pubblicato
                       </span>
