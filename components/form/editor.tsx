@@ -23,7 +23,6 @@ const EditorField = ({ name, uploadImage }: EditorFieldProps) => {
             height="calc(100%)"
             initialEditType="wysiwyg"
             useCommandShortcut={true}
-            hideModeSwitch={true}
             onChange={() => {
               const body = editorRef.current
                 ?.getInstance()

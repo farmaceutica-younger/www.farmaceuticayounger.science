@@ -31,7 +31,7 @@ const BlogPostPreview: React.FC<{
             // eslint-disable-next-line @next/next/no-img-element
             <img
               className="h-auto w-full"
-              src={resizeCloudinaryImage(featuredImage!)}
+              src={resizeCloudinaryImage(featuredImage!, 600)}
               alt={title}
             />
           }
