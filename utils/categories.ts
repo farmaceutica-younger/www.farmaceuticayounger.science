@@ -110,5 +110,6 @@ export async function getPageProps(
       },
       category: categories.find((c) => c.category === category)!,
     },
+    revalidate: 10 * 60,
   };
 }
