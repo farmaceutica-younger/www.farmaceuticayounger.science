@@ -30,6 +30,7 @@
     "@trpc/server": "^9.22.0",
     "cloudinary": "^1.29.0",
     "compress.js": "^1.2.2",
+    "daisyui": "^2.17.0",
     "dayjs": "^1.11.0",
     "dotenv": "^16.0.0",
     "env-ts-conf": "^1.0.1",

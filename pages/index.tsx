@@ -7,6 +7,7 @@ import { SEO } from "components/seo";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import YouTube from "react-youtube";
+import { cloudinaryUrl, resizeCloudinaryImage } from "utils/cloudinary-url";
 import { db } from "../services/db";
 
 export default function Home({
@@ -20,6 +21,7 @@ export default function Home({
       <main>
         <Silvia image="/silvia.jpg" />
         {nextEvent && <EventCTA event={nextEvent} />}
+        <Interviews />
         <GmpCta />
         <div className="relative sm:max-h-[2200px] sm:overflow-hidden">
           <PostsList posts={posts} title="Gli ultimi articoli" description="" />
@@ -46,6 +48,65 @@ export default function Home({
     </div>
   );
 }
+
+const Interviews = () => {
+  return (
+    <div className="flex flex-col items-center justify-center space-y-2 bg-stone-100 p-10 md:flex-row md:space-y-0 md:space-x-2">
+      <div className="card w-96 max-w-full bg-base-100 shadow-xl ">
+        <div className="asp"></div>
+        <figure>
+          <img
+            className=""
+            src={resizeCloudinaryImage(
+              "https://res.cloudinary.com/dbdvy5b2z/image/upload/f_auto,w_400/v1656171275/fy/interviste/IMAGE_2022-06-25_17_34_30_izedad.jpg"
+            )}
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Intervista a Monica Poggio</h2>
+          <p>
+            L'AD di Bayer si racconta a Farmaceutica Younger con questo video:
+            un omaggio alle donne che stanno contribuendo con il loro talento al
+            progresso nei campi delle scienze della vita...
+          </p>
+          <div className="card-actions mt-2 justify-end">
+            <a
+              href="https://www.youtube.com/watch?v=MB9CdK2BZgc"
+              target="_blank"
+              className="btn btn-primary btn-sm"
+              rel="noreferrer"
+            >
+              Guarda il Video
+            </a>
+          </div>
+        </div>
+      </div>
+      <div className="card w-96 max-w-full bg-base-100 shadow-xl ">
+        <figure>
+          <img
+            src={resizeCloudinaryImage(
+              "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1656171272/fy/interviste/IMAGE_2022-06-25_17_34_28_v9hldt.jpg",
+              500
+            )}
+            alt="Movie"
+          />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">Intervista a Massimo Scaccabarozzi</h2>
+          <p>
+            Presidente di Janssen Italia, Presidente di Farmindustria, Massimo
+            Scaccabarozzi si racconta ai ragazzi di Farmaceutica Younger...
+          </p>
+          <div className="card-actions mt-2 justify-end">
+            <Link href="/blog/2022/2/intervista-massimo-scaccabarozzi">
+              <a className="btn btn-primary btn-sm">Leggi</a>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Silvia = ({ image }: { image: string }) => {
   return (
