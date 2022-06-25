@@ -65,9 +65,9 @@ const Interviews = () => {
         <div className="card-body">
           <h2 className="card-title">Intervista a Monica Poggio</h2>
           <p>
-            L'AD di Bayer si racconta a Farmaceutica Younger con questo video:
-            un omaggio alle donne che stanno contribuendo con il loro talento al
-            progresso nei campi delle scienze della vita...
+            L&apos;AD di Bayer si racconta a Farmaceutica Younger con questo
+            video: un omaggio alle donne che stanno contribuendo con il loro
+            talento al progresso nei campi delle scienze della vita...
           </p>
           <div className="card-actions mt-2 justify-end">
             <a
