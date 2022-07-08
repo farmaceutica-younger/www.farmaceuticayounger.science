@@ -144,11 +144,11 @@ export default withTRPC<AppRouter>({
 })(MyApp);
 
 const IubendaCookieBanner = () => {
+  const router = useRouter();
   if (process.env.NODE_ENV !== "production") {
     return null;
   }
-  const router = useRouter();
-  if (router.pathname.startsWith("/_i/")) {
+  if (router?.pathname?.startsWith("/_i/")) {
     return null;
   }
 
@@ -161,11 +161,11 @@ const IubendaCookieBanner = () => {
 };
 
 const GAHeader = () => {
+  const router = useRouter();
   if (process.env.NODE_ENV !== "production") {
     return null;
   }
-  const router = useRouter();
-  if (router.pathname.startsWith("/_i/")) {
+  if (router?.pathname?.startsWith("/_i/")) {
     return null;
   }
   return (
