@@ -1,5 +1,19 @@
+FROM node:16-alpine3.12 as base
+RUN apk add --no-cache \
+      chromium \
+      nss \
+      freetype \
+      harfbuzz \
+      ca-certificates \
+      ttf-freefont \
+      nodejs \
+      yarn
+RUN apk add --no-cache libc6-compat
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 # Install dependencies only when needed
-FROM node:16-alpine AS deps
+FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -13,7 +27,7 @@ RUN npx prisma generate
 # RUN npm ci
 
 # Rebuild the source code only when needed
-FROM node:16-alpine AS builder
+FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -27,7 +41,7 @@ ARG DATABASE_URL
 RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:16-alpine AS runner
+FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
