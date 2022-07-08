@@ -17,11 +17,11 @@ interface TicketProps {
 export const Ticket = ({ ticket, event, ticketNum }: TicketProps) => {
   return (
     <TicketStyled>
-      <div className="hidden sm:block">
-        <TicketBackground rotate={false} />
-      </div>
       <div className="sm:hidden">
         <TicketBackground rotate />
+      </div>
+      <div className="hidden sm:block">
+        <TicketBackground rotate={false} />
       </div>
       <TicketContent className="grid grid-rows-5 sm:grid-cols-5 sm:grid-rows-1">
         <div className="row-start-1 row-end-5 grid grid-rows-3 place-content-center sm:col-start-1 sm:col-end-5 sm:row-span-1 sm:place-content-start sm:pl-10">
@@ -55,7 +55,7 @@ const TicketBackground = ({ rotate }: { rotate: boolean }) => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <mask id="a" fill="#fff">
+        <mask id="b" fill="#fff">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -71,7 +71,7 @@ const TicketBackground = ({ rotate }: { rotate: boolean }) => {
         <path
           d="M145.999 0v-3h-3.035l.035 3.035 3-.035Zm-42.498 0 3 .035.035-3.035h-3.035v3Zm0 500v3h3.035l-.035-3.035-3 .035Zm42.498 0-3-.035-.035 3.035h3.035v-3ZM220 3c14.912 0 27 12.088 27 27h6c0-18.225-14.775-33-33-33v6Zm-74.001 0H220v-6h-74.001v6ZM149 .25l-.002-.285-5.999.07.001.215h6ZM124.75 24.5C138.143 24.5 149 13.643 149 .25h-6c0 10.08-8.171 18.25-18.25 18.25v6ZM100.5.25c0 13.393 10.857 24.25 24.25 24.25v-6c-10.079 0-18.25-8.17-18.25-18.25h-6Zm.002-.285L100.5.25h6l.001-.215-5.999-.07ZM30 3h73.501v-6H30v6ZM3 30C3 15.088 15.088 3 30 3v-6C11.775-3-3 11.775-3 30h6Zm0 440V30h-6v440h6Zm27 27c-14.912 0-27-12.088-27-27h-6c0 18.225 14.775 33 33 33v-6Zm73.501 0H30v6h73.501v-6Zm-3.001 2.75.002.285 5.999-.07-.001-.215h-6Zm24.25-24.25c-13.393 0-24.25 10.857-24.25 24.25h6c0-10.079 8.171-18.25 18.25-18.25v-6ZM149 499.75c0-13.393-10.857-24.25-24.25-24.25v6c10.079 0 18.25 8.171 18.25 18.25h6Zm-.002.285.002-.285h-6l-.001.215 5.999.07ZM220 497h-74.001v6H220v-6Zm27-27c0 14.912-12.088 27-27 27v6c18.225 0 33-14.775 33-33h-6Zm0-440v440h6V30h-6Z"
           fill="#D61F69"
-          mask="url(#a)"
+          mask="url(#b)"
         />
         <path
           stroke="#D61F69"
@@ -268,7 +268,7 @@ const Logo = (props: LogoProps) => {
   return (
     <div className="flex flex-col items-center justify-items-center text-pink-500 sm:flex-row">
       <svg
-        className="h-20"
+        className="h-14 w-20"
         width="100"
         height="152"
         viewBox="0 0 140 152"
@@ -291,7 +291,7 @@ const Logo = (props: LogoProps) => {
           className="fill-current"
         />
       </svg>
-      <div className="text-center text-pink-500 sm:ml-2 sm:text-left">
+      <div className="text-center text-pink-500  sm:text-left">
         <p className="text-xl">{props.name}</p>
         <p className="font-thin italic">Farmaceutica Younger</p>
       </div>

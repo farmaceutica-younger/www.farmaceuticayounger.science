@@ -12,6 +12,8 @@ import { getEventDate } from "utils/dates";
 import { readTime } from "utils/readTime";
 import p from "puppeteer";
 import { v2 as cloudinary } from "cloudinary";
+import { Header } from "components/header";
+import { Footer } from "components/footer";
 
 export const ShowTicketPage = ({
   ticket,
@@ -21,38 +23,38 @@ export const ShowTicketPage = ({
 }: Awaited<ReturnType<typeof getProps>>["props"]) => {
   return (
     <>
-      <SEO
-        title={`Ticket di ${ticket.name}`}
-        description={`${ticket.name} parteciperà a all&apos;evento ${frontmatter.title} di Farmaceutica Younger`}
-        image={imageTicket}
-        author={frontmatter.author.name}
-        date={frontmatter.createdAt}
-        type="article"
-      />
+      <Header />
+      <div className="bg-pink-500">
+        <SEO
+          title={`Ticket di ${ticket.name}`}
+          description={`${ticket.name} parteciperà a all&apos;evento ${frontmatter.title} di Farmaceutica Younger`}
+          image={imageTicket}
+          author={frontmatter.author.name}
+          date={frontmatter.createdAt}
+          type="article"
+        />
 
-      <div className="grid h-screen bg-pink-600 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-1">
-        <div className="grid content-center p-10 text-center">
-          <h1 className="text-2xl text-gray-100">
-            {ticket.name} pareciperà all&apos;evento di
-          </h1>
-          <h2 className="mt-3 text-3xl font-bold text-gray-100">
-            Famraceutica Younger
-          </h2>
-          <a
-            href={linkedinUrl}
-            className="m-auto mt-10 max-w-md rounded-lg border-2 border-solid border-red-200  py-4 px-6 text-2xl text-white hover:bg-gray-200 hover:text-gray-800"
-          >
-            Crea il tuo con linkedin
-          </a>
-          <Link href={`/events/${frontmatter.slug}`}>
-            <a className="m-auto mt-10 max-w-md rounded-lg border-2 border-solid border-red-200  py-4 px-6 text-2xl text-white hover:bg-gray-200 hover:text-gray-800">
-              {" "}
-              Dettagli dell&apos;evento
+        <div className="py-6 lg:grid lg:grid-cols-3">
+          <div className="mx-auto my-10 grid max-w-lg text-center lg:mx-4">
+            <h1 className="text-3xl text-gray-100">
+              <span className="font-bold">{ticket.name}</span> pareciperà
+              all&apos;evento di{" "}
+              <span className="italic">Farmaceutica Younger</span>
+            </h1>
+            <a
+              href={linkedinUrl}
+              className="m-auto mt-10 max-w-md rounded-lg border-2 border-solid bg-white  py-4 px-6 text-2xl text-pink-500 hover:bg-pink-500 hover:text-white"
+            >
+              Voglio partecipare
             </a>
-          </Link>
-        </div>
-        <div className="grid place-content-center overflow-hidden">
-          <div className="">
+            <Link href={`/events/${frontmatter.slug}`}>
+              <a className="m-auto mt-2 text-white underline hover:text-pink-200">
+                {" "}
+                Dettagli dell&apos;evento
+              </a>
+            </Link>
+          </div>
+          <div className="grid place-content-center lg:col-span-2">
             <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
               <Ticket
                 event={{
@@ -74,6 +76,7 @@ export const ShowTicketPage = ({
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
