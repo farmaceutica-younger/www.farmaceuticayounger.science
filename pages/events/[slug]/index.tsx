@@ -52,30 +52,8 @@ export default function TestPage({
 }
 
 export async function getStaticPaths() {
-  const events = await db.event.findMany({
-    where: {
-      slug: {
-        not: null,
-      },
-    },
-    select: {
-      slug: true,
-    },
-    orderBy: {
-      startDate: "desc",
-    },
-    take: 10,
-  });
-  const paths = events.map((event) => {
-    return {
-      params: {
-        slug: event.slug,
-      },
-    };
-  });
-
   return {
-    paths: paths,
+    paths: [],
     fallback: true,
   };
 }
