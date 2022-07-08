@@ -24,6 +24,7 @@ interface EventProps {
   frontmatter: Frontmatter;
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   author?: Author;
+  linkedinUrl?: string;
 }
 
 const components: any = {
@@ -71,7 +72,12 @@ const components: any = {
   ),
 };
 
-export const EventPage = ({ source, frontmatter, author }: EventProps) => {
+export const EventPage = ({
+  source,
+  frontmatter,
+  author,
+  linkedinUrl,
+}: EventProps) => {
   return (
     <>
       <main className="wrapper py-10">
@@ -122,6 +128,19 @@ export const EventPage = ({ source, frontmatter, author }: EventProps) => {
           />
           <MDXRemote {...source} components={components} />
         </div>
+
+        {linkedinUrl && (
+          <div className="mt-10 flex justify-center">
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-primary"
+            >
+              Ottieni il tuo Ticket
+            </a>
+          </div>
+        )}
       </main>
     </>
   );

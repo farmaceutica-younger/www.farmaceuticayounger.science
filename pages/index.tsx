@@ -7,7 +7,7 @@ import { SEO } from "components/seo";
 import { InferGetStaticPropsType } from "next";
 import Link from "next/link";
 import YouTube from "react-youtube";
-import { cloudinaryUrl, resizeCloudinaryImage } from "utils/cloudinary-url";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { db } from "../services/db";
 
 export default function Home({

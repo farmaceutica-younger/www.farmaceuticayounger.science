@@ -1,6 +1,6 @@
 export const config = {
   title: "Farmaceutica Younger",
-  image: "/ludusrusso.jpg",
+  image: "/silvia.jpg",
   hostname: "www.farmaceuticayounger.science",
   author: {
     name: "Silvia Vernotico",
