@@ -21,8 +21,8 @@ export const ShowTicketPage = ({
     <>
       <SEO
         title={`Ticket di ${ticket.name}`}
-        description={`${ticket.name} parteciperà a all'evento ${frontmatter.title} di Farmaceutica Younger`}
-        image={`/api/tickets/ticket?eventId=${frontmatter.id}&ticketId=${ticket.id}`}
+        description={`${ticket.name} parteciperà a all&apos;evento ${frontmatter.title} di Farmaceutica Younger`}
+        image={image}
         author={frontmatter.author.name}
         date={frontmatter.createdAt}
         type="article"
@@ -31,7 +31,7 @@ export const ShowTicketPage = ({
       <div className="grid h-screen bg-pink-600 md:grid-rows-2 lg:grid-cols-2 lg:grid-rows-1">
         <div className="grid content-center p-10 text-center">
           <h1 className="text-2xl text-gray-100">
-            {ticket.name} pareciperà all'evento di
+            {ticket.name} pareciperà all&apos;evento di
           </h1>
           <h2 className="mt-3 text-3xl font-bold text-gray-100">
             Famraceutica Younger
@@ -45,7 +45,7 @@ export const ShowTicketPage = ({
           <Link href={`/events/${frontmatter.slug}`}>
             <a className="m-auto mt-10 max-w-md rounded-lg border-2 border-solid border-red-200  py-4 px-6 text-2xl text-white hover:bg-gray-200 hover:text-gray-800">
               {" "}
-              Dettagli dell'evento
+              Dettagli dell&apos;evento
             </a>
           </Link>
         </div>
