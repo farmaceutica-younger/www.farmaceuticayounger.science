@@ -120,11 +120,13 @@ function MyApp({
           content="/icon/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#ec489a" />
+        <GAHeader />
       </Head>
 
       <Layout>
         <Component {...pageProps} />
       </Layout>
+      <IubendaCookieBanner />
     </SessionProvider>
   );
 }
@@ -140,3 +142,54 @@ export default withTRPC<AppRouter>({
   },
   ssr: false,
 })(MyApp);
+
+const IubendaCookieBanner = () => {
+  if (process.env.NODE_ENV !== "production") {
+    return null;
+  }
+  const router = useRouter();
+  if (router.pathname.startsWith("/_i/")) {
+    return null;
+  }
+
+  const script = `<script type="text/javascript">
+  var _iub = _iub || [];
+  _iub.csConfiguration = {"lang":"it","siteId":1353353,"whitelabel":false,"cookiePolicyId":86855038, "banner":{ "textColor":"white","backgroundColor":"black" }};
+  </script>
+  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>`;
+  return <div dangerouslySetInnerHTML={{ __html: script }}></div>;
+};
+
+const GAHeader = () => {
+  if (process.env.NODE_ENV !== "production") {
+    return null;
+  }
+  const router = useRouter();
+  if (router.pathname.startsWith("/_i/")) {
+    return null;
+  }
+  return (
+    <>
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${
+          process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "UA-123568059-1"
+        }`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${
+      process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "UA-123568059-1"
+    }', {
+      page_path: window.location.pathname,
+    });
+  `,
+        }}
+      />
+    </>
+  );
+};
