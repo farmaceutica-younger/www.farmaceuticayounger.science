@@ -11,7 +11,7 @@ import { db } from "services/db";
 import { getEventDate } from "utils/dates";
 import { readTime } from "utils/readTime";
 import p from "puppeteer";
-import { cloudinary, cloudinaryConfig } from "services/cloudinary";
+import { cloudinary } from "services/cloudinary";
 
 export const ShowTicketPage = ({
   ticket,
@@ -168,7 +168,7 @@ const getTicketImagePreview = async (
     });
   }
 
-  return `https://res.cloudinary.com/${cloudinaryConfig.cloudName}/image/upload/${imagePublicId}`;
+  return `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/${imagePublicId}`;
 };
 
 const checkIfimageExists = async (id: string) => {
