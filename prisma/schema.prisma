@@ -107,18 +107,36 @@ model PharmaItaly {
 }
 
 model Event {
-  id            String   @id @default(cuid())
+  id            String        @id @default(cuid())
   slug          String?
-  author        Author   @relation(fields: [authorId], references: [id])
+  author        Author        @relation(fields: [authorId], references: [id])
   authorId      String
   tags          String[]
   description   String
-  body          String   @db.Text
+  body          String        @db.Text
   title         String
   featuredImage String
   startDate     DateTime
   endDate       DateTime
   location      String
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  tickets       EventTicket[]
+}
+
+model EventTicket {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  email       String   @unique
+  name        String
+  role        String
+  avatar      String
+  ticketNum   Int
+  ticketImage String?
+
+  event   Event  @relation(fields: [eventId], references: [id])
+  eventId String
+
+  @@unique([eventId, ticketNum])
 }
