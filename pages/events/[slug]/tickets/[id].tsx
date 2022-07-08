@@ -11,7 +11,7 @@ import { db } from "services/db";
 import { getEventDate } from "utils/dates";
 import { readTime } from "utils/readTime";
 import p from "puppeteer";
-import { cloudinary } from "services/cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 export const ShowTicketPage = ({
   ticket,
