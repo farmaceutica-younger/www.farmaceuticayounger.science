@@ -15,7 +15,7 @@ const RegisterPage = ({
   return (
     <>
       <Header />
-      <div className="prose m-auto mt-10 max-w-md">
+      <div className="prose m-auto mt-10 max-w-md px-2">
         <h2>Registrati all&apos;evento {frontmatter.title}</h2>
         <p>
           Segui questi 4 semplici step per ottenere il tuo personalissimo Ticket
