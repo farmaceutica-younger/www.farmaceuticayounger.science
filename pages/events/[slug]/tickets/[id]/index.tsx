@@ -184,6 +184,7 @@ interface Query {
   avatar: string;
   name: string;
   role: string;
+  ticketNum: number;
 }
 
 const createScreen = async (event: Event, ticket: EventTicket) => {
@@ -200,6 +201,7 @@ const createScreen = async (event: Event, ticket: EventTicket) => {
     location: event.location,
     name: ticket.name,
     role: ticket.role,
+    ticketNum: ticket.ticketNum,
   };
 
   await page.setViewport({

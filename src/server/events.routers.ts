@@ -97,6 +97,30 @@ export const eventsRouter = createRouter()
       });
     },
   })
+  .query("getEventTickets", {
+    input: z.object({
+      id: z.string(),
+      skip: z.number(),
+      take: z.number(),
+    }),
+    async resolve({ input, ctx }) {
+      const [total, tickets] = await ctx.db.$transaction([
+        ctx.db.eventTicket.count({
+          where: {
+            eventId: input.id,
+          },
+        }),
+        ctx.db.eventTicket.findMany({
+          where: {
+            eventId: input.id,
+          },
+          skip: input.skip,
+          take: input.take,
+        }),
+      ]);
+      return { total, tickets };
+    },
+  })
   .query("getEvents", {
     input: z.object({
       skip: z.number().int().default(0),

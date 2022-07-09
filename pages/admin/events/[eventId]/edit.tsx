@@ -45,7 +45,7 @@ const EditEventPage = () => {
           uploadImage={uploadImage}
           initialValue={event}
           author={author!}
-          back={() => router.push("..")}
+          back={() => router.push(`/admin/events/${eventId}`)}
           onSave={async (value) => {
             saveEvent({
               data: value,

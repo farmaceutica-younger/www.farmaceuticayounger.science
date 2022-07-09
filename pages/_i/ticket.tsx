@@ -9,12 +9,13 @@ interface Query {
   avatar: string;
   name: string;
   role: string;
+  ticketNum: number;
 }
 
 const TicketPage = (
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) => {
-  const { date, location, eventName, avatar, name, role } = props;
+  const { date, location, eventName, avatar, name, role, ticketNum } = props;
 
   return (
     <Box>
@@ -24,7 +25,7 @@ const TicketPage = (
           location,
           name: eventName,
         }}
-        ticketNum={10}
+        ticketNum={ticketNum}
         ticket={{
           avatar: avatar,
           name: name,

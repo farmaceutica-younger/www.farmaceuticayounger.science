@@ -46,7 +46,7 @@ export const EventsList = ({ events, publish }: EventsListProps) => {
       <ul className="">
         {events.map((p) => (
           <li key={p.id} className="mt-4">
-            <Link href={`/admin/events/${p.id}/edit`}>
+            <Link href={`/admin/events/${p.id}`}>
               <a className="flex cursor-pointer gap-2 align-middle hover:bg-slate-200">
                 <img
                   className="w-32"
