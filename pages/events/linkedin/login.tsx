@@ -23,7 +23,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const ticket = await getOrCreateTicket(code, event);
   return {
     redirect: {
-      destination: `/events/${event.slug}/tickets/${ticket.id}`,
+      destination: `/events/${event.slug}/tickets/${ticket.id}/yourticket`,
       permanent: false,
     },
   };

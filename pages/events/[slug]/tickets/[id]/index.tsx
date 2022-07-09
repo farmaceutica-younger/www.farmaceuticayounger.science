@@ -1,25 +1,22 @@
 import { Author, Event, EventTicket } from "@prisma/client";
+import { v2 as cloudinary } from "cloudinary";
+import { EventPage } from "components/event";
+import { Footer } from "components/footer";
+import { Header } from "components/header";
 import { SEO } from "components/seo";
 import { Ticket } from "components/ticket";
-import { getLinkedinOAUTHUrl } from "config/linkedin";
 import { GetServerSidePropsContext } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import Link from "next/link";
+import p from "puppeteer";
 import Tilt from "react-parallax-tilt";
 import { db } from "services/db";
 import { getEventDate } from "utils/dates";
 import { readTime } from "utils/readTime";
-import p from "puppeteer";
-import { v2 as cloudinary } from "cloudinary";
-import { Header } from "components/header";
-import { Footer } from "components/footer";
-import { EventPage } from "components/event";
 
 export const ShowTicketPage = ({
   ticket,
   frontmatter,
-  linkedinUrl,
   imageTicket,
   source,
 }: Awaited<ReturnType<typeof getProps>>["props"]) => {
@@ -29,7 +26,7 @@ export const ShowTicketPage = ({
       <div className="bg-pink-500">
         <SEO
           title={`Ticket di ${ticket.name}`}
-          description={`${ticket.name} parteciperà a all&apos;evento ${frontmatter.title} di Farmaceutica Younger`}
+          description={`${ticket.name} parteciperà a all'evento ${frontmatter.title} di Farmaceutica Younger`}
           image={imageTicket}
           author={frontmatter.author.name}
           date={frontmatter.createdAt}
@@ -39,18 +36,10 @@ export const ShowTicketPage = ({
         <div className="m-auto w-full px-2 py-6 lg:flex lg:justify-evenly">
           <div className="mx-auto my-10 grid max-w-md text-center lg:mx-4">
             <h1 className="text-3xl text-gray-100">
-              <span className="font-bold">{ticket.name}</span> pareciperà
+              <span className="font-bold">{ticket.name}</span> parteciperà
               all&apos;evento di{" "}
               <span className="italic">Farmaceutica Younger</span>
             </h1>
-            <div className="flex flex-col">
-              <a
-                href={linkedinUrl}
-                className="m-auto mt-10 max-w-md rounded-lg border-2 border-solid bg-white  py-4 px-6 text-2xl text-pink-500 hover:bg-pink-500 hover:text-white"
-              >
-                Ottieni il tuo Ticket
-              </a>
-            </div>
           </div>
           <div className="grid place-content-center">
             <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5}>
@@ -80,7 +69,6 @@ export const ShowTicketPage = ({
           frontmatter={frontmatter}
           source={source}
           author={frontmatter.author}
-          linkedinUrl={linkedinUrl}
         />
       )}
       <Footer />
@@ -144,7 +132,6 @@ const getProps = async (
         readTime: readTime(body),
       },
       ticket,
-      linkedinUrl: getLinkedinOAUTHUrl(event.id),
       imageTicket,
     },
   };

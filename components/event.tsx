@@ -1,8 +1,8 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Image from "next/image";
+import Link from "next/link";
 import YouTube from "react-youtube";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
-import { formatDate, getEventDate } from "utils/dates";
+import { getEventDate } from "utils/dates";
 import { Tag } from "./tag";
 
 export type Frontmatter = {
@@ -13,6 +13,7 @@ export type Frontmatter = {
   location: string;
   startDate: Date;
   endDate: Date;
+  slug?: string | null;
 };
 
 export interface Author {
@@ -24,7 +25,6 @@ interface EventProps {
   frontmatter: Frontmatter;
   source: MDXRemoteSerializeResult<Record<string, unknown>>;
   author?: Author;
-  linkedinUrl?: string;
 }
 
 const components: any = {
@@ -72,12 +72,7 @@ const components: any = {
   ),
 };
 
-export const EventPage = ({
-  source,
-  frontmatter,
-  author,
-  linkedinUrl,
-}: EventProps) => {
+export const EventPage = ({ source, frontmatter, author }: EventProps) => {
   return (
     <>
       <main className="wrapper py-10">
@@ -114,6 +109,13 @@ export const EventPage = ({
           </div>
         )}
 
+        {frontmatter.slug && (
+          <div className="mt-10 flex justify-center">
+            <Link href={`/events/${frontmatter.slug}/register`}>
+              <a className="btn btn-primary">Ottieni il tuo Ticket</a>
+            </Link>
+          </div>
+        )}
         <div className="m-auto mt-3 flex w-full justify-center gap-2">
           {frontmatter.tags.map((tag) => (
             <Tag key={tag} tag={tag} />
@@ -129,16 +131,11 @@ export const EventPage = ({
           <MDXRemote {...source} components={components} />
         </div>
 
-        {linkedinUrl && (
+        {frontmatter.slug && (
           <div className="mt-10 flex justify-center">
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-primary"
-            >
-              Ottieni il tuo Ticket
-            </a>
+            <Link href={`/events/${frontmatter.slug}/register`}>
+              <a className="btn btn-primary">Ottieni il tuo Ticket</a>
+            </Link>
           </div>
         )}
       </main>

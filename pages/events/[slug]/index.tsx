@@ -3,7 +3,6 @@ import { Footer } from "components/footer";
 import { GmpCta } from "components/gmp-cta";
 import { Header } from "components/header";
 import { SEO } from "components/seo";
-import { getLinkedinOAUTHUrl } from "config/linkedin";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
@@ -13,7 +12,6 @@ import { readTime } from "utils/readTime";
 export default function TestPage({
   source,
   frontmatter,
-  linkedinUrl,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!source || !frontmatter) {
     return (
@@ -39,7 +37,6 @@ export default function TestPage({
           frontmatter={frontmatter}
           source={source}
           author={frontmatter.author}
-          linkedinUrl={linkedinUrl}
         />
       )}
       <div className="bg-pink-50 pt-6">
@@ -94,7 +91,6 @@ export async function getStaticProps({
         ...frontmatter,
         readTime: readTime(body),
       },
-      linkedinUrl: getLinkedinOAUTHUrl(event.id),
     },
     revalidate: 10 * 60,
   };
