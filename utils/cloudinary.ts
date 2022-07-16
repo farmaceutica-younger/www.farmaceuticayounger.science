@@ -35,6 +35,7 @@ export const cloudinaryUploadImage = async (
   const uploadInfo = await getData();
   const formData = new FormData();
   const resized = await resizeImage(file);
+  console.log({ uploadInfo });
   formData.append("file", resized);
   formData.append("api_key", uploadInfo.apiKey);
   formData.append("timestamp", String(uploadInfo.timestamp));
@@ -86,7 +87,6 @@ const resizeImage = (img: Blob, maxWidth: number = 800) => {
     canvas.height = height;
     canvas.getContext("2d")!.drawImage(image, 0, 0, width, height);
     const dataUrl = canvas.toDataURL("image/jpeg");
-    console.log("done");
     return dataURItoBlob(dataUrl);
   };
   return new Promise<Blob>((resolve, reject) => {
