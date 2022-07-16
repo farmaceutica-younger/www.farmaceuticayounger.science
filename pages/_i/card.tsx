@@ -1,5 +1,4 @@
 import { BlogIcon } from "components/icon";
-import { string } from "zod";
 
 const CardPage = () => {
   return (
@@ -81,7 +80,9 @@ const Front = ({ colors }: { colors: Colors }) => {
       </div>
       <div className="mt-6 space-y-1">
         {cardInfo.taboos.map((t) => (
-          <p className="text-xl">{t}</p>
+          <p key={t} className="text-xl">
+            {t}
+          </p>
         ))}
       </div>
       <div className="mt-4 grid place-content-center">
