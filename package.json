@@ -26,7 +26,7 @@
     "@toast-ui/react-editor": "^3.1.7",
     "@trpc/client": "^9.22.0",
     "@trpc/next": "^9.22.0",
-    "@trpc/react": "^9.22.0",
+    "@trpc/react": "^9.26.2",
     "@trpc/server": "^9.22.0",
     "cloudinary": "^1.30.0",
     "compress.js": "^1.2.2",
