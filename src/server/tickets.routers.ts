@@ -11,6 +11,7 @@ import { getEventDate } from "utils/dates";
 import p from "puppeteer";
 import { bot } from "services/bot";
 import { kannon } from "services/sender";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 
 export const ticketRouter = createRouter().mutation("createTicket", {
   input: z.object({
@@ -89,7 +90,7 @@ async function getOrCreateTicket(
   await kannon.sendMail(
     [ticket.email],
     "[Farmaceutica Younger] Ecco il tuo Biglietto",
-    registerdEmail(image, url)
+    registerdEmail(resizeCloudinaryImage(image, 600), url)
   );
 
   bot.sendToAdmin(`
