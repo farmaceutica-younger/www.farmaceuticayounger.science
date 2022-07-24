@@ -30,7 +30,7 @@ export default function Login({
               Name: {profile.firstName} {profile.lastName}
             </p>
           </div>
-          <p> Un ultimo step ti separa dal tuo ingresso all'evento!</p>
+          <p> Un ultimo step ti separa dal tuo ingresso all&apos;evento!</p>
           <p> Compila il form qui in basso!</p>
           <div>
             <QuestionairreForm
@@ -66,13 +66,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     };
   }
   return prepareData(code, event);
-  // const ticket = await getOrCreateTicket(code, event);
-  // return {
-  //   redirect: {
-  //     destination: `/events/${event.slug}/tickets/${ticket.id}/yourticket`,
-  //     permanent: false,
-  //   },
-  // };
 }
 
 async function prepareData(code: string, event: Event) {
