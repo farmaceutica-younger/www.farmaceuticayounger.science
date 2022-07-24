@@ -1,16 +1,61 @@
 import { Event, PrismaClient } from "@prisma/client";
+import { Header } from "components/header";
+import { QuestionairreForm } from "components/questionairre/form";
 import { linkedinConfig } from "config/linkedin";
 import { GetServerSidePropsContext } from "next";
+import { useRouter } from "next/router";
+import { getUserEmail, getUserProfile } from "utils/linkedin";
+import { trpc } from "utils/trpc";
 
-export default function Login() {
+export default function Login({
+  accessToken,
+  email,
+  profile,
+  event,
+}: Awaited<ReturnType<typeof prepareData>>["props"]) {
+  const { mutateAsync: createTicket } = trpc.useMutation(
+    "tickets.createTicket"
+  );
+  const router = useRouter();
+
   return (
-    <div>
-      <h3>logged</h3>
-    </div>
+    <>
+      <Header />
+      <div className="prose m-auto mt-10 max-w-md px-2">
+        <div>
+          <h2> Complimenti, è quasi tutto pronto! </h2>
+          <div>
+            <p>Email: {email}</p>
+            <p>
+              Name: {profile.firstName} {profile.lastName}
+            </p>
+          </div>
+          <p> Un ultimo step ti separa dal tuo ingresso all'evento!</p>
+          <p> Compila il form qui in basso!</p>
+          <div>
+            <QuestionairreForm
+              questionairre={event.questionairre as any}
+              title={event.title}
+              onSumbit={async (value) => {
+                const ticket = await createTicket({
+                  eventId: event.id,
+                  linkedinToken: accessToken,
+                  form: value,
+                });
+                await router.push(
+                  `/events/${event.slug}/tickets/${ticket.id}/success?token=${ticket.token}`
+                );
+              }}
+              submitText="Ottieni il ticket"
+            />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
-const prisma = new PrismaClient();
 
+const prisma = new PrismaClient();
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const code = ctx.query.code as string;
   const eventId = ctx.query.state as string;
@@ -20,45 +65,28 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       notFound: true,
     };
   }
-  const ticket = await getOrCreateTicket(code, event);
-  return {
-    redirect: {
-      destination: `/events/${event.slug}/tickets/${ticket.id}/yourticket`,
-      permanent: false,
-    },
-  };
+  return prepareData(code, event);
+  // const ticket = await getOrCreateTicket(code, event);
+  // return {
+  //   redirect: {
+  //     destination: `/events/${event.slug}/tickets/${ticket.id}/yourticket`,
+  //     permanent: false,
+  //   },
+  // };
 }
 
-async function getOrCreateTicket(code: string, event: Event) {
+async function prepareData(code: string, event: Event) {
   const accessToken = await getAccessToken(code);
   const profile = await getUserProfile(accessToken);
   const email = await getUserEmail(accessToken);
-  const total = await prisma.eventTicket.count({
-    where: { eventId: event.id },
-  });
-  const name = `${profile.firstName} ${profile.lastName}`.replace(
-    /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
-    ""
-  );
-
-  const ticket = await prisma.eventTicket.upsert({
-    create: {
-      avatar: profile.profileImageURL,
-      email: email,
-      name: name,
-      role: "",
-      ticketNum: total + 1,
-      eventId: event.id,
+  return {
+    props: {
+      accessToken,
+      profile,
+      email,
+      event,
     },
-    update: {
-      avatar: profile.profileImageURL,
-      name: name,
-    },
-    where: {
-      email: email,
-    },
-  });
-  return ticket;
+  };
 }
 
 async function getAccessToken(code: string) {
@@ -79,39 +107,6 @@ async function getAccessToken(code: string) {
     },
   }).then((r) => r.json());
   return res.access_token as string;
-}
-
-async function getUserProfile(accessToken: string) {
-  const urlToGetUserProfile =
-    "https://api.linkedin.com/v2/me?projection=(id,localizedFirstName,localizedSummary,localizedLastName,profilePicture(displayImage~digitalmediaAsset:playableStreams))";
-
-  const res = await fetch(urlToGetUserProfile, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  }).then((r) => r.json());
-  const id = res.id as string;
-  const firstName = res.localizedFirstName as string;
-  const lastName = res.localizedLastName as string;
-  const profileImageURL = res["profilePicture"]["displayImage~"]?.elements[0]
-    .identifiers[0].identifier as string;
-
-  return { firstName, lastName, profileImageURL, id };
-}
-
-async function getUserEmail(accessToken: string) {
-  const urlToGetUserEmail =
-    "https://api.linkedin.com/v2/clientAwareMemberHandles?q=members&projection=(elements*(primary,type,handle~))";
-
-  const res = await fetch(urlToGetUserEmail, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  }).then((r) => r.json());
-
-  return res.elements[0]["handle~"].emailAddress as string;
 }
 
 const qs = (params: { [k: string]: string }) => {

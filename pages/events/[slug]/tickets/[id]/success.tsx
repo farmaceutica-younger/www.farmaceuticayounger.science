@@ -150,6 +150,7 @@ export const getServerSideProps = async (
 ) => {
   const slug = ctx.params?.slug!;
   const id = ctx.params?.id!;
+  const token = ctx.query.token! as string;
 
   const event = await db.event.findFirst({
     where: { slug: slug },
@@ -163,7 +164,14 @@ export const getServerSideProps = async (
     };
   }
 
-  const ticket = await db.eventTicket.findUnique({ where: { id: id } });
+  const ticket = await db.eventTicket.findUnique({
+    where: {
+      id_token: {
+        id,
+        token,
+      },
+    },
+  });
   if (!ticket) {
     return {
       redirect: `/event/${event.slug}`,

@@ -1,6 +1,8 @@
 import { Event } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
+import { CreateEventSchema } from "components/events/create-event";
 import { EventFormSchema } from "components/form/event-form";
+import { QuestionairreSchema } from "components/questionairre/schema";
 import slugify from "slugify";
 import { z } from "zod";
 import { createRouter } from "./router";
@@ -34,15 +36,36 @@ export const eventsRouter = createRouter()
       });
     },
   })
+  .mutation("setEventQuestionairre", {
+    input: z.object({
+      questionairre: QuestionairreSchema,
+      id: z.string(),
+    }),
+    async resolve({ input, ctx }) {
+      return await ctx.db.event.update({
+        data: {
+          questionairre: input.questionairre,
+        },
+        where: {
+          id: input.id,
+        },
+      });
+    },
+  })
   .mutation("createEvent", {
     input: z.object({
-      data: EventFormSchema,
+      data: CreateEventSchema,
     }),
     async resolve({ input, ctx }) {
       return await ctx.db.event.create({
         data: {
           ...input.data,
           authorId: ctx.authorId,
+          body: "",
+          endDate: new Date(),
+          featuredImage: "",
+          startDate: new Date(),
+          location: "",
         },
       });
     },

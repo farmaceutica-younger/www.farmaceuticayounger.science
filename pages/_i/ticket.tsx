@@ -18,21 +18,23 @@ const TicketPage = (
   const { date, location, eventName, avatar, name, role, ticketNum } = props;
 
   return (
-    <Box>
-      <Ticket
-        event={{
-          date,
-          location,
-          name: eventName,
-        }}
-        ticketNum={ticketNum}
-        ticket={{
-          avatar: avatar,
-          name: name,
-          role: role,
-        }}
-      />
-    </Box>
+    <div className="p-[20px]">
+      <Box className="bg-pink-500">
+        <Ticket
+          event={{
+            date,
+            location,
+            name: eventName,
+          }}
+          ticketNum={ticketNum}
+          ticket={{
+            avatar: avatar,
+            name: name,
+            role: role,
+          }}
+        />
+      </Box>
+    </div>
   );
 };
 

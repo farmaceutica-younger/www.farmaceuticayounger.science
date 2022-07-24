@@ -1,6 +1,11 @@
+import { Dialog } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/solid";
 import { Event } from "@prisma/client";
 import { AdminLayout } from "components/admin/admin-layout";
+import { CreateEvent, CreateEventForm } from "components/events/create-event";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useCallback, useState } from "react";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { trpc } from "utils/trpc";
 
@@ -9,21 +14,13 @@ const AdminEventsPage = () => {
     "events.getEvents",
     { skip: 0, take: 20 },
   ]);
-  const { mutateAsync: publishEventMut } = trpc.useMutation([
-    "events.publishEvent",
-  ]);
-
-  const publishEvent = async (eventID: string) => {
-    await publishEventMut({ id: eventID });
-    await refetchEvents();
-  };
 
   if (!data) {
     return <p>loading...</p>;
   }
   const { events } = data;
 
-  return <EventsList events={events} publish={publishEvent} />;
+  return <EventsList events={events} />;
 };
 
 export default AdminEventsPage;
@@ -32,17 +29,29 @@ AdminEventsPage.Layout = AdminLayout;
 
 interface EventsListProps {
   events: Event[];
-  publish: (eventId: string) => void;
 }
 
-export const EventsList = ({ events, publish }: EventsListProps) => {
+export const EventsList = ({ events }: EventsListProps) => {
+  const [showCreateEvent, setShowCreateEvent] = useState(false);
+  const { mutateAsync: createEvent } = trpc.useMutation("events.createEvent");
+  const router = useRouter();
+
+  const create = useCallback(
+    async (value: CreateEvent) => {
+      const res = await createEvent({ data: value });
+      await router.push(`/admin/events/${res.id}`);
+    },
+    [createEvent]
+  );
+
   return (
     <div>
-      <Link href="/admin/events/new">
-        <a className="bg-blue-600 px-4 py-2 text-blue-100 hover:bg-blue-800">
-          Crea un nuovo evento
-        </a>
-      </Link>
+      <button
+        className="btn btn-primary"
+        onClick={() => setShowCreateEvent(true)}
+      >
+        Crea un nuovo evento
+      </button>
       <ul className="">
         {events.map((p) => (
           <li key={p.id} className="mt-4">
@@ -60,16 +69,9 @@ export const EventsList = ({ events, publish }: EventsListProps) => {
                         pubblicato
                       </span>
                     ) : (
-                      <button
-                        className="cursor-pointer rounded-full bg-blue-600 px-2 py-1 text-xs text-blue-200 hover:bg-blue-800"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          publish(p.id);
-                        }}
-                      >
-                        {" "}
-                        Pubblica{" "}
-                      </button>
+                      <span className="rounded-full bg-green-200 px-2 py-1 text-xs text-blue-600">
+                        non pubblicato
+                      </span>
                     )}
                   </div>
                   <h4 className="text-sm text-stone-800">{p.title}</h4>
@@ -80,6 +82,27 @@ export const EventsList = ({ events, publish }: EventsListProps) => {
           </li>
         ))}
       </ul>
+
+      <Dialog
+        open={showCreateEvent}
+        onClose={() => setShowCreateEvent(false)}
+        className="fixed inset-0 z-50 overflow-y-auto "
+      >
+        <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+
+        <div className="fixed inset-28 overflow-auto rounded bg-white p-10 shadow-xl ring-1">
+          <CreateEventForm
+            abort={() => setShowCreateEvent(false)}
+            onSubmit={create}
+          />
+          <button
+            onClick={() => setShowCreateEvent(false)}
+            className="absolute top-4 right-4 grid h-10 w-10 place-content-center rounded-full hover:bg-slate-200"
+          >
+            <XIcon className="h-6 w-6" />
+          </button>
+        </div>
+      </Dialog>
     </div>
   );
 };
