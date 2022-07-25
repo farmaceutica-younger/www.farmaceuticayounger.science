@@ -62,7 +62,7 @@ const EventPage = ({}) => {
             </button>
           </div>
         )}
-        <EventTickets id={eventId} eventSlug={event?.slug} />
+        <EventTickets id={eventId} eventId={event?.id} />
       </AdminLayout>
     </div>
   );
@@ -72,10 +72,10 @@ export default EventPage;
 
 export const EventTickets = ({
   id,
-  eventSlug,
+  eventId,
 }: {
   id: string;
-  eventSlug?: string | null;
+  eventId?: string | null;
 }) => {
   const { data, isLoading, refetch } = trpc.useQuery([
     "events.getEventTickets",
@@ -120,8 +120,8 @@ export const EventTickets = ({
                 <td>{t.email}</td>
                 <td>{t.createdAt.toLocaleDateString()}</td>
                 <th>
-                  {eventSlug && (
-                    <Link href={`/events/${eventSlug}/tickets/${t.id}`}>
+                  {eventId && (
+                    <Link href={`/admin/events/${eventId}/tickets/${t.id}`}>
                       <a className="btn btn-ghost btn-xs">ticket</a>
                     </Link>
                   )}
