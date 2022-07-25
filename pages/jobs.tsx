@@ -20,8 +20,8 @@ export default function Home({
       </div>
       <div className="m-auto my-10 max-w-7xl">
         <div className="m-x-auto grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
-          {jobs.map((job) => (
-            <div className="card m-2 w-96 bg-base-100 shadow-xl">
+          {jobs.map((job, id) => (
+            <div key={id} className="card m-2 w-96 bg-base-100 shadow-xl">
               <div className="card-body">
                 <p className="badge badge-primary badge-outline">
                   {job.company}
