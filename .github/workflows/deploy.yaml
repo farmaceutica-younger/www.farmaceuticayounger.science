@@ -46,6 +46,7 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
+            JOBS_URL=${{ secrets.JOBS_URL }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
     services:
