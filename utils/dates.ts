@@ -6,6 +6,9 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
+export const formatJobDate = (date: string) =>
+  dayjs(date).tz("europe/rome").locale("it").format("DD MMMM YYYY");
+
 export const formatDate = (date: Date) =>
   dayjs(date).tz("europe/rome").locale("it").format("dddd DD MMMM YYYY");
 
