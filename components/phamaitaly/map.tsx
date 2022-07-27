@@ -1,3 +1,4 @@
+import { Icon } from "leaflet";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 interface MapProps {
@@ -5,6 +6,9 @@ interface MapProps {
 }
 
 const Map = ({ companies }: MapProps) => {
+  const icon = new Icon({
+    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  });
   return (
     <div>
       <MapContainer
@@ -22,7 +26,7 @@ const Map = ({ companies }: MapProps) => {
         />
 
         {companies.map((a) => (
-          <Marker key={a.id} position={[a.latitude, a.longitude]}>
+          <Marker key={a.id} position={[a.latitude, a.longitude]} icon={icon}>
             <Popup>
               <p className="font-bold">{a.companyName}</p>
               <p>{a.description}</p>
