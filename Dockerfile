@@ -38,7 +38,6 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 ARG DATABASE_URL
-ARG JOBS_URL
 RUN npm run build
 
 # Production image, copy all the files and run next

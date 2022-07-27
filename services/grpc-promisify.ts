@@ -49,3 +49,29 @@ export function promisifyAll<TClient extends grpc.Client>(
 
   return res as promisifyAll<TClient>;
 }
+
+export function CreateClientContructor<TClient extends grpc.Client>(
+  Cli: ITCli<TClient>
+) {
+  return (conf: GrpcClientConfig) => {
+    const credentials = conf.skipTLS
+      ? grpc.credentials.createInsecure()
+      : grpc.credentials.createSsl();
+
+    const cli = new Cli(conf.host, credentials);
+    return promisifyAll(cli);
+  };
+}
+
+interface ITCli<TClient extends grpc.Client> {
+  new (
+    address: string,
+    credentials: grpc.ChannelCredentials,
+    options?: Partial<grpc.ChannelOptions>
+  ): TClient;
+}
+
+export interface GrpcClientConfig {
+  host: string;
+  skipTLS: boolean;
+}

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Timestamp } from "./google/protobuf/timestamp";
+import { Timestamp } from "../google/protobuf/timestamp";
 import _m0 from "protobufjs/minimal";
 
 export const protobufPackage = "kannon";

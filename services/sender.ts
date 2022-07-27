@@ -1,5 +1,5 @@
 import { getConfigs } from "env-ts-conf";
-import * as api from "../src/proto/mailer";
+import * as api from "../src/proto/kannon/mailer";
 import * as grpc from "@grpc/grpc-js";
 import { promisifyAll } from "./grpc-promisify";
 
