@@ -4,6 +4,7 @@ import { QuestionairreForm } from "components/questionairre/form";
 import { linkedinConfig } from "config/linkedin";
 import { GetServerSidePropsContext } from "next";
 import { useRouter } from "next/router";
+import { db } from "services/db";
 import { getUserEmail, getUserProfile } from "utils/linkedin";
 import { trpc } from "utils/trpc";
 
@@ -55,11 +56,10 @@ export default function Login({
   );
 }
 
-const prisma = new PrismaClient();
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const code = ctx.query.code as string;
   const eventId = ctx.query.state as string;
-  const event = await prisma.event.findUnique({ where: { id: eventId } });
+  const event = await db.event.findUnique({ where: { id: eventId } });
   if (!event) {
     return {
       notFound: true,

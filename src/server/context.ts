@@ -4,13 +4,7 @@ import * as trpcNext from "@trpc/server/adapters/next";
 import { getConfigs } from "env-ts-conf";
 import { getSession } from "next-auth/react";
 import { NewJobsClient } from "services/jobs";
-
-const db = new PrismaClient({
-  log:
-    process.env.NODE_ENV === "development"
-      ? ["query", "error", "warn"]
-      : ["error"],
-});
+import { db } from "services/db";
 
 export const jobsConfig = getConfigs({
   host: {
