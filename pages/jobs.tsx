@@ -8,7 +8,7 @@ import { trpc } from "utils/trpc";
 
 export default function Home() {
   return (
-    <div className="bg-gray-200">
+    <div className="h-10 bg-red-500">
       <SEO title="Farmaceutica Younger" />
       <Header />
       <div className="p-2 text-center sm:mt-20">
@@ -36,11 +36,40 @@ const Jobs = () => {
   ]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="m-auto my-10 max-w-7xl">
+        <div className="m-x-auto grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <JobsLoading key={i} />
+          ))}
+        </div>
+      </div>
+    );
   }
 
   if (!data || error) {
-    return <div>Error</div>;
+    return (
+      <div className="m-auto my-20 max-w-md">
+        <div className="alert alert-error shadow-lg">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 flex-shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Error! Jobs Loading Failed.</span>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -97,6 +126,28 @@ const Jobs = () => {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+const JobsLoading = () => {
+  return (
+    <div className="h-full w-full p-2">
+      <div className="card h-full w-full bg-base-100 shadow-xl">
+        <div className="card-body flex flex-col justify-between">
+          <div>
+            <div className="mb-2 flex items-center justify-between">
+              <div className="h-6 w-32 rounded-xl bg-stone-300"></div>
+              <div className="h-6 w-6 rounded-xl bg-stone-300"></div>
+            </div>
+
+            <div className="mt-5 h-4 w-12 rounded-xl bg-stone-300"></div>
+            <div className="mt-3 h-4 w-12 rounded-xl bg-stone-300">
+              {/* {job.type && <p>Tipo di contratto: {job.type}</p>} */}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
