@@ -3,8 +3,6 @@ import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
 import { SEO } from "components/seo";
-import Image from "next/image";
-import Link from "next/link";
 import { Fragment, useState } from "react";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatJobDate } from "utils/dates";
@@ -15,7 +13,11 @@ export default function Home() {
 
   return (
     <div className="h-10">
-      <SEO title="Farmaceutica Younger" />
+      <SEO
+        title="Trova lavoro con Farmaceutica Younger"
+        description="Scopri gli ultimi annunci presenti sul mercato del lavoro nel mondo del Life Science in Italia."
+        author="Silvia Vernotico"
+      />
       <Header />
       <div className="bg-white">
         <Hero />
