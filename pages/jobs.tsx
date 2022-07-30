@@ -25,7 +25,7 @@ export default function Home() {
       <div className="bg-white">
         <Hero />
 
-        <div className="mt-6 grid place-content-center">
+        <div id="jobs" className="mt-6 grid place-content-center">
           <SelectCompany
             onChange={(value) => {
               setCompany(value);
@@ -165,8 +165,25 @@ const Pagination = ({
 }) => {
   const hasNext = current < Math.ceil(total / PAGE_SIZE) - 1;
   const hasPrev = current > 0;
-  const next = () => setPage((p) => p + 1);
-  const prev = () => setPage((p) => p - 1);
+
+  const scroll = () => {
+    const element = document.getElementById("jobs");
+    element?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  };
+
+  const next = () => {
+    setPage((p) => p + 1);
+    scroll();
+  };
+  const prev = () => {
+    setPage((p) => p - 1);
+    scroll();
+  };
+
   const totalPages = Math.ceil(total / PAGE_SIZE);
   return (
     <div className="my-8 flex w-full justify-center">
