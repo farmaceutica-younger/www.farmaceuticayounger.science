@@ -1,35 +1,40 @@
+import { Listbox, Transition } from "@headlessui/react";
+import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
 import { SEO } from "components/seo";
-import { InferGetStaticPropsType } from "next";
+import { Fragment, useState } from "react";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatJobDate } from "utils/dates";
 import { trpc } from "utils/trpc";
 
 export default function Home() {
+  const [company, setCompany] = useState("");
+
   return (
     <div className="h-10 bg-red-500">
       <SEO title="Farmaceutica Younger" />
       <Header />
-      <div className="p-2 text-center sm:mt-20">
-        <h2 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-6xl sm:leading-10">
-          Farma Jobs
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-xl leading-7 text-gray-500 sm:mt-8">
-          Trova lavoro con Farmaceutica Younger
-        </p>
+      <Hero />
+
+      <div className="mt-6 grid place-content-center">
+        <SelectCompany
+          onChange={(value) => {
+            setCompany(value);
+          }}
+        />
       </div>
-      <Jobs />
+      <Jobs company={company} />
       <Footer />
     </div>
   );
 }
 
-const Jobs = () => {
-  const { data, isLoading, error } = trpc.useQuery([
+const Jobs = ({ company }: { company: string }) => {
+  const { data, isLoading, error, refetch } = trpc.useQuery([
     "jobs.getJobs",
     {
-      companieIDs: [],
+      companieIDs: company !== "" ? [company] : [],
       skip: 0,
       take: 60,
     },
@@ -49,7 +54,7 @@ const Jobs = () => {
 
   if (!data || error) {
     return (
-      <div className="m-auto my-20 max-w-md">
+      <div id="jobs" className="m-auto my-20 max-w-md">
         <div className="alert alert-error shadow-lg">
           <div>
             <svg
@@ -153,25 +158,175 @@ const JobsLoading = () => {
   );
 };
 
-const logos: { [k: string]: string } = {
-  gsk: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851833/fy/logos/gsk-logo_e6pesx.png",
-  jansenn:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/janssen-logo_ddtxvz.png",
-  sanofi:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/sanofi_iuckig.jpg",
-  chiesi:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658852178/fy/logos/chiesi_mnlrau.png",
-  merk: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658852177/fy/logos/merk_b95w2b.webp",
-  novartis:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658864238/fy/logos/Novartis-Logo_txlov8.png",
-  zambon:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658866139/fy/logos/Zambon_logo_fur62n.png",
-  baxter:
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658867715/fy/logos/baxter_fmwdyh.png",
-  "eli-lilly":
-    "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658867137/fy/logos/lilly_ptrstp.png",
+const companies: { [k: string]: { logo: string; name: string } } = {
+  gsk: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851833/fy/logos/gsk-logo_e6pesx.png",
+    name: "GSK",
+  },
+  jansenn: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/janssen-logo_ddtxvz.png",
+    name: "Jansenn",
+  },
+  sanofi: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/sanofi_iuckig.jpg",
+    name: "Sanofi",
+  },
+  chiesi: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658852178/fy/logos/chiesi_mnlrau.png",
+    name: "Chiesi",
+  },
+  merk: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658852177/fy/logos/merk_b95w2b.webp",
+    name: "Merck",
+  },
+  novartis: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658864238/fy/logos/Novartis-Logo_txlov8.png",
+    name: "Novartis",
+  },
+  zambon: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658866139/fy/logos/Zambon_logo_fur62n.png",
+    name: "Zambon",
+  },
+  baxter: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658867715/fy/logos/baxter_fmwdyh.png",
+    name: "Baxter",
+  },
+  "eli-lilly": {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658867137/fy/logos/lilly_ptrstp.png",
+    name: "Eli Lilly",
+  },
 };
 
 const getLogo = (company: string) => {
-  return logos[company] && resizeCloudinaryImage(logos[company], 100);
+  return (
+    companies[company] && resizeCloudinaryImage(companies[company].logo, 100)
+  );
+};
+
+const Hero = () => {
+  return (
+    <div className="relative overflow-hidden bg-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="relative z-10 bg-white pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
+          <svg
+            className="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 transform text-white lg:block"
+            fill="currentColor"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <polygon points="50,0 100,0 50,100 0,100" />
+          </svg>
+
+          <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+            <div className="sm:text-center lg:text-left">
+              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                <span className="block xl:inline">Trova lavoro con</span>{" "}
+                <span className="block text-pink-600 xl:inline">
+                  Farmaceutica Younger
+                </span>
+              </h1>
+              <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
+                Scopri gli ultimi annunci presenti sul mercato del lavoro delle
+                mondo del <strong>Life Science</strong> in Italia.
+              </p>
+              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                <div className="mt-3 sm:mt-0 sm:ml-3">
+                  <a
+                    href="#"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-100 px-8 py-3 text-base font-medium text-pink-700 hover:bg-pink-200 md:py-4 md:px-10 md:text-lg"
+                  >
+                    Scopri di più
+                  </a>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+      <div className="hidden lg:absolute lg:inset-y-0 lg:right-0 lg:block lg:w-1/2">
+        <img
+          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
+          src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+          alt=""
+        />
+      </div>
+    </div>
+  );
+};
+
+const SelectCompany = ({ onChange }: { onChange: (value: string) => void }) => {
+  const [selected, setSelected] = useState("");
+
+  const handleChange = (value: string) => {
+    setSelected(value);
+    onChange(value);
+  };
+
+  return (
+    <div className="flex items-baseline space-x-3">
+      <div>filtra per azienda</div>
+      <div className="relative z-10 w-72">
+        <Listbox value={selected} onChange={handleChange}>
+          <div className="relative mt-1">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+              <span className="block truncate">
+                {companies[selected]?.name || "Tutte le aziende"}
+              </span>
+              <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+                <SelectorIcon
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </span>
+            </Listbox.Button>
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {Object.entries(companies).map(([company, value]) => (
+                  <Listbox.Option
+                    key={company}
+                    className={({ active }) =>
+                      `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
+                      }`
+                    }
+                    value={company}
+                  >
+                    {({ selected }) => (
+                      <>
+                        <span
+                          className={`block truncate ${
+                            selected ? "font-medium" : "font-normal"
+                          }`}
+                        >
+                          {value.name}
+                        </span>
+                        {selected ? (
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                            <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Transition>
+          </div>
+        </Listbox>
+      </div>
+      <button
+        disabled={selected === ""}
+        className="btn btn-primary btn-xs"
+        onClick={() => handleChange("")}
+      >
+        vedi tutte
+      </button>
+    </div>
+  );
 };
