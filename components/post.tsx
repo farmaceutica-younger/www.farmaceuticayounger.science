@@ -87,14 +87,14 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
                   width={60}
                   height={60}
                   className="rounded-full"
-                  src={author.profileImage}
+                  src={resizeCloudinaryImage(author.profileImage, 60)}
                   alt={author.name}
                 />
               </a>
             </div>
             <div className="text-center">
               <p className="text-sm font-medium text-gray-900">
-                <a href={"#"}>{author.name}</a>
+                <span>{author.name}</span>
               </p>
               <div className="flex space-x-1 text-sm text-gray-500">
                 <time dateTime={frontmatter.publishedTime.toISOString()}>
