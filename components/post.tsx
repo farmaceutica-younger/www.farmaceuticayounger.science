@@ -81,7 +81,7 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
         {author && (
           <div className="mt-10 flex flex-col items-center">
             <div className="flex-shrink-0">
-              <a href={"#"}>
+              <span>
                 <span className="sr-only">{author.name}</span>
                 <img
                   width={60}
@@ -90,7 +90,7 @@ export const PostPage = ({ source, frontmatter, author }: PostProps) => {
                   src={resizeCloudinaryImage(author.profileImage, 60)}
                   alt={author.name}
                 />
-              </a>
+              </span>
             </div>
             <div className="text-center">
               <p className="text-sm font-medium text-gray-900">
