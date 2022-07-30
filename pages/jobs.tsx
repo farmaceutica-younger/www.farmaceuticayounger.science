@@ -232,7 +232,7 @@ const Hero = () => (
               </span>
             </h1>
             <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-              Scopri gli ultimi annunci presenti sul mercato del lavoro del
+              Scopri gli ultimi annunci presenti sul mercato del lavoro nel
               mondo del <strong>Life Science</strong> in Italia.
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -268,7 +268,7 @@ const SelectCompany = ({ onChange }: { onChange: (value: string) => void }) => {
   };
 
   return (
-    <div className="flex items-baseline space-x-3">
+    <div className="flex flex-col items-baseline space-y-2 md:flex-row md:space-y-0 md:space-x-3">
       <div>Filtra per azienda</div>
       <div className="relative z-10 w-72">
         <Listbox value={selected} onChange={handleChange}>
