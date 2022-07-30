@@ -83,20 +83,20 @@ export const EventPage = ({ source, frontmatter, author }: EventProps) => {
         {author && (
           <div className="mt-10 flex flex-col items-center">
             <div className="flex-shrink-0">
-              <a href={"#"}>
+              <span>
                 <span className="sr-only">{author.name}</span>
                 <img
                   width={60}
                   height={60}
                   className="rounded-full"
-                  src={author.profileImage}
+                  src={resizeCloudinaryImage(author.profileImage, 60)}
                   alt={author.name}
                 />
-              </a>
+              </span>
             </div>
             <div className="text-center">
               <p className="text-sm font-medium text-gray-900">
-                <a href={"#"}>{author.name}</a>
+                <span>{author.name}</span>
               </p>
               <div className="flex space-x-1 text-sm text-gray-500">
                 <span>

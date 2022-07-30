@@ -1,6 +1,7 @@
 import { AdminLayout } from "components/admin/admin-layout";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { trpc } from "utils/trpc";
 
 const EventPage = ({}) => {
@@ -106,7 +107,10 @@ export const EventTickets = ({
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
                       <div className="mask mask-squircle h-12 w-12">
-                        <img src={t.avatar} alt={t.name} />
+                        <img
+                          src={resizeCloudinaryImage(t.avatar, 60)}
+                          alt={t.name}
+                        />
                       </div>
                     </div>
                     <div>
