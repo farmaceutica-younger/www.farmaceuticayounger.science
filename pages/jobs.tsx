@@ -176,7 +176,7 @@ const Pagination = ({
           disabled={!hasPrev}
           className="btn btn-primary btn-sm"
         >
-          «
+          &larr;
         </button>
         <button className="btn btn-primary btn-sm">
           Pagina {current + 1} di {totalPages}
@@ -186,7 +186,7 @@ const Pagination = ({
           disabled={!hasNext}
           className="btn btn-primary btn-sm"
         >
-          »
+          &rarr;
         </button>
       </div>
     </div>
@@ -410,9 +410,9 @@ const CTA = () => {
             Collabora con Farmaceutica Younger
           </p>
           <p className="mt-3 text-lg text-gray-300">
-            Sei un'azienda che opera nel settore Life Science e vuoi collaborare
-            con Farmaceutica Younger? Mandaci una mail, ti contatteremo appena
-            possibile.
+            Sei un&apos;azienda che opera nel settore Life Science e vuoi
+            collaborare con Farmaceutica Younger? Mandaci una mail, ti
+            contatteremo appena possibile.
           </p>
           <div className="mt-8">
             <div className="inline-flex rounded-md shadow">
