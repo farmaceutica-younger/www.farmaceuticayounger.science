@@ -165,7 +165,7 @@ const companies: { [k: string]: { logo: string; name: string } } = {
   },
   jansenn: {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/janssen-logo_ddtxvz.png",
-    name: "Jansenn",
+    name: "Jansen",
   },
   sanofi: {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/sanofi_iuckig.jpg",
@@ -227,7 +227,7 @@ const Hero = () => {
                 </span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0">
-                Scopri gli ultimi annunci presenti sul mercato del lavoro delle
+                Scopri gli ultimi annunci presenti sul mercato del lavoro del
                 mondo del <strong>Life Science</strong> in Italia.
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
@@ -265,7 +265,7 @@ const SelectCompany = ({ onChange }: { onChange: (value: string) => void }) => {
 
   return (
     <div className="flex items-baseline space-x-3">
-      <div>filtra per azienda</div>
+      <div>Filtra per azienda</div>
       <div className="relative z-10 w-72">
         <Listbox value={selected} onChange={handleChange}>
           <div className="relative mt-1">
