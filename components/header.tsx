@@ -4,13 +4,19 @@ import {
   faNewspaper,
   faQuoteRight,
   faTablets,
+  faProcedures,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Popover, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon, MenuIcon } from "@heroicons/react/solid";
+import {
+  ChevronDownIcon,
+  MenuIcon,
+  SpeakerphoneIcon,
+} from "@heroicons/react/solid";
 import Link from "next/link";
 import React, { Fragment } from "react";
+import { Banner } from "./banner";
 import { BlogIcon } from "./icon";
 
 const blogMenuSections = [
@@ -45,6 +51,13 @@ const blogMenuSections = [
       "Scopri dove sono distribuite le aziende del settore Life Science",
     to: "/farmainitaly",
     icon: <FontAwesomeIcon className="h-6 w-6" icon={faMap} />,
+  },
+  {
+    name: "gGMP",
+    description:
+      "Approfondisci la tua conoscenza sulle Good Manufactoring Practices",
+    to: "/cgmp",
+    icon: <FontAwesomeIcon className="h-6 w-6" icon={faProcedures} />,
   },
 ];
 
@@ -117,8 +130,8 @@ const otherSections = [
     href: "/associazione",
   },
   {
-    name: "cGMP",
-    href: "/cgmp",
+    name: "Jobs",
+    href: "/jobs",
   },
   {
     name: "GMP book",
@@ -244,13 +257,13 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      {/* <Banner
-        long="Big News! Partecipa al Brunch in GxP il 7 maggio 2022"
-        short="Brunch in GxP - 7 maggio 2022!"
-        btn="Partecipa!"
+      <Banner
+        long="Novità! Cerca lavoro con Farmaceutica Younger"
+        short="Cerca Lavoro con FY!"
+        btn="Inizia!"
         Icon={SpeakerphoneIcon}
-        href="/events/2022-05-brunch-gxp"
-      /> */}
+        href="/jobs"
+      />
     </div>
   );
 };
