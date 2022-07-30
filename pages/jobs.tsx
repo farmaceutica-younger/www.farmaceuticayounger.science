@@ -3,10 +3,13 @@ import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { Footer } from "components/footer";
 import { Header } from "components/header";
 import { SEO } from "components/seo";
-import { Fragment, useState } from "react";
+import { Dispatch, Fragment, SetStateAction, useEffect, useState } from "react";
 import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatJobDate } from "utils/dates";
 import { trpc } from "utils/trpc";
+import { ExternalLinkIcon } from "@heroicons/react/solid";
+
+const PAGE_SIZE = 60;
 
 export default function Home() {
   const [company, setCompany] = useState("");
@@ -31,6 +34,7 @@ export default function Home() {
         </div>
 
         <Jobs company={company} />
+        <CTA />
       </div>
       <Footer />
     </div>
@@ -38,12 +42,16 @@ export default function Home() {
 }
 
 const Jobs = ({ company }: { company: string }) => {
-  const { data, isLoading, error, refetch } = trpc.useQuery([
+  const [page, setPage] = useState(0);
+  useEffect(() => {
+    setPage(0);
+  }, [company]);
+  const { data, isLoading, error } = trpc.useQuery([
     "jobs.getJobs",
     {
       companieIDs: company !== "" ? [company] : [],
-      skip: 0,
-      take: 60,
+      skip: page * PAGE_SIZE,
+      take: PAGE_SIZE,
     },
   ]);
 
@@ -85,59 +93,101 @@ const Jobs = ({ company }: { company: string }) => {
   }
 
   return (
-    <div className="m-auto my-10 max-w-7xl">
-      <div className="m-x-auto grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
-        {data.jobs.map((job, id) => (
-          <div key={id} className="h-full w-full p-2">
-            <div className="card h-full  w-full  shadow-md shadow-pink-100 ring-1 ring-pink-200">
-              <div className="card-body flex flex-col justify-between">
-                <div>
-                  <div className="mb-2 flex items-center justify-between">
-                    <div>
-                      {getLogo(job.companyId) ? (
-                        <div>
-                          <img
-                            className="h-10 w-20 object-contain"
-                            src={getLogo(job.companyId)}
-                            alt={job.companyId}
-                          />
-                        </div>
-                      ) : (
-                        <p className="badge badge-primary badge-outline">
-                          {job.companyId}
-                        </p>
-                      )}
-                    </div>
-                    <div>
-                      <span className="badge badge-primary badge-outline">
-                        {" "}
-                        {formatJobDate(
-                          (job.postedAt || new Date()).toISOString()
+    <div>
+      <div className="m-auto my-10 max-w-7xl">
+        <div className="m-x-auto grid grid-cols-1 place-items-center md:grid-cols-2 xl:grid-cols-3">
+          {data.jobs.map((job, id) => (
+            <div key={id} className="h-full w-full p-2">
+              <div className="card h-full  w-full  shadow-md shadow-pink-100 ring-1 ring-pink-200">
+                <div className="card-body flex flex-col justify-between">
+                  <div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <div>
+                        {getLogo(job.companyId) ? (
+                          <div>
+                            <img
+                              className="h-10 w-20 object-contain"
+                              src={getLogo(job.companyId)}
+                              alt={job.companyId}
+                            />
+                          </div>
+                        ) : (
+                          <p className="badge badge-primary badge-outline">
+                            {job.companyId}
+                          </p>
                         )}
-                      </span>
+                      </div>
+                      <div>
+                        <span className="badge badge-primary badge-outline">
+                          {" "}
+                          {formatJobDate(
+                            (job.postedAt || new Date()).toISOString()
+                          )}
+                        </span>
+                      </div>
+                    </div>
+
+                    <h2 className="card-title mt-5">{job.title}</h2>
+                    <div className="mt-4 space-y-3">
+                      {/* {job.type && <p>Tipo di contratto: {job.type}</p>} */}
+                      <p>Location: {job.location}</p>
                     </div>
                   </div>
-
-                  <h2 className="card-title mt-5">{job.title}</h2>
-                  <div className="mt-4 space-y-3">
-                    {/* {job.type && <p>Tipo di contratto: {job.type}</p>} */}
-                    <p>Location: {job.location}</p>
+                  <div className="card-actions mt-4 justify-end">
+                    <a
+                      target="_blank"
+                      rel="noreferrer"
+                      href={job.url}
+                      className="btn btn-primary btn-sm"
+                    >
+                      Apply
+                    </a>
                   </div>
-                </div>
-                <div className="card-actions mt-4 justify-end">
-                  <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href={job.url}
-                    className="btn btn-primary btn-sm"
-                  >
-                    Apply
-                  </a>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </div>
+      <Pagination current={page} setPage={setPage} total={data.total} />
+    </div>
+  );
+};
+
+const Pagination = ({
+  total,
+  current,
+  setPage,
+}: {
+  total: number;
+  current: number;
+  setPage: Dispatch<SetStateAction<number>>;
+}) => {
+  const hasNext = current < Math.ceil(total / PAGE_SIZE) - 1;
+  const hasPrev = current > 0;
+  const next = () => setPage((p) => p + 1);
+  const prev = () => setPage((p) => p - 1);
+  const totalPages = Math.ceil(total / PAGE_SIZE);
+  return (
+    <div className="my-8 flex w-full justify-center">
+      <div className="btn-group ">
+        <button
+          onClick={prev}
+          disabled={!hasPrev}
+          className="btn btn-primary btn-sm"
+        >
+          «
+        </button>
+        <button className="btn btn-primary btn-sm">
+          Pagina {current + 1} di {totalPages}
+        </button>
+        <button
+          onClick={next}
+          disabled={!hasNext}
+          className="btn btn-primary btn-sm"
+        >
+          »
+        </button>
       </div>
     </div>
   );
@@ -279,7 +329,7 @@ const SelectCompany = ({ onChange }: { onChange: (value: string) => void }) => {
       <div className="relative z-10 w-72">
         <Listbox value={selected} onChange={handleChange}>
           <div className="relative mt-1">
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-pink-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block truncate">
                 {companies[selected]?.name || "Tutte le aziende"}
               </span>
@@ -337,6 +387,49 @@ const SelectCompany = ({ onChange }: { onChange: (value: string) => void }) => {
       >
         vedi tutte
       </button>
+    </div>
+  );
+};
+
+const CTA = () => {
+  return (
+    <div className="relative mt-10 bg-gray-800">
+      <div className="h-56 bg-pink-600 sm:h-72 md:absolute md:left-0 md:h-full md:w-1/2">
+        <img
+          className="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&blend=6366F1&sat=-100&blend-mode=multiply"
+          alt=""
+        />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <div className="md:ml-auto md:w-1/2 md:pl-10">
+          <h2 className="text-base font-semibold uppercase tracking-wider text-gray-300">
+            Collaborazioni Aperte
+          </h2>
+          <p className="mt-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            Collabora con Farmaceutica Younger
+          </p>
+          <p className="mt-3 text-lg text-gray-300">
+            Sei un'azienda che opera nel settore Life Science e vuoi collaborare
+            con Farmaceutica Younger? Mandaci una mail, ti contatteremo appena
+            possibile.
+          </p>
+          <div className="mt-8">
+            <div className="inline-flex rounded-md shadow">
+              <a
+                href="mailto:silvia@farmaceuticayounger.science?subject=Collaborazione con Farmaceutica Younger"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+              >
+                Scrivici una mail
+                <ExternalLinkIcon
+                  className="-mr-1 ml-3 h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

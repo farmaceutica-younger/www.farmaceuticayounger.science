@@ -9,11 +9,20 @@ export const jobsRouter = createRouter()
       take: z.number(),
     }),
     async resolve({ input, ctx }) {
-      return ctx.jobsCli.getJobs({
-        companyIds: input.companieIDs,
-        skip: input.skip,
-        take: input.take,
-      });
+      const [{ jobs }, { total }] = await Promise.all([
+        ctx.jobsCli.getJobs({
+          companyIds: input.companieIDs,
+          skip: input.skip,
+          take: input.take,
+        }),
+        ctx.jobsCli.countJobs({
+          companyIds: input.companieIDs,
+        }),
+      ]);
+      return {
+        jobs,
+        total,
+      };
     },
   })
   .query("countJobs", {
