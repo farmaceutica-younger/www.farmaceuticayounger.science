@@ -110,7 +110,7 @@ const Jobs = ({ company }: { company: string }) => {
                       <span className="badge badge-primary badge-outline">
                         {" "}
                         {formatJobDate(
-                          (job.createdAt || new Date()).toISOString()
+                          (job.postedAt || new Date()).toISOString()
                         )}
                       </span>
                     </div>
@@ -199,6 +199,10 @@ const companies: { [k: string]: { logo: string; name: string } } = {
   "eli-lilly": {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658867137/fy/logos/lilly_ptrstp.png",
     name: "Eli Lilly",
+  },
+  evotec: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1659181313/fy/logos/Evotec-Logo.wine_p4ewxv.png",
+    name: "Evotec",
   },
 };
 
