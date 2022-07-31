@@ -37,6 +37,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+ARG NEXT_PUBLIC_GOOGLE_ANALYTICS
 ARG DATABASE_URL
 RUN npm run build
 

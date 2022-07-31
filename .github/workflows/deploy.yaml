@@ -46,6 +46,7 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
+            NEXT_PUBLIC_GOOGLE_ANALYTICS=${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
     services:
