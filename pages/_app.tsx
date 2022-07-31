@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import Script from "next/script";
 import { FC, Fragment, useEffect } from "react";
 import { AppRouter } from "src/server/mod";
 import superjson from "superjson";
@@ -120,8 +121,8 @@ function MyApp({
           content="/icon/ms-icon-144x144.png"
         />
         <meta name="theme-color" content="#ec489a" />
-        <GAHeader />
       </Head>
+      <GAHeader />
 
       <Layout>
         <Component {...pageProps} />
@@ -168,24 +169,24 @@ const GAHeader = () => {
   if (router?.pathname?.startsWith("/_i/")) {
     return null;
   }
+  const gt = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+  if (!gt) {
+    return null;
+  }
   return (
     <>
-      <script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gt}`}
       />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
+      <Script strategy="afterInteractive">{`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+    gtag('config', '${gt}', {
       page_path: window.location.pathname,
     });
-  `,
-        }}
-      />
+  `}</Script>
     </>
   );
 };
