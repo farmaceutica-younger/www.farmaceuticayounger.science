@@ -153,12 +153,18 @@ const IubendaCookieBanner = () => {
     return null;
   }
 
-  const script = `<script type="text/javascript">
-  var _iub = _iub || [];
-  _iub.csConfiguration = {"lang":"it","siteId":1353353,"whitelabel":false,"cookiePolicyId":86855038, "banner":{ "textColor":"white","backgroundColor":"black" }};
-  </script>
-  <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>`;
-  return <div dangerouslySetInnerHTML={{ __html: script }}></div>;
+  return (
+    <>
+      <Script id="iubenda" strategy="afterInteractive">{`
+       var _iub = _iub || [];
+       _iub.csConfiguration = {"lang":"it","siteId":1353353,"whitelabel":false,"cookiePolicyId":86855038, "banner":{ "textColor":"white","backgroundColor":"black" }};
+      `}</Script>
+      <Script
+        strategy="afterInteractive"
+        src="//cdn.iubenda.com/cs/iubenda_cs.js"
+      />
+    </>
+  );
 };
 
 const GAHeader = () => {
@@ -179,7 +185,7 @@ const GAHeader = () => {
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gt}`}
       />
-      <Script strategy="afterInteractive">{`
+      <Script id="analytics" strategy="afterInteractive">{`
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
