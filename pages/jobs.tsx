@@ -237,7 +237,7 @@ const companies: { [k: string]: { logo: string; name: string } } = {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851833/fy/logos/gsk-logo_e6pesx.png",
     name: "GSK",
   },
-  jansenn: {
+  jansen: {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1658851785/fy/logos/janssen-logo_ddtxvz.png",
     name: "Jansen",
   },
