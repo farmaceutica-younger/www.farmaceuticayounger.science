@@ -273,6 +273,10 @@ const companies: { [k: string]: { logo: string; name: string } } = {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1659181313/fy/logos/Evotec-Logo.wine_p4ewxv.png",
     name: "Evotec",
   },
+  ibsa: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1659259600/fy/logos/obsa_d87rhr.png",
+    name: "IBSA",
+  },
 };
 
 const getLogo = (company: string) => {
