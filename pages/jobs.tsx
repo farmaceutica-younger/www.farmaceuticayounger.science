@@ -130,7 +130,7 @@ const Jobs = ({ company }: { company: string }) => {
                     <h2 className="card-title mt-5">{job.title}</h2>
                     <div className="mt-4 space-y-3">
                       {/* {job.type && <p>Tipo di contratto: {job.type}</p>} */}
-                      <p>Location: {job.location}</p>
+                      <p>📍 {job.location}</p>
                     </div>
                   </div>
                   <div className="card-actions mt-4 justify-end">
@@ -276,6 +276,10 @@ const companies: { [k: string]: { logo: string; name: string } } = {
   ibsa: {
     logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1659259600/fy/logos/obsa_d87rhr.png",
     name: "IBSA",
+  },
+  angelini: {
+    logo: "https://res.cloudinary.com/dbdvy5b2z/image/upload/v1659330805/fy/logos/angelini_b1ypog.png",
+    name: "Angelini",
   },
 };
 
