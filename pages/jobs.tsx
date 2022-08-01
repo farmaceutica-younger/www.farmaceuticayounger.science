@@ -8,6 +8,7 @@ import { resizeCloudinaryImage } from "utils/cloudinary-url";
 import { formatJobDate } from "utils/dates";
 import { trpc } from "utils/trpc";
 import { ExternalLinkIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 const PAGE_SIZE = 60;
 
@@ -317,14 +318,13 @@ const Hero = () => (
               mondo del <strong>Life Science</strong> in Italia.
             </p>
             <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-              {/* <div className="mt-3 sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-100 px-8 py-3 text-base font-medium text-pink-700 hover:bg-pink-200 md:py-4 md:px-10 md:text-lg"
-                >
-                  Scopri di più
-                </a>
-              </div> */}
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <Link href="/blog/2022/7/la-nuova-sezione-jobs">
+                  <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-pink-100 px-8 py-3 text-base font-medium text-pink-700 hover:bg-pink-200 md:py-4 md:px-10 md:text-lg">
+                    Motivazioni
+                  </a>
+                </Link>
+              </div>
             </div>
           </div>
         </main>
