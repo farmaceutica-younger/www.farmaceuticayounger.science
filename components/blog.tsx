@@ -65,7 +65,7 @@ const BlogPostPreview: React.FC<{
                 <time dateTime={publishedTime.toDateString()}>
                   {formatDate(publishedTime)}
                 </time>
-                <span className="mx-1">&middot;</span>
+                {/* <span className="mx-1">&middot;</span> */}
                 {/* <span>Lettura in {timeToRead} min</span> */}
               </div>
             </div>
